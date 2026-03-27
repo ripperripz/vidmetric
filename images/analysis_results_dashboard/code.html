@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VidMetrics | Editorial Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,wght@1,400;1,600;1,700&amp;family=Geist+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ffb4ab",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-surface-variant": "#c3c6d7",
+              "tertiary": "#bfc6da",
+              "on-primary-fixed-variant": "#003daa",
+              "on-secondary-container": "#004b39",
+              "on-surface": "#e2e2e9",
+              "surface-container-lowest": "#0c0e13",
+              "inverse-primary": "#1754d4",
+              "inverse-surface": "#e2e2e9",
+              "surface": "#111319",
+              "inverse-on-surface": "#2e3036",
+              "surface-container": "#1e1f25",
+              "surface-bright": "#37393f",
+              "secondary-fixed-dim": "#3edeb1",
+              "primary-container": "#628aff",
+              "on-tertiary-container": "#232a39",
+              "on-primary-container": "#00236b",
+              "on-secondary-fixed": "#002117",
+              "tertiary-container": "#8a91a3",
+              "background": "#111319",
+              "secondary-fixed": "#63fccc",
+              "on-secondary": "#003829",
+              "on-tertiary-fixed": "#141b2a",
+              "on-primary": "#002979",
+              "on-primary-fixed": "#00174c",
+              "on-tertiary-fixed-variant": "#404757",
+              "on-tertiary": "#293040",
+              "tertiary-fixed-dim": "#bfc6da",
+              "surface-container-highest": "#33353a",
+              "primary": "#b4c5ff",
+              "outline-variant": "#434654",
+              "on-background": "#e2e2e9",
+              "secondary": "#42e1b3",
+              "on-error-container": "#ffdad6",
+              "error-container": "#93000a",
+              "surface-tint": "#b4c5ff",
+              "surface-container-high": "#282a30",
+              "surface-container-low": "#191b21",
+              "on-error": "#690005",
+              "secondary-container": "#00c599",
+              "outline": "#8d90a0",
+              "surface-variant": "#33353a",
+              "primary-fixed": "#dbe1ff",
+              "on-secondary-fixed-variant": "#00513d",
+              "tertiary-fixed": "#dbe2f7",
+              "surface-dim": "#111319"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["Geist Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(12px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
+<!-- SideNavBar -->
+<aside class="w-[240px] h-screen fixed left-0 top-0 bg-[#111319] flex flex-col h-full py-8 z-50">
+<div class="px-8 mb-10">
+<h1 class="text-2xl font-headline italic text-[#B4C5FF] tracking-tight">VidMetrics</h1>
+<p class="text-[10px] font-mono uppercase tracking-widest text-outline mt-1">Editorial Intelligence</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-[#8D90A0] pl-8 py-2 hover:text-[#B4C5FF] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm">home</span>
+<span class="text-sm font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 text-[#B4C5FF] border-l-2 border-[#B4C5FF] pl-8 py-2 font-bold transition-all" href="#">
+<span class="material-symbols-outlined text-sm">analytics</span>
+<span class="text-sm font-medium">Analysis</span>
+</a>
+<a class="flex items-center gap-3 text-[#8D90A0] pl-8 py-2 hover:text-[#B4C5FF] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm">bookmark</span>
+<span class="text-sm font-medium">Saved</span>
+</a>
+<a class="flex items-center gap-3 text-[#8D90A0] pl-8 py-2 hover:text-[#B4C5FF] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm">ios_share</span>
+<span class="text-sm font-medium">Export</span>
+</a>
+<a class="flex items-center gap-3 text-[#8D90A0] pl-8 py-2 hover:text-[#B4C5FF] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-6">
+<div class="bg-surface-container-low p-4 rounded-xl relative overflow-hidden group border border-outline-variant/10">
+<div class="absolute -right-4 -top-4 w-16 h-16 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
+<div class="relative z-10">
+<span class="text-[10px] font-mono uppercase text-primary mb-1 block tracking-wider">Plan Status</span>
+<p class="text-sm font-bold text-on-surface mb-3">Pro Editorial</p>
+<button class="w-full py-2 bg-primary text-on-primary text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">Manage Plan</button>
+</div>
+</div>
+<div class="mt-8 flex items-center gap-3 px-2">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Close-up portrait of a professional editor in a dark studio setting with soft blue rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsDBikZN2wFTu0os5N85UN-TU9Ok_t9MOhYmanpiYBxNTNeNJ8jchCDvwJdV8TneHNNhPJSCgsqogm0AGX9ZFjqIQ7xCOcTbbOfSUldoKtk7wwjWFrEIc9wemNlPRofdKiiaJkvt5rh2rw2XI9jXAA248WWyqgK_f_0U_JLSyjKyYTCIPScxtWTCcNltCp6-PEf3e46ItUAlZfmPrj9ZiQNMb1zy9YEUBWsA6HSsm01E1G9dAJAgNvCrisPNOdJtquxXToyaRhePs"/>
+<div>
+<p class="text-xs font-bold text-on-surface">Alex Chen</p>
+<p class="text-[10px] text-outline">Lead Strategist</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-[240px] h-16 z-40 bg-[#0C0E13]/80 backdrop-blur-xl flex justify-between items-center px-8 w-full border-b border-outline-variant/5">
+<div class="flex items-center gap-6">
+<h2 class="font-mono uppercase tracking-widest text-xs text-primary font-bold">Analysis Results</h2>
+<div class="flex items-center bg-surface-container-lowest px-4 py-1.5 rounded-lg border border-outline-variant/20">
+<span class="text-[10px] font-mono text-outline mr-2">SOURCE:</span>
+<input class="bg-transparent border-none p-0 text-xs font-mono text-on-surface w-64 focus:ring-0" readonly="" type="text" value="youtube.com/c/veritasium/featured"/>
+</div>
+<a class="text-[10px] font-mono uppercase tracking-tighter text-outline hover:text-primary transition-colors" href="#">Analyze another</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 border border-outline-variant text-[10px] font-mono uppercase tracking-widest text-on-surface hover:bg-surface-container transition-all">Save</button>
+<button class="px-6 py-2 bg-gradient-to-br from-primary to-primary-container text-on-primary text-[10px] font-mono uppercase tracking-widest font-bold shadow-lg shadow-primary/10 hover:opacity-90 active:translate-y-px transition-all">Export</button>
+<div class="h-6 w-px bg-outline-variant/20 mx-2"></div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] pt-24 px-8 pb-20 space-y-8">
+<!-- CHANNEL HEADER -->
+<section class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="absolute -inset-1 bg-gradient-to-tr from-primary to-secondary rounded-full blur-sm opacity-30 animate-pulse"></div>
+<img class="w-16 h-16 rounded-full relative z-10 border-2 border-surface-container-high object-cover" data-alt="High-contrast channel avatar logo on a dark geometric background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFHUaDMjky6C8R0ETX_kUTtUG14QUIm-xWjuaqmvXuqKC19mfAi5GmJYKDTlHkJBUo3w1U97Kk3uaasykhQeb0DkvgqGJvy0kFpfBhPDZ777mV86cZxuTzHo1L_VAlSXrp5gGGzyp2Wl53iosFiDfkjXqSt9Cb88DEp-nUOsKB6ZAt3KgzzKj-vtxZ9_-eBPOn_wMubGLhg7Vp_57fhIYyB2xNQRrylPQujs1zaXmikI8okxrMtC0D_9fw_0UVp__xT7Aws7RasGw"/>
+</div>
+<div>
+<h3 class="text-2xl font-headline italic tracking-tight text-on-surface">Veritasium Intelligence</h3>
+<p class="font-mono text-xs text-outline">984 Videos • 14.2M Subscribers</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container p-4 min-w-[140px]">
+<p class="text-[10px] font-mono uppercase text-outline mb-1">Avg Views</p>
+<p class="text-xl font-mono font-bold text-on-surface">48.2M</p>
+</div>
+<div class="bg-surface-container p-4 min-w-[140px]">
+<p class="text-[10px] font-mono uppercase text-outline mb-1">Upload Freq</p>
+<p class="text-xl font-mono font-bold text-on-surface">2.3x<span class="text-xs text-outline">/week</span></p>
+</div>
+<div class="bg-surface-container p-4 min-w-[140px] border-b-2 border-secondary">
+<p class="text-[10px] font-mono uppercase text-secondary mb-1">Eng. Rate</p>
+<p class="text-xl font-mono font-bold text-secondary">4.7%</p>
+</div>
+</div>
+</section>
+<!-- INTELLIGENCE BRIEF & METRIC CARDS -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Intelligence Brief -->
+<section class="col-span-7 bg-surface-container p-8 border-l-[3px] border-primary relative">
+<div class="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-primary/5 to-transparent"></div>
+<h4 class="text-[10px] font-mono uppercase tracking-[0.2em] text-primary mb-6">Strategic Intelligence Brief</h4>
+<div class="grid grid-cols-1 gap-4 relative z-10">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">trending_up</span>
+<p class="text-sm text-on-surface leading-relaxed">Topical authority in <span class="text-primary">"Atomic Science"</span> is yielding a 400% higher CTR than broad engineering content.</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-error text-lg mt-0.5">trending_down</span>
+<p class="text-sm text-on-surface leading-relaxed">Audience drop-off significant after the 12-minute mark on storytelling-only formats.</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-amber-400 text-lg mt-0.5">warning</span>
+<p class="text-sm text-on-surface leading-relaxed">Saturation alert: <span class="italic">"The Problem with..."</span> title hooks are showing diminishing returns in the US market.</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-outline text-lg mt-0.5">east</span>
+<p class="text-sm text-on-surface leading-relaxed">Engagement spike detected in comment sections relating to historical counter-factuals.</p>
+</div>
+<div class="flex items-start gap-4 p-3 bg-error/5 border border-error/10 rounded">
+<span class="material-symbols-outlined text-error text-lg mt-0.5">skull</span>
+<div>
+<p class="text-sm font-bold text-error">Format Graveyard Detected</p>
+<p class="text-xs text-on-surface-variant">The "Whiteboard Sessions" format has failed to reach 10% of median views for 4 consecutive uploads.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">verified_user</span>
+<p class="text-sm text-on-surface leading-relaxed">Win Formula Match: Educational deep-dives with a "Misconception" frame are 92% likely to outperform.</p>
+</div>
+</div>
+</section>
+<!-- Metric Cards -->
+<div class="col-span-5 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 flex flex-col justify-between overflow-hidden relative group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-700" data-alt="Cyberpunk high-tech lab scene with blue glow and scientific equipment, blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB04lTAL6_57X4LbPXzgbqaVqg5-g1DrEK2VVza_4kur7qgDVj-_67_t2zpTNivbBLscVpyEaqtdyGVw4L2s0bzQz-KJgYZ57KobCa0VKWR-_iA69QMxPjjIpIEDQx0vzi4ZxZTX27g6gqrjGXhPSLze9J6PNZlA5m3MjNrf3ioPZH2W211U2N3IljwoP1T_dr9Ojj9oCMIOcQDKS8RCfjg6C5fHdAgmUnTX3cfhshOvTImwHvtiBx4BW823jaHktveq1zDodDuRCY"/>
+<div class="relative z-10">
+<p class="text-[10px] font-mono uppercase text-outline mb-1">Top Video</p>
+<p class="text-sm font-bold leading-tight line-clamp-2">The Speed of Light is NOT Constant</p>
+</div>
+<p class="relative z-10 text-xl font-mono font-bold text-primary mt-4">122M</p>
+</div>
+<div class="bg-surface-container-low p-4 flex flex-col justify-between">
+<p class="text-[10px] font-mono uppercase text-outline mb-1">Outlier Score</p>
+<div class="flex items-baseline gap-1">
+<p class="text-3xl font-mono font-bold text-on-surface">8.4</p>
+<p class="text-xs font-mono text-outline">/10</p>
+</div>
+<div class="w-full h-1 bg-surface-container mt-4">
+<div class="h-full bg-primary" style="width: 84%"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 flex flex-col justify-between border-t-2 border-error/40">
+<div class="flex justify-between items-start">
+<p class="text-[10px] font-mono uppercase text-outline">Shorts Perf.</p>
+<span class="material-symbols-outlined text-error text-xs">warning</span>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle cx="24" cy="24" fill="transparent" r="20" stroke="#1E1F25" stroke-width="4"></circle>
+<circle cx="24" cy="24" fill="transparent" r="20" stroke="#ffb4ab" stroke-dasharray="125" stroke-dashoffset="95" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-[8px] font-mono">24%</span>
+</div>
+<p class="text-xs text-outline leading-tight">Retention below category avg</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 flex flex-col justify-between">
+<p class="text-[10px] font-mono uppercase text-outline mb-2">Win Formula Match</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[8px] font-mono uppercase border border-primary/20">Hook: Paradox</span>
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[8px] font-mono uppercase border border-primary/20">Mid: Visual Simulation</span>
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[8px] font-mono uppercase border border-primary/20">End: Philosophy Shift</span>
+</div>
+</div>
+</div>
+</div>
+<!-- FILTER BAR -->
+<div class="bg-surface-container-low p-4 flex items-center justify-between border-y border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="flex bg-surface-container p-1 rounded-lg">
+<button class="px-4 py-1.5 text-[10px] font-mono uppercase font-bold bg-primary text-on-primary">90 Days</button>
+<button class="px-4 py-1.5 text-[10px] font-mono uppercase text-outline hover:text-on-surface">1 Year</button>
+<button class="px-4 py-1.5 text-[10px] font-mono uppercase text-outline hover:text-on-surface">All Time</button>
+</div>
+<div class="h-6 w-px bg-outline-variant/20"></div>
+<div class="flex gap-2">
+<span class="px-3 py-1.5 bg-surface-container text-[10px] font-mono uppercase text-on-surface flex items-center gap-2 cursor-pointer hover:bg-surface-container-high transition-colors">
+                        Sort: Outlier Score <span class="material-symbols-outlined text-xs">expand_more</span>
+</span>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-[10px] font-mono uppercase text-on-surface flex items-center gap-2 rounded-full border border-primary/30">
+                    Format Graveyard <span class="material-symbols-outlined text-xs">close</span>
+</span>
+<span class="px-3 py-1 bg-surface-container text-[10px] font-mono uppercase text-outline flex items-center gap-2 rounded-full border border-outline-variant/20 cursor-pointer hover:border-outline transition-all">
+                    Show Outliers Only
+                </span>
+</div>
+</div>
+<!-- VIDEO GRID -->
+<section class="grid grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Technical code monitor with scientific calculations and blue data visualization overlays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1FzYjY9iG8El12UgUVl4WJhA9H7qMXVF-vFSqGOf2IBCV87udUa_GLtOUUF6x_op0LJz4CJcBMrbq1e36bugZr0vNAJCZQHcSIn6z2vg-GEvv7pAkwX83fezG-KWlekx5vhGeVl1iIs4KeBB7cH5w8e-2IYdBkmbdPibkfwSL6o0p5linP43hARzRlUPFZDiiRluoUt71dMdhy-SSTytElux_JwWTVRypbzmXL-k_RBXUzCvPIkVef1z89_6LcJH23hbbHJ9jknc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<span class="absolute bottom-2 right-2 px-2 py-1 bg-black/80 text-[10px] font-mono">14:22</span>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 bg-secondary text-on-secondary text-[8px] font-mono font-bold uppercase tracking-wider">Outlier</span>
+<span class="px-2 py-0.5 bg-primary text-on-primary text-[8px] font-mono font-bold uppercase tracking-wider">Trending</span>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<h5 class="text-sm font-bold leading-snug line-clamp-2">The Hidden Math of Every Single Snowflake</h5>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<p class="text-[10px] font-mono uppercase text-outline">Outlier Score</p>
+<div class="w-32 h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 92%"></div>
+</div>
+</div>
+<p class="text-lg font-mono font-bold text-primary">9.2</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/10 space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-[9px] font-mono uppercase text-amber-400">Curiosity Gap</span>
+<div class="w-24 h-1 bg-amber-900/40">
+<div class="h-full bg-amber-400" style="width: 75%"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[8px] font-mono uppercase border border-secondary/20">Comment Goldmine</span>
+<span class="px-2 py-0.5 bg-outline-variant/10 text-outline text-[8px] font-mono uppercase border border-outline-variant/20 opacity-50">Ghost Audience</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 (Format Graveyard) -->
+<div class="bg-surface-container group opacity-70 hover:opacity-100 transition-opacity grayscale-[0.5] hover:grayscale-0">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Overhead view of a person writing on a whiteboard with scattered papers and a classic calculator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1GN81djyTjfpqO5FfuujihvK2osluecZ53BqFVbGyirGAA75LHJrgEs7e9R5lUDlEiZGmFTCezD0Az6GDAyZKnxB9ula_R2ftOJzOIoAf7CZr2midZCvmkwPvshgkT6qHVIQ2zOjGVb5VRbVC_C0eEN3CH2F2WR28JZnzoyO59ES7JFqtMZDk7t7xqiodzP60b4C2fu5pSKuev8BdDkq8RSaoEfNpepZaG95KqQdwLiBG2jydslBYWFuKUzzLLRGj0_4yuvNauKQ"/>
+<div class="absolute inset-0 bg-surface-container-lowest/40"></div>
+<span class="absolute bottom-2 right-2 px-2 py-1 bg-black/80 text-[10px] font-mono">08:15</span>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 bg-error text-on-error text-[8px] font-mono font-bold uppercase tracking-wider">Format Graveyard</span>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<h5 class="text-sm font-bold leading-snug line-clamp-2">Whiteboard Sessions: Why Gravity is Fake</h5>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<p class="text-[10px] font-mono uppercase text-outline">Outlier Score</p>
+<div class="w-32 h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 12%"></div>
+</div>
+</div>
+<p class="text-lg font-mono font-bold text-error">1.2</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/10 space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-[9px] font-mono uppercase text-outline">Curiosity Gap</span>
+<div class="w-24 h-1 bg-surface-container-lowest">
+<div class="h-full bg-outline-variant" style="width: 20%"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-error/10 text-error text-[8px] font-mono uppercase border border-error/20">Ghost Audience</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Satellite imagery of Earth from space at night with glowing city lights and atmospheric thin blue line" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEW414RpntD-9-W1MtDA62fqP73Tc4pQKVjZ4JeMKX209kcQEnVgOShUZ6ZEZMtBU88fv6yMgMZuaGzPLa0snEvAcKFEqffKgYQRl8FPxR8rF9gCsDVjnoSAPXYk8gSYOlPy2G057c3nebjLEROTMZUy250Pqc22gLe-FNhdZAcc4iMTbtPWceGcSLRY7Wr11WjXDEZLJinAh-J9uz7gEmlS7I23As2Wc2cJFpKhN2C4If5iXQNdTchpJwNVeVNfp34aPe1wgGZCg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<span class="absolute bottom-2 right-2 px-2 py-1 bg-black/80 text-[10px] font-mono">19:40</span>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 bg-secondary text-on-secondary text-[8px] font-mono font-bold uppercase tracking-wider">Outlier</span>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<h5 class="text-sm font-bold leading-snug line-clamp-2">The Billion-Year Clock in the Sky</h5>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<p class="text-[10px] font-mono uppercase text-outline">Outlier Score</p>
+<div class="w-32 h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 78%"></div>
+</div>
+</div>
+<p class="text-lg font-mono font-bold text-primary">7.8</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/10 space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-[9px] font-mono uppercase text-amber-400">Curiosity Gap</span>
+<div class="w-24 h-1 bg-amber-900/40">
+<div class="h-full bg-amber-400" style="width: 60%"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[8px] font-mono uppercase border border-secondary/20">Comment Goldmine</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BOTTOM ROW -->
+<div class="grid grid-cols-10 gap-8">
+<!-- Heatmap -->
+<section class="col-span-6 bg-surface-container-low p-6 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h4 class="text-[10px] font-mono uppercase tracking-widest text-outline">Upload Heatmap &amp; Retention Strength</h4>
+<div class="flex items-center gap-2">
+<span class="text-[8px] font-mono text-outline">WEAK</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary/10"></div>
+<div class="w-3 h-3 bg-primary/30"></div>
+<div class="w-3 h-3 bg-primary/60"></div>
+<div class="w-3 h-3 bg-primary"></div>
+</div>
+<span class="text-[8px] font-mono text-outline">ELITE</span>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<!-- Day Labels -->
+<div class="text-[8px] font-mono text-outline text-center">MON</div>
+<div class="text-[8px] font-mono text-outline text-center">TUE</div>
+<div class="text-[8px] font-mono text-outline text-center">WED</div>
+<div class="text-[8px] font-mono text-outline text-center">THU</div>
+<div class="text-[8px] font-mono text-outline text-center">FRI</div>
+<div class="text-[8px] font-mono text-outline text-center">SAT</div>
+<div class="text-[8px] font-mono text-outline text-center">SUN</div>
+<!-- Row 1 -->
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary rounded-sm border-2 border-secondary shadow-[0_0_10px_rgba(66,225,179,0.3)]"></div>
+<div class="aspect-square bg-primary/60 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/30 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<!-- Row 2 -->
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/30 rounded-sm"></div>
+<div class="aspect-square bg-primary/80 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<!-- Row 3 -->
+<div class="aspect-square bg-primary/30 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/30 rounded-sm"></div>
+<div class="aspect-square bg-primary/90 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<!-- Row 4 -->
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/60 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+</div>
+</section>
+<!-- Format Intelligence -->
+<section class="col-span-4 bg-surface-container-low p-6 rounded-xl flex flex-col">
+<h4 class="text-[10px] font-mono uppercase tracking-widest text-outline mb-6">Format Intelligence</h4>
+<div class="space-y-6 flex-1">
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-2">
+<span class="text-on-surface">SHORTS (35%)</span>
+<span class="text-primary">LONG-FORM (65%)</span>
+</div>
+<div class="h-2 w-full flex rounded-full overflow-hidden bg-surface-container">
+<div class="h-full bg-secondary" style="width: 35%"></div>
+<div class="h-full bg-primary" style="width: 65%"></div>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-[10px] font-mono uppercase text-outline">Duration Sweet Spot</p>
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<span class="text-[9px] font-mono w-12">12-18m</span>
+<div class="flex-1 h-3 bg-surface-container rounded-sm overflow-hidden">
+<div class="h-full bg-primary" style="width: 90%"></div>
+</div>
+<span class="text-[9px] font-mono text-primary">ELITE</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[9px] font-mono w-12">8-12m</span>
+<div class="flex-1 h-3 bg-surface-container rounded-sm overflow-hidden">
+<div class="h-full bg-primary/40" style="width: 45%"></div>
+</div>
+<span class="text-[9px] font-mono text-outline">MID</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[9px] font-mono w-12">25m+</span>
+<div class="flex-1 h-3 bg-surface-container rounded-sm overflow-hidden">
+<div class="h-full bg-error/30" style="width: 15%"></div>
+</div>
+<span class="text-[9px] font-mono text-error">POOR</span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/10">
+<p class="text-[10px] font-mono uppercase text-error mb-3">Format Graveyard List</p>
+<div class="space-y-2">
+<div class="bg-surface p-2 flex items-center gap-3 border border-outline-variant/10">
+<span class="material-symbols-outlined text-outline text-sm">skull</span>
+<p class="text-xs font-mono text-on-surface">Whiteboard Sessions</p>
+</div>
+<div class="bg-surface p-2 flex items-center gap-3 border border-outline-variant/10">
+<span class="material-symbols-outlined text-outline text-sm">skull</span>
+<p class="text-xs font-mono text-on-surface">Community Q&amp;A</p>
+</div>
+<div class="bg-surface p-2 flex items-center gap-3 border border-outline-variant/10">
+<span class="material-symbols-outlined text-outline text-sm">skull</span>
+<p class="text-xs font-mono text-on-surface">Behind the Scenes</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Only on Home/Dashboard, but keeping for visual consistency in this view as high-end UI element) -->
+<div class="fixed bottom-8 right-8">
+<button class="flex items-center gap-3 px-6 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-full shadow-2xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-sm">Generate AI Brief</span>
+</button>
+</div>
+</body></html>

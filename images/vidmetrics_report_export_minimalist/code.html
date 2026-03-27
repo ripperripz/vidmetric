@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Export Report - VidMetrics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Instrument+Serif:ital@1&amp;family=Geist+Mono:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#111319",
+                        "surface-container-low": "#191b21",
+                        "on-tertiary-fixed": "#141b2a",
+                        "surface-variant": "#33353a",
+                        "surface-container-high": "#282a30",
+                        "secondary-container": "#00c599",
+                        "on-primary-fixed-variant": "#003daa",
+                        "on-tertiary": "#293040",
+                        "on-secondary-fixed": "#002117",
+                        "error": "#ffb4ab",
+                        "surface": "#111319",
+                        "surface-bright": "#37393f",
+                        "on-surface": "#e2e2e9",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "surface-container": "#1e1f25",
+                        "secondary-fixed-dim": "#3edeb1",
+                        "secondary-fixed": "#63fccc",
+                        "secondary": "#42e1b3",
+                        "tertiary-fixed-dim": "#bfc6da",
+                        "outline-variant": "#434654",
+                        "on-secondary": "#003829",
+                        "on-primary": "#002979",
+                        "surface-container-highest": "#33353a",
+                        "primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174c",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-primary": "#1754d4",
+                        "inverse-on-surface": "#2e3036",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary-fixed": "#dbe2f7",
+                        "outline": "#8d90a0",
+                        "primary-container": "#628aff",
+                        "background": "#111319",
+                        "on-tertiary-container": "#232a39",
+                        "on-secondary-container": "#004b39",
+                        "surface-container-lowest": "#0c0e13",
+                        "on-surface-variant": "#c3c6d7",
+                        "tertiary-container": "#8a91a3",
+                        "on-primary-container": "#00236b",
+                        "on-tertiary-fixed-variant": "#404757",
+                        "on-secondary-fixed-variant": "#00513d",
+                        "inverse-surface": "#e2e2e9",
+                        "tertiary": "#bfc6da",
+                        "on-background": "#e2e2e9",
+                        "surface-tint": "#b4c5ff",
+                        "on-error": "#690005"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader", "serif"],
+                        "serif": ["Instrument Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Geist Mono", "monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #080A0F;
+            color: #e2e2e9;
+        }
+        /* Hide scrollbar for clean editorial look */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-container/30">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-[#0C0E13]/85 backdrop-blur-[20px] shadow-[0_8px_40px_rgba(0,61,170,0.05)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-slate-100">VidMetrics</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-slate-400 hover:text-slate-100 transition-colors text-sm" href="#">Product</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors text-sm" href="#">Pricing</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors text-sm" href="#">Enterprise</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors text-sm" href="#">Blog</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-slate-100 transition-colors text-sm px-3 py-1.5">Sign in</button>
+<button class="bg-primary text-on-primary-container px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-all duration-200 active:scale-95">Start free trial</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-12 px-6 max-w-[1600px] mx-auto min-h-screen flex flex-col md:flex-row gap-8">
+<!-- LEFT: Live Report Preview (65%) -->
+<section class="w-full md:w-[65%] flex flex-col gap-4">
+<div class="flex items-center justify-between mb-2">
+<h1 class="font-serif italic text-3xl text-primary">Intelligence Report Preview</h1>
+<div class="flex gap-2">
+<span class="bg-surface-container text-outline px-3 py-1 text-[10px] uppercase tracking-widest font-bold">Draft v2.4</span>
+</div>
+</div>
+<!-- The Paper Canvas -->
+<div class="bg-white text-[#080A0F] p-12 shadow-2xl min-h-[1100px] rounded-sm flex flex-col gap-10 overflow-hidden relative">
+<!-- Watermark for preview -->
+<div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none rotate-[-45deg] select-none text-9xl font-bold">
+                    PREVIEW
+                </div>
+<!-- Report Header -->
+<header class="flex justify-between items-end border-b-2 border-slate-900 pb-6">
+<div>
+<p class="text-[10px] font-mono uppercase tracking-[0.2em] mb-2 text-slate-500">VidMetrics Intelligence Brief</p>
+<h2 class="text-4xl font-headline font-semibold tracking-tight">Q3 Channel Performance Analysis</h2>
+<p class="text-sm text-slate-600 mt-1 font-mono">Generated: 2024-OCT-24 • Client: Internal Alpha</p>
+</div>
+<div class="w-12 h-12 bg-slate-900 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl">analytics</span>
+</div>
+</header>
+<!-- Condensed Channel Stats -->
+<div class="grid grid-cols-4 gap-4">
+<div class="border-l border-slate-200 pl-4 py-2">
+<p class="text-[10px] text-slate-500 uppercase font-bold">Aggregate Reach</p>
+<p class="text-2xl font-mono font-bold">2.44M</p>
+<p class="text-[10px] text-emerald-600 font-bold">+12.4% vs LW</p>
+</div>
+<div class="border-l border-slate-200 pl-4 py-2">
+<p class="text-[10px] text-slate-500 uppercase font-bold">Retention Avg</p>
+<p class="text-2xl font-mono font-bold">64.2%</p>
+<p class="text-[10px] text-slate-400 font-bold">Stable</p>
+</div>
+<div class="border-l border-slate-200 pl-4 py-2">
+<p class="text-[10px] text-slate-500 uppercase font-bold">CTR Optimization</p>
+<p class="text-2xl font-mono font-bold">8.11%</p>
+<p class="text-[10px] text-rose-600 font-bold">-0.4% vs LW</p>
+</div>
+<div class="border-l border-slate-200 pl-4 py-2">
+<p class="text-[10px] text-slate-500 uppercase font-bold">RPM Revenue</p>
+<p class="text-2xl font-mono font-bold">$14.20</p>
+<p class="text-[10px] text-emerald-600 font-bold">+$2.10 vs LY</p>
+</div>
+</div>
+<!-- 6-Bullet Brief -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 py-4">
+<div class="flex flex-col gap-4">
+<h3 class="text-xs font-bold uppercase tracking-widest border-b border-slate-100 pb-2">Core Insights</h3>
+<ul class="text-sm space-y-3 list-none">
+<li class="flex gap-3"><span class="font-mono text-slate-400">01</span> Peak engagement occurs within first 45s of technical deep-dives.</li>
+<li class="flex gap-3"><span class="font-mono text-slate-400">02</span> Mid-roll conversion increased by 22% when using "The Digital Curator" aesthetic.</li>
+<li class="flex gap-3"><span class="font-mono text-slate-400">03</span> Outlier performance noted in weekend morning slots (EST).</li>
+</ul>
+</div>
+<div class="flex flex-col gap-4 pt-6 md:pt-0">
+<div class="invisible h-6 hidden md:block border-b border-slate-100 pb-2"></div>
+<ul class="text-sm space-y-3 list-none">
+<li class="flex gap-3"><span class="font-mono text-slate-400">04</span> Audience churn correlates strictly with repetitive visual b-roll loops.</li>
+<li class="flex gap-3"><span class="font-mono text-slate-400">05</span> High-intent traffic originates from LinkedIn organic referrals.</li>
+<li class="flex gap-3"><span class="font-mono text-slate-400">06</span> Recommended action: Increase long-form duration to 18-22 mins.</li>
+</ul>
+</div>
+</section>
+<!-- Outlier & Win Formula Bento -->
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-7 bg-slate-50 p-6 flex flex-col gap-4">
+<h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-400">The Win Formula</h3>
+<p class="text-xl font-headline italic">"Authority through precision: high-contrast typography plus technical mono-spaced data overlays."</p>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div class="bg-white p-3 shadow-sm border border-slate-200">
+<p class="text-[9px] uppercase font-bold text-slate-400">Primary Driver</p>
+<p class="text-sm font-semibold">Visual Complexity</p>
+</div>
+<div class="bg-white p-3 shadow-sm border border-slate-200">
+<p class="text-[9px] uppercase font-bold text-slate-400">Secondary Driver</p>
+<p class="text-sm font-semibold">Technical Authority</p>
+</div>
+</div>
+</div>
+<div class="col-span-5 flex flex-col gap-4">
+<h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Outlier Videos</h3>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-8 bg-slate-200 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="minimalist clean code on a monitor with cinematic soft focus lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgy_KJ5bhSyEZVCnGAo0qefjT8bc05KZx1K6mYsbpN1RB1PXhxwPKnq2412wPQrzUBfZNyJv5tg_PNFsoteADCFJexR0mUdr8aQIfycDKb8sMTmE_rFIj59n1HGYrWHZyTGhdN1tC1ZR7CV0ju9RXDJ_JhUI8L_gn2Y_MhWbp4wjkqcEKr1O6nJKIbApmwEmL9dnRUdQfVxaATWvgFDcYEmeZ0ro8geHPe5JyTb8ulOnZIRB5ZECUiwxlhgboI3HZyRVhmZyJX_gc"/>
+</div>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Architecture of 2025</p>
+<p class="text-[10px] font-mono text-emerald-600">142% Over Avg</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-8 bg-slate-200 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="high contrast data dashboard with cold blue tones and professional minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIXao_f45WZctJL7Y6gOTbbdStTc15nCr9fILuHSCzwcFG1zkEc_T_YQgU6MjN5cHbKiEHwIFsRurF1cmPx4h5b5QDAQFk6X4NWQ9cDIm9CJ_r934FOWC3vLLngqjqkmTk5XIF86SgqbCmd4QMnx_3npCHURovA-bxNkDXekEPAvDtvYZln08nRuDWsXVs7yA8PW-GVaHIW0dEvhajlOmBcs3_StweLlmjeZ3oUZUs_Zh6LGTObubUg5NwgC1ERML2Y09DKyxQ214"/>
+</div>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Designing Data Flow</p>
+<p class="text-[10px] font-mono text-emerald-600">98% Over Avg</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Engagement Heatmap -->
+<section class="flex flex-col gap-3">
+<h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Engagement Heatmap (24h Aggregate)</h3>
+<div class="h-32 w-full grid grid-cols-24 gap-1 items-end">
+<!-- Simulated bars -->
+<div class="bg-slate-100 h-[20%] w-full"></div><div class="bg-slate-100 h-[15%] w-full"></div><div class="bg-slate-200 h-[25%] w-full"></div><div class="bg-slate-300 h-[40%] w-full"></div><div class="bg-slate-400 h-[60%] w-full"></div><div class="bg-slate-800 h-[85%] w-full"></div><div class="bg-slate-900 h-[100%] w-full"></div><div class="bg-slate-800 h-[90%] w-full"></div><div class="bg-slate-500 h-[70%] w-full"></div><div class="bg-slate-300 h-[45%] w-full"></div><div class="bg-slate-200 h-[30%] w-full"></div><div class="bg-slate-100 h-[25%] w-full"></div><div class="bg-slate-200 h-[35%] w-full"></div><div class="bg-slate-400 h-[55%] w-full"></div><div class="bg-slate-600 h-[75%] w-full"></div><div class="bg-slate-900 h-[95%] w-full"></div><div class="bg-slate-800 h-[80%] w-full"></div><div class="bg-slate-400 h-[50%] w-full"></div><div class="bg-slate-200 h-[30%] w-full"></div><div class="bg-slate-100 h-[15%] w-full"></div><div class="bg-slate-100 h-[10%] w-full"></div><div class="bg-slate-200 h-[20%] w-full"></div><div class="bg-slate-300 h-[40%] w-full"></div><div class="bg-slate-500 h-[65%] w-full"></div>
+</div>
+<div class="flex justify-between font-mono text-[9px] text-slate-400 mt-1 uppercase">
+<span>00:00 EST</span>
+<span>12:00 EST</span>
+<span>23:59 EST</span>
+</div>
+</section>
+<footer class="mt-auto pt-8 border-t border-slate-100 flex justify-between text-[9px] text-slate-400 font-mono">
+<p>© 2024 VIDMETRICS INTELLIGENCE UNIT</p>
+<p>PAGE 01 / 01</p>
+</footer>
+</div>
+</section>
+<!-- RIGHT: Export Options Panel (35%) -->
+<aside class="w-full md:w-[35%] flex flex-col gap-6">
+<!-- Format Selection -->
+<div class="bg-surface-container p-6 rounded-sm border-l-2 border-primary">
+<h3 class="text-xs font-bold uppercase tracking-widest text-outline mb-4">Export Format</h3>
+<div class="grid grid-cols-1 gap-3">
+<button class="flex items-center justify-between p-4 bg-primary text-on-primary-container font-semibold rounded-md transition-all active:scale-95 group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+<span>Download PDF Report</span>
+</div>
+<span class="text-[10px] font-mono opacity-60">High-Res</span>
+</button>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 p-3 border border-outline-variant hover:border-outline transition-colors text-sm rounded-md active:scale-95">
+<span class="material-symbols-outlined text-sm">table_chart</span>
+<span>CSV Data</span>
+</button>
+<button class="flex items-center justify-center gap-2 p-3 border border-outline-variant hover:border-outline transition-colors text-sm rounded-md active:scale-95">
+<span class="material-symbols-outlined text-sm">code</span>
+<span>Raw JSON</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Customization Section -->
+<div class="bg-surface-container p-6 rounded-sm">
+<h3 class="text-xs font-bold uppercase tracking-widest text-outline mb-6">Components</h3>
+<div class="space-y-5">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium">Channel Stats Summary</p>
+<p class="text-[10px] text-outline">Executive aggregate metrics</p>
+</div>
+<input checked="" class="form-checkbox bg-surface-container-lowest border-outline-variant rounded text-primary focus:ring-primary/20" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium">6-Bullet Intelligence Brief</p>
+<p class="text-[10px] text-outline">Automated semantic analysis</p>
+</div>
+<input checked="" class="form-checkbox bg-surface-container-lowest border-outline-variant rounded text-primary focus:ring-primary/20" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium">Video Heatmaps</p>
+<p class="text-[10px] text-outline">Detailed timeline retention</p>
+</div>
+<input class="form-checkbox bg-surface-container-lowest border-outline-variant rounded text-primary focus:ring-primary/20" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium">Financial Projections</p>
+<p class="text-[10px] text-outline">Estimated RPM revenue flow</p>
+</div>
+<input checked="" class="form-checkbox bg-surface-container-lowest border-outline-variant rounded text-primary focus:ring-primary/20" type="checkbox"/>
+</div>
+</div>
+</div>
+<!-- Branding Section -->
+<div class="bg-surface-container-low p-6 rounded-sm border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-outline">Branding</h3>
+<span class="bg-primary/10 text-primary text-[9px] px-2 py-0.5 font-bold rounded-full">PRO FEATURE</span>
+</div>
+<div class="space-y-4">
+<div class="p-4 border-2 border-dashed border-outline-variant/30 rounded-md flex flex-col items-center gap-2 hover:border-primary/50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">cloud_upload</span>
+<p class="text-[10px] uppercase font-bold tracking-tight text-outline">Upload Agency Logo</p>
+<p class="text-[9px] text-outline/50 italic">SVG, PNG (Max 5MB)</p>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-sm">White-label export</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Share & Schedule -->
+<div class="mt-auto flex flex-col gap-4">
+<div class="bg-surface-container-lowest p-1 rounded-lg flex items-center border border-outline-variant/20">
+<input class="bg-transparent border-none text-xs font-mono text-outline w-full focus:ring-0" readonly="" type="text" value="vidmetrics.ai/r/exp_2841_v2"/>
+<button class="bg-surface-container-high px-4 py-2 rounded-md text-xs font-bold uppercase tracking-tighter hover:bg-surface-container-highest transition-colors active:scale-95 whitespace-nowrap">Copy Link</button>
+</div>
+<button class="w-full flex items-center justify-center gap-3 p-4 border border-primary/20 hover:bg-primary/5 transition-all text-sm rounded-md group">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="font-semibold text-primary">Schedule Weekly Auto-Export</span>
+</button>
+</div>
+</aside>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-[#080A0F] w-full border-t border-[#434654]/15 mt-12">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-6 py-12 max-w-7xl mx-auto">
+<div class="flex flex-col gap-4">
+<span class="text-lg font-bold tracking-tighter text-slate-200">VidMetrics</span>
+<p class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Digital Intelligence for Content Architecture</p>
+</div>
+<div class="flex flex-col gap-2">
+<p class="text-xs font-bold text-slate-300 mb-2 uppercase tracking-widest">Platform</p>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Product</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Pricing</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Enterprise</a>
+</div>
+<div class="flex flex-col gap-2">
+<p class="text-xs font-bold text-slate-300 mb-2 uppercase tracking-widest">Resources</p>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Blog</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Documentation</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">API Status</a>
+</div>
+<div class="flex flex-col gap-2">
+<p class="text-xs font-bold text-slate-300 mb-2 uppercase tracking-widest">Social</p>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Twitter</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">LinkedIn</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">YouTube</a>
+</div>
+</div>
+<div class="px-6 py-6 max-w-7xl mx-auto border-t border-[#434654]/10 flex justify-between items-center">
+<p class="font-sans text-xs text-slate-500">© 2024 VidMetrics Intelligence. All rights reserved.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-600 text-sm">security</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">privacy_tip</span>
+</div>
+</div>
+</footer>
+</body></html>

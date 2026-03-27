@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VidMetrics | Report Export</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;family=Geist+Mono:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#690005",
+              "secondary-fixed": "#63fccc",
+              "secondary-container": "#00c599",
+              "tertiary-fixed-dim": "#bfc6da",
+              "surface": "#111319",
+              "background": "#111319",
+              "surface-container-lowest": "#0c0e13",
+              "on-tertiary": "#293040",
+              "inverse-on-surface": "#2e3036",
+              "on-secondary": "#003829",
+              "surface-tint": "#b4c5ff",
+              "on-surface-variant": "#c3c6d7",
+              "error": "#ffb4ab",
+              "surface-container-highest": "#33353a",
+              "primary-container": "#628aff",
+              "on-surface": "#e2e2e9",
+              "surface-variant": "#33353a",
+              "error-container": "#93000a",
+              "tertiary-container": "#8a91a3",
+              "on-secondary-fixed-variant": "#00513d",
+              "tertiary-fixed": "#dbe2f7",
+              "surface-bright": "#37393f",
+              "on-secondary-container": "#004b39",
+              "on-secondary-fixed": "#002117",
+              "on-primary-container": "#00236b",
+              "on-tertiary-fixed-variant": "#404757",
+              "primary-fixed": "#dbe1ff",
+              "tertiary": "#bfc6da",
+              "surface-container-low": "#191b21",
+              "surface-container-high": "#282a30",
+              "on-primary-fixed-variant": "#003daa",
+              "inverse-primary": "#1754d4",
+              "secondary": "#42e1b3",
+              "primary": "#b4c5ff",
+              "on-error-container": "#ffdad6",
+              "on-background": "#e2e2e9",
+              "primary-fixed-dim": "#b4c5ff",
+              "outline-variant": "#434654",
+              "inverse-surface": "#e2e2e9",
+              "secondary-fixed-dim": "#3edeb1",
+              "outline": "#8d90a0",
+              "surface-container": "#1e1f25",
+              "on-primary-fixed": "#00174c",
+              "surface-dim": "#111319",
+              "on-tertiary-container": "#232a39",
+              "on-primary": "#002979",
+              "on-tertiary-fixed": "#141b2a"
+            },
+            fontFamily: {
+              "headline": ["Instrument Serif", "serif"],
+              "body": ["Inter", "sans-serif"],
+              "mono": ["Geist Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; }
+        .report-shadow { box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .tight-tracking { letter-spacing: -0.01em; }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-8 h-16 sticky top-0 z-50 ml-64 bg-[#0C0E13]/80 backdrop-blur-md border-b border-[#434654]/15 shadow-[0_8px_40px_rgba(0,61,170,0.05)]">
+<div class="flex items-center gap-8">
+<span class="text-lg font-black tracking-widest text-white uppercase">EXPORT PREVIEW</span>
+<nav class="flex gap-6">
+<a class="text-[#8D90A0] hover:text-white transition-opacity" href="#">Drafts</a>
+<a class="text-[#8D90A0] hover:text-white transition-opacity" href="#">Archive</a>
+<a class="text-[#8D90A0] hover:text-white transition-opacity" href="#">Shared</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-1.5 text-sm font-medium text-[#8D90A0] hover:text-white transition-opacity">Print</button>
+<button class="px-5 py-1.5 text-sm font-bold bg-gradient-to-br from-primary to-primary-container text-on-primary-container rounded-lg">Download</button>
+<span class="material-symbols-outlined text-outline cursor-pointer">more_vert</span>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed inset-y-0 left-0 flex flex-col py-8 h-screen w-64 bg-[#111319] dark:bg-[#111319] z-50">
+<div class="px-6 mb-10">
+<h1 class="text-xl font-bold tracking-tighter text-[#B4C5FF] italic font-headline">VidMetrics Intelligence</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-outline mt-1">Premium Export Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="text-[#B4C5FF] font-semibold border-l-2 border-[#4F7EFF] pl-4 py-3 flex items-center gap-3 bg-[#191B21]">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="text-sm">Full Report</span>
+</div>
+<div class="text-[#8D90A0] pl-4 py-3 flex items-center gap-3 hover:bg-[#1E1F25] transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">article</span>
+<span class="text-sm">Executive Summary</span>
+</div>
+<div class="text-[#8D90A0] pl-4 py-3 flex items-center gap-3 hover:bg-[#1E1F25] transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">table_chart</span>
+<span class="text-sm">Data Appendices</span>
+</div>
+<div class="text-[#8D90A0] pl-4 py-3 flex items-center gap-3 hover:bg-[#1E1F25] transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">image</span>
+<span class="text-sm">Visual Assets</span>
+</div>
+<div class="text-[#8D90A0] pl-4 py-3 flex items-center gap-3 hover:bg-[#1E1F25] transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm">Export Settings</span>
+</div>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full py-3 bg-surface-container-highest text-primary font-bold rounded-lg text-sm tracking-wide transition-transform active:scale-95">
+                Generate PDF
+            </button>
+<div class="mt-6 flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-xs font-bold text-white">JD</div>
+<div>
+<p class="text-xs font-semibold text-on-surface">Analyst Mode</p>
+<p class="text-[10px] text-outline">Pro Tier Active</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="ml-64 flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- LEFT SIDE: Live Report Preview -->
+<section class="w-[65%] bg-surface-container-lowest p-12 overflow-y-auto flex flex-col items-center gap-8 custom-scrollbar">
+<!-- Page 1 -->
+<div class="w-full max-w-[800px] bg-white text-black p-12 shadow-2xl relative min-h-[1100px] flex flex-col font-body">
+<!-- Report Header -->
+<header class="flex justify-between items-start border-b-[3px] border-black pb-8 mb-8">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<div class="w-8 h-8 bg-black flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<span class="font-bold tracking-tighter text-xl">VidMetrics</span>
+</div>
+<h2 class="font-headline italic text-4xl leading-none">Competitive Intelligence Report</h2>
+</div>
+<div class="text-right">
+<p class="text-xs uppercase tracking-widest font-bold text-gray-500 mb-1">Channel Focus</p>
+<p class="text-2xl font-black italic font-headline">Veritasium</p>
+<p class="text-sm font-mono mt-4">October 14, 2026</p>
+</div>
+</header>
+<!-- 1. Channel Overview -->
+<section class="mb-10">
+<h3 class="text-xs uppercase tracking-widest font-black mb-4 border-l-4 border-black pl-3">01. Channel Overview</h3>
+<div class="grid grid-cols-4 gap-4">
+<div class="bg-gray-100 p-4 border border-gray-200">
+<p class="text-[10px] uppercase font-bold text-gray-500">Subscribers</p>
+<p class="text-xl font-mono font-bold">14.8M</p>
+</div>
+<div class="bg-gray-100 p-4 border border-gray-200">
+<p class="text-[10px] uppercase font-bold text-gray-500">Avg. VPV</p>
+<p class="text-xl font-mono font-bold">4.2M</p>
+</div>
+<div class="bg-gray-100 p-4 border border-gray-200">
+<p class="text-[10px] uppercase font-bold text-gray-500">Growth (30d)</p>
+<p class="text-xl font-mono font-bold text-green-600">+12%</p>
+</div>
+<div class="bg-gray-100 p-4 border border-gray-200">
+<p class="text-[10px] uppercase font-bold text-gray-500">Sentiment</p>
+<p class="text-xl font-mono font-bold text-blue-600">98.4%</p>
+</div>
+</div>
+</section>
+<!-- 2. Intelligence Brief -->
+<section class="mb-10">
+<h3 class="text-xs uppercase tracking-widest font-black mb-4 border-l-4 border-black pl-3">02. Intelligence Brief</h3>
+<div class="space-y-3">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-600 text-lg">trending_up</span>
+<p class="text-sm leading-relaxed">High correlation between "Scientific Mystery" thumbnails and 1st-hour velocity.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-lg">psychology</span>
+<p class="text-sm leading-relaxed">Audience exhibits extreme retention during mid-roll experiments (avg 84%).</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-amber-600 text-lg">warning</span>
+<p class="text-sm leading-relaxed">Community tab engagement has dipped by 4% since the last long-form upload.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-600 text-lg">check_circle</span>
+<p class="text-sm leading-relaxed">Collaborations with educators yield 3x the typical share rate among demographics 24-35.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-lg">lightbulb</span>
+<p class="text-sm leading-relaxed">Optimal video length identified as 18:45 for maximum ad inventory fill.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-600 text-lg">new_releases</span>
+<p class="text-sm leading-relaxed">Topic cluster "Physics of Toys" is trending upwards in global search volume.</p>
+</div>
+</div>
+</section>
+<!-- 3. Top 5 Outlier Videos -->
+<section class="mb-10">
+<h3 class="text-xs uppercase tracking-widest font-black mb-4 border-l-4 border-black pl-3">03. Top 5 Outlier Videos</h3>
+<div class="space-y-2">
+<div class="flex items-center gap-4 p-2 bg-gray-50 border-b border-gray-100">
+<div class="w-16 h-10 bg-gray-300 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Microscopic view of colorful liquid patterns under laboratory microscope lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvqcgNN3nWTKWQwLGKJreijywYcB9lg4Sw75Glw0k8C1rzuUNAyAOubQeVEXiVlG8Qsdi7DLjOoc9phmBa24_gOsecoCF8LHkUp8XEQjqkp0kC44BWtINp_Mm_vuYKYHKJ9T9UDkp_pR4Mo9XMXlbn4sZX1__du0_gT6i6fyAe5PpI4CdAPkc9lHPiZ94qG9NXzvEYCMaodhNC77UTJN0fFB77IWVADttxbh5TmlxKPLKdFCa8QxLT__dCjCMsH8PjkNMS3kBfTDs"/>
+</div>
+<div class="flex-1">
+<p class="text-[11px] font-bold truncate">The Speed of Light is NOT Constant</p>
+<p class="text-[9px] text-gray-400 font-mono">12.4M Views • 248.1k Likes</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-black text-green-600">OUTLIER +4.2x</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-2 bg-white border-b border-gray-100">
+<div class="w-16 h-10 bg-gray-300 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Test tubes in a lab filled with glowing chemical substances against dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFuo1z4nnpfzsSvBGzdLROFwN8SvSXd9cVruoL7zRU9YfA_nW1vlpYYUUwHBSLd-THdgU6qpDR6cBVmtCcypcko8YULFIYRx0JcDwjtxiq3wWKM7MPZwU29HhPA-pv_v2Klj-Tag6DXsueohbMwgldqglBrPn-45uB1W5xP72qL3trOXbUobE3iCpGove4yzHy9o0kkt0izRryeade5MvE4jssArD4CilzwbXpK2fBPut9pWwuSFih5ttHo9n3Tj38M40nQw_QVvM"/>
+</div>
+<div class="flex-1">
+<p class="text-[11px] font-bold truncate">Why This Invention Was Banned</p>
+<p class="text-[9px] text-gray-400 font-mono">8.9M Views • 150.2k Likes</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-black text-green-600">OUTLIER +2.8x</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-2 bg-gray-50">
+<div class="w-16 h-10 bg-gray-300 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Black and white macro photo of geometric shapes and mathematical instruments on a desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm5D4yuNdRZcHf_WgZSTL9YyLwN0zDCIxOOWmnu--my78LTIZI2OmeAztLGc0wo3gP49XdzLcihs7qHF_bKznih_Whp6sA2cmDNhKunwv7Rx7FschZAUEkZROagDnA2gEEnfE7r1MUxJsmTFrLlt-MShMlEpBVI6Gi00fZayNUgB0MtgO98g_wPiOO2xjUAq7r5mc64P4siT27dTT_6fb5x0IqoijmUyRb9eX0UbYOuSalicY1QfnymfgT7rEY8sOELGUdcl-4URw"/>
+</div>
+<div class="flex-1">
+<p class="text-[11px] font-bold truncate">The Universe is Dying</p>
+<p class="text-[9px] text-gray-400 font-mono">7.2M Views • 110.5k Likes</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-black text-green-600">OUTLIER +1.5x</p>
+</div>
+</div>
+</div>
+</section>
+<div class="mt-auto pt-8 border-t border-gray-200 flex justify-between items-end">
+<p class="text-[9px] text-gray-400 uppercase tracking-widest">Confidential • VidMetrics Analytics Suite 2026</p>
+<p class="text-[9px] text-gray-400 font-mono">Page 01 of 12</p>
+</div>
+</div>
+<!-- Page 2 Peeking -->
+<div class="w-full max-w-[800px] bg-white h-48 shadow-lg opacity-50 relative -mt-4 transform translate-y-4"></div>
+</section>
+<!-- RIGHT SIDE: Export Options Panel -->
+<section class="w-[35%] bg-surface-container-low border-l border-outline-variant/20 p-8 overflow-y-auto custom-scrollbar">
+<div class="mb-10">
+<h4 class="text-[10px] uppercase tracking-[0.2em] font-black text-outline mb-6">Export as</h4>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-between p-4 bg-primary text-on-primary-container rounded-lg group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+<span class="font-bold text-sm">PDF Report (Recommended)</span>
+</div>
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 border border-outline-variant/20 rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">table_view</span>
+<span class="text-sm font-semibold">CSV Raw Data</span>
+</div>
+</button>
+<button class="w-full flex items-center justify-between p-4 border border-outline-variant/20 rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">data_object</span>
+<span class="text-sm font-semibold">JSON Data</span>
+</div>
+</button>
+</div>
+</div>
+<div class="mb-10">
+<h4 class="text-[10px] uppercase tracking-[0.2em] font-black text-outline mb-6">Customize report</h4>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Intelligence Brief</span>
+<div class="w-10 h-5 bg-primary rounded-full relative flex items-center justify-end px-1 cursor-pointer">
+<div class="w-3.5 h-3.5 bg-on-primary-container rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Video Grid</span>
+<div class="w-10 h-5 bg-primary rounded-full relative flex items-center justify-end px-1 cursor-pointer">
+<div class="w-3.5 h-3.5 bg-on-primary-container rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Format Graveyard</span>
+<div class="w-10 h-5 bg-primary rounded-full relative flex items-center justify-end px-1 cursor-pointer">
+<div class="w-3.5 h-3.5 bg-on-primary-container rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Cadence Heatmap</span>
+<div class="w-10 h-5 bg-primary rounded-full relative flex items-center justify-end px-1 cursor-pointer">
+<div class="w-3.5 h-3.5 bg-on-primary-container rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-outline">Raw Data Tables</span>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full relative flex items-center justify-start px-1 cursor-pointer">
+<div class="w-3.5 h-3.5 bg-outline rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between opacity-50">
+<div class="flex items-center gap-2">
+<span class="text-sm font-medium">Competitor Comparison</span>
+<span class="px-1.5 py-0.5 bg-amber-900/40 text-amber-500 text-[8px] font-black uppercase rounded">PRO</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg">lock</span>
+</div>
+</div>
+</div>
+<div class="mb-10">
+<h4 class="text-[10px] uppercase tracking-[0.2em] font-black text-outline mb-6">Branding</h4>
+<div class="space-y-6">
+<button class="w-full flex items-center justify-center gap-2 py-3 border border-dashed border-outline-variant/40 rounded-lg text-sm text-outline hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">add_photo_alternate</span>
+                        Add your agency logo
+                    </button>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-sm font-medium">White-label report</span>
+<span class="px-1.5 py-0.5 bg-amber-900/40 text-amber-500 text-[8px] font-black uppercase rounded">PRO</span>
+</div>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full relative flex items-center justify-start px-1 cursor-pointer">
+<div class="w-3.5 h-3.5 bg-outline rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/20 space-y-4">
+<button class="w-full py-4 bg-surface-container hover:bg-surface-container-highest flex items-center justify-center gap-3 rounded-lg text-sm font-bold transition-all">
+<span class="material-symbols-outlined">link</span>
+                    Share link
+                </button>
+<div>
+<p class="text-[10px] uppercase font-bold text-outline mb-3">Schedule weekly report</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface-container-lowest border-outline-variant/20 rounded-lg text-sm px-4 focus:ring-1 focus:ring-primary focus:border-primary" placeholder="analyst@agency.com" type="email"/>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container rounded-lg font-bold text-xs">Set</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

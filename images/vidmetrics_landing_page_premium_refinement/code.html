@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VidMetrics | Enterprise Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#c2c6d4",
+                        "primary-fixed": "#dbe1ff",
+                        "surface": "#111319",
+                        "on-tertiary-fixed-variant": "#424752",
+                        "tertiary": "#c2c6d4",
+                        "inverse-surface": "#e2e2e9",
+                        "surface-container-highest": "#33353a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#252a34",
+                        "background": "#080A0F",
+                        "on-background": "#e2e2e9",
+                        "on-secondary": "#2a3040",
+                        "on-tertiary": "#2b303b",
+                        "on-secondary-container": "#afb5c8",
+                        "surface-container": "#1e1f25",
+                        "outline": "#8d90a0",
+                        "outline-variant": "#434654",
+                        "surface-tint": "#b4c5ff",
+                        "on-tertiary-fixed": "#171c26",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#dee2f0",
+                        "surface-variant": "#33353a",
+                        "secondary-fixed": "#dde2f7",
+                        "on-primary-fixed-variant": "#003daa",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c0c6da",
+                        "tertiary-container": "#8c919e",
+                        "inverse-on-surface": "#2e3036",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-primary-fixed": "#00174c",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#414657",
+                        "secondary": "#c0c6da",
+                        "primary": "#b4c5ff",
+                        "on-secondary-fixed-variant": "#414657",
+                        "on-primary": "#002979",
+                        "surface-container-low": "#191b21",
+                        "surface-container-high": "#282a30",
+                        "on-primary-container": "#00236b",
+                        "surface-container-lowest": "#0c0e13",
+                        "surface-bright": "#37393f",
+                        "inverse-primary": "#1754d4",
+                        "primary-container": "#628aff",
+                        "on-surface": "#e2e2e9",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#151b2a",
+                        "surface-dim": "#111319",
+                        "accent": "#4F7EFF"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Geist Mono", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #080A0F;
+            color: #e2e2e9;
+            font-family: 'Inter', sans-serif;
+            background-image: radial-gradient(#1E2433 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .glass-border {
+            border: 1px solid rgba(67, 70, 84, 0.15);
+        }
+        .newsreader-italic {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+        }
+        .geist-mono {
+            font-family: 'Geist Mono', monospace;
+        }
+        .hero-split {
+            display: grid;
+            grid-template-columns: 55fr 45fr;
+            min-height: 100vh;
+        }
+        .mockup-tilt {
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<!-- Top Navigation -->
+<nav class="sticky top-0 w-full z-50 bg-[#080A0F]/85 backdrop-blur-md flex justify-between items-center h-16 px-8 border-b border-[#1E2433]">
+<div class="text-xl font-serif italic text-white">VidMetrics</div>
+<div class="hidden md:flex gap-8">
+<a class="text-slate-400 font-normal hover:text-[#4F7EFF] transition-colors text-sm" href="#">Product</a>
+<a class="text-slate-400 font-normal hover:text-[#4F7EFF] transition-colors text-sm" href="#">Pricing</a>
+<a class="text-slate-400 font-normal hover:text-[#4F7EFF] transition-colors text-sm" href="#">Enterprise</a>
+<a class="text-slate-400 font-normal hover:text-[#4F7EFF] transition-colors text-sm" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 text-sm font-medium hover:text-white transition-opacity">Sign in</button>
+<button class="bg-[#b4c5ff] text-[#002979] px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm hover:opacity-90 transition-opacity">
+                Start free trial
+            </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="hero-split relative items-center px-8 lg:px-16 overflow-hidden">
+<div class="flex flex-col justify-center space-y-8 z-10">
+<div class="space-y-2">
+<span class="geist-mono text-[#4F7EFF] text-xs tracking-[0.2em] uppercase">Intelligence Briefing v4.0</span>
+<h1 class="text-7xl lg:text-[96px] leading-[0.95] tracking-[-0.02em] font-headline">
+                        Know why your <br/>
+<span class="newsreader-italic text-[#4F7EFF] drop-shadow-[0_0_15px_rgba(79,126,255,0.3)]">competitor wins.</span>
+</h1>
+</div>
+<p class="max-w-md text-slate-400 text-lg leading-relaxed font-body">
+                    We decode the "win formula" of top-performing media teams. Quantitative insights that bridge the gap between creative intuition and raw data performance.
+                </p>
+<div class="flex items-center gap-6 pt-4">
+<button class="group flex items-center gap-3 bg-[#b4c5ff] text-[#002979] px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        Access Intelligence
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<div class="flex flex-col">
+<span class="geist-mono text-white text-sm">4.9/5</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-tighter">Fortune 500 Trust</span>
+</div>
+</div>
+</div>
+<div class="relative flex items-center justify-center">
+<div class="absolute inset-0 bg-radial-gradient from-[#4F7EFF10] to-transparent rounded-full blur-3xl"></div>
+<div class="mockup-tilt glass-border bg-[#0F1117] w-full aspect-video rounded-sm overflow-hidden border border-[#2A3347] relative z-20">
+<img alt="Product Preview" class="w-full h-full object-cover opacity-80" data-alt="high-end data analytics dashboard showing complex charts and metrics on dark glass interface with neon blue accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWwhE7sFruEoL_NpzO00K8Rnpbvf6IYMBz1bFiFy6Rrlt6WEQ5nI1AXEdff7aD6zKWzJj2mLETy6QzxSqn3dnqbw2ZxEvAVIhXwE05lfiPHie9xNC9uijoqe90W5B7-4IqwzhqMwcgA7kzfgZxDLUq-zThaEmObU8BvQksoFE-uz3H0KzrFGmncpmreEeHBIEXE_waJwq6eG2nV_pH63J1QnqH2Elligc8q631nkCHal363yFWLOs1QD9uPskYWwkibbMolMAq9YM"/>
+</div>
+</div>
+</section>
+<!-- Bento Grid Features -->
+<section class="px-8 lg:px-16 py-32 space-y-16">
+<div class="flex justify-between items-end border-b border-[#1E2433] pb-8">
+<div class="space-y-4">
+<h2 class="text-4xl font-headline italic">Strategic Capabilities</h2>
+<p class="text-slate-500 max-w-sm">Move beyond vanity metrics into the mechanics of audience capture.</p>
+</div>
+<div class="geist-mono text-xs text-slate-600">REF: VM_STRAT_001</div>
+</div>
+<div class="grid grid-cols-12 gap-6 auto-rows-[240px]">
+<!-- Outlier Score -->
+<div class="col-span-12 lg:col-span-4 bg-[#0F1117] border border-[#1E2433] p-8 flex flex-col justify-between hover:bg-[#161B25] transition-colors">
+<div class="space-y-1">
+<span class="geist-mono text-[#4F7EFF] text-[10px] uppercase tracking-widest">Analytics</span>
+<h3 class="text-xl font-headline">Outlier Score</h3>
+</div>
+<div class="flex items-end gap-1 h-24">
+<div class="w-full bg-[#1E2433] h-[40%]"></div>
+<div class="w-full bg-[#1E2433] h-[60%]"></div>
+<div class="w-full bg-[#4F7EFF] h-[95%]"></div>
+<div class="w-full bg-[#1E2433] h-[30%]"></div>
+<div class="w-full bg-[#1E2433] h-[55%]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="geist-mono text-2xl">98.4%</span>
+<span class="text-xs text-slate-500">Confidence Interval</span>
+</div>
+</div>
+<!-- Curiosity Gap -->
+<div class="col-span-12 lg:col-span-8 bg-[#0F1117] border border-[#1E2433] p-8 flex flex-col justify-between relative overflow-hidden group">
+<div class="grid grid-cols-2 h-full">
+<div class="flex flex-col justify-between">
+<div class="space-y-1">
+<span class="geist-mono text-[#4F7EFF] text-[10px] uppercase tracking-widest">Cognitive Engineering</span>
+<h3 class="text-3xl font-headline italic">Curiosity Gap Analysis</h3>
+<p class="text-slate-500 pt-4 text-sm max-w-xs">We analyze the semantic tension in your hooks vs. the industry leaders.</p>
+</div>
+<div class="geist-mono text-sm text-white flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#4F7EFF]"></span>
+                                Active Intelligence Stream
+                            </div>
+</div>
+<div class="flex items-center justify-center">
+<div class="relative w-40 h-40">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-[#1E2433]" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-[#4F7EFF]" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="110" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center space-y-0">
+<span class="geist-mono text-3xl font-medium">0.72</span>
+<span class="text-[10px] uppercase text-slate-500">Gap Index</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Momentum View -->
+<div class="col-span-12 lg:col-span-7 bg-[#0F1117] border border-[#1E2433] p-8 flex flex-col justify-between">
+<div class="flex justify-between">
+<div class="space-y-1">
+<span class="geist-mono text-teal-400 text-[10px] uppercase tracking-widest">Performance</span>
+<h3 class="text-xl font-headline">Momentum View</h3>
+</div>
+<div class="geist-mono text-teal-400 text-sm flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            +12.4%
+                        </div>
+</div>
+<div class="w-full h-32 flex items-center">
+<img alt="Momentum Graph" class="w-full h-full object-cover grayscale opacity-30 mix-blend-screen" data-alt="abstract green data sparkline visualization with smooth curves and professional minimal aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAexEuvmIKO0BF7tuIzHNdZr5AZEkogPaY3xDW5bjtGK_7QPmDWusjQsyhM9OctXt6Ac969B_vqtTt_TkUDW6_Mxj3s4XoBQV0FOAd9Rt7IYJf3DiHzKiIUkcD8K6MEdkOIWc6fFyp80GWfUsXXQ_rFxCN18bXmMhlN055YHXMk_lvXuHpcbUjJ52sdQiIfTFFuEVKA--szPiV6BuvQHPUs_hqS4_hnSmXdvz6-LtgGZCaNuxHChj2bl2cIMAGaYPNvb31AsUsLggA"/>
+</div>
+</div>
+<!-- Win Formula -->
+<div class="col-span-12 lg:col-span-5 bg-[#0F1117] border border-[#1E2433] p-8 space-y-6">
+<div class="space-y-1">
+<span class="geist-mono text-amber-400 text-[10px] uppercase tracking-widest">Taxonomy</span>
+<h3 class="text-xl font-headline">Win Formula</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-[#1E2433] text-slate-300 text-[10px] geist-mono uppercase tracking-wider">High Retention Hook</span>
+<span class="px-3 py-1 bg-[#1E2433] text-slate-300 text-[10px] geist-mono uppercase tracking-wider">Semantic Contrast</span>
+<span class="px-3 py-1 bg-[#1E2433] text-slate-300 text-[10px] geist-mono uppercase tracking-wider">Visual Pacing</span>
+<span class="px-3 py-1 bg-[#161B25] text-[#4F7EFF] border border-[#4F7EFF]/20 text-[10px] geist-mono uppercase tracking-wider">Outlier Signal</span>
+<span class="px-3 py-1 bg-[#1E2433] text-slate-300 text-[10px] geist-mono uppercase tracking-wider">Audience Flow</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="px-8 lg:px-16 py-32 bg-[#0C0E13] relative border-y border-[#1E2433]">
+<div class="max-w-7xl mx-auto space-y-24">
+<div class="text-center space-y-6">
+<h2 class="text-6xl font-headline italic">Select your tier</h2>
+<p class="text-slate-400 max-w-xl mx-auto">Enterprise-grade intelligence for teams that treat content as an asset, not an expense.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Basic -->
+<div class="bg-[#0F1117] p-10 flex flex-col justify-between border border-[#1E2433] min-h-[500px]">
+<div class="space-y-8">
+<div class="space-y-2">
+<h4 class="text-lg font-body font-medium">Standard</h4>
+<div class="flex items-baseline gap-2">
+<span class="geist-mono text-4xl text-white">$149</span>
+<span class="text-slate-500 text-sm">/mo</span>
+</div>
+</div>
+<ul class="space-y-4 text-sm text-slate-400">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> Competitor Tracking (3)</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> Basic Win Formulas</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> Weekly Reports</li>
+</ul>
+</div>
+<button class="w-full py-4 text-xs font-bold uppercase tracking-widest border border-slate-700 hover:border-white transition-colors">Start Small</button>
+</div>
+<!-- Pro (Featured) -->
+<div class="bg-[#161B25] p-10 flex flex-col justify-between border-2 border-[#4F7EFF] relative min-h-[550px] scale-105 shadow-2xl shadow-black/50">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#4F7EFF] text-[#002979] px-4 py-1 text-[10px] geist-mono font-bold uppercase tracking-tighter">Recommended</div>
+<div class="space-y-8">
+<div class="space-y-2">
+<h4 class="text-lg font-body font-medium">Professional Intelligence</h4>
+<div class="flex items-baseline gap-2">
+<span class="geist-mono text-4xl text-white">$499</span>
+<span class="text-slate-500 text-sm">/mo</span>
+</div>
+</div>
+<ul class="space-y-4 text-sm text-slate-300">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> Unlimited Tracking</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> Real-time Curiosity Gap</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> Momentum View Access</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> Custom Win Strategies</li>
+</ul>
+</div>
+<button class="w-full py-4 text-xs font-bold uppercase tracking-widest bg-[#4F7EFF] text-white hover:bg-opacity-90 transition-opacity">Go Professional</button>
+</div>
+<!-- Enterprise -->
+<div class="bg-[#0F1117] p-10 flex flex-col justify-between border border-[#1E2433] min-h-[500px]">
+<div class="space-y-8">
+<div class="space-y-2">
+<h4 class="text-lg font-body font-medium">Enterprise</h4>
+<div class="flex items-baseline gap-2">
+<span class="geist-mono text-4xl text-white">Custom</span>
+</div>
+</div>
+<ul class="space-y-4 text-sm text-slate-400">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> API Access</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> Dedicate Strategist</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-[#4F7EFF]">check</span> Team-wide Workspace</li>
+</ul>
+</div>
+<button class="w-full py-4 text-xs font-bold uppercase tracking-widest border border-slate-700 hover:border-white transition-colors">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#080A0F] border-t border-[#1E2433] w-full py-24">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2 space-y-8">
+<div class="text-3xl font-serif italic text-white">VidMetrics</div>
+<p class="text-slate-500 max-w-sm newsreader-italic text-xl">
+                    Made for media teams who compete at the highest level of the attention economy.
+                </p>
+<div class="geist-mono text-[10px] text-slate-600 uppercase tracking-widest">
+                    © 2024 VidMetrics Intel Group. All rights reserved.
+                </div>
+</div>
+<div class="space-y-6">
+<h5 class="geist-mono text-xs uppercase text-slate-300">Platform</h5>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-white transition-colors" href="#">Intelligence Engine</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Benchmarks</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Security</a></li>
+<li><a class="hover:text-white transition-colors" href="#">API Documentation</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h5 class="geist-mono text-xs uppercase text-slate-300">Legal</h5>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Cookie Settings</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

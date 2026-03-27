@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VidMetrics | Competitor Intelligence for Modern Creators</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Instrument+Serif:ital@1&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .font-serif { font-family: 'Instrument Serif', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'Geist Mono', monospace; }
+        body { background-color: #080A0F; color: #e2e2e9; }
+        .glass-header { backdrop-filter: blur(20px); }
+        .primary-gradient { background: linear-gradient(45deg, #b4c5ff 0%, #628aff 100%); }
+        .micro-glow { box-shadow: 0 0 60px 10px rgba(79, 126, 255, 0.15); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-dim": "#111319",
+                "surface-container-low": "#191b21",
+                "surface-variant": "#33353a",
+                "surface-container-high": "#282a30",
+                "secondary-container": "#00c599",
+                "on-primary-fixed-variant": "#003daa",
+                "surface": "#111319",
+                "on-surface": "#e2e2e9",
+                "surface-container": "#1e1f25",
+                "secondary": "#42e1b3",
+                "outline-variant": "#434654",
+                "primary": "#b4c5ff",
+                "primary-container": "#628aff",
+                "background": "#080A0F",
+                "surface-container-lowest": "#0c0e13",
+                "on-surface-variant": "#c3c6d7",
+                "outline": "#8d90a0",
+                "surface-container-highest": "#33353a",
+              },
+              fontFamily: {
+                "headline": ["Instrument Serif"],
+                "body": ["Inter"],
+                "label": ["Inter"],
+                "mono": ["Geist Mono"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-sans antialiased selection:bg-primary selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0C0E13]/85 backdrop-blur-[20px] shadow-[0_8px_40px_rgba(0,61,170,0.05)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-slate-100">VidMetrics</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#B4C5FF] border-b-2 border-[#B4C5FF] pb-1 text-sm font-medium" href="#">Product</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors text-sm font-medium" href="#">Pricing</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors text-sm font-medium" href="#">Enterprise</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors text-sm font-medium" href="#">Blog</a>
+</div>
+<div class="flex gap-4 items-center">
+<button class="text-slate-400 hover:text-slate-100 text-sm font-medium px-4 py-2 transition-all">Sign in</button>
+<button class="primary-gradient text-[#002979] font-semibold text-sm px-5 py-2 rounded-lg active:scale-95 duration-150 transition-all">Start free trial</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden px-6 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 w-full items-center">
+<div class="z-10">
+<h1 class="font-serif italic text-6xl md:text-8xl leading-[1.05] tracking-tight mb-6">
+                        Know why your <span class="text-primary">competitor wins.</span>
+</h1>
+<p class="text-on-surface-variant text-xl md:text-2xl max-w-lg mb-10 leading-relaxed font-light">
+                        Paste any YouTube channel URL and receive an instant intelligence brief.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+<div class="relative w-full sm:w-80 group">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-outline transition-all placeholder:text-outline-variant/60" placeholder="youtube.com/@competitor" type="text"/>
+</div>
+<button class="primary-gradient text-on-primary-container font-bold px-8 py-4 rounded-lg flex items-center gap-2 group hover:shadow-[0_0_20px_rgba(180,197,255,0.3)] transition-all">
+                            Analyze a channel
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="relative flex justify-center items-center">
+<div class="absolute inset-0 bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="relative z-10 p-4 bg-surface-container rounded-xl border border-outline-variant/10 micro-glow">
+<img alt="Product Mockup" class="rounded-lg shadow-2xl grayscale-[0.2] hover:grayscale-0 transition-all duration-700" data-alt="Sleek 3D digital interface showing advanced video analytics charts with a dark minimalist aesthetic and neon blue accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQo3l0Hpo01g-dfB4ybgGYtG8FYvLzNj8UqVjOpLeWBsOonegKPXZ-miMwTXNRAgVNOibdg8zbXiH2H34L6ZTcTBKGDhtM0cR2L_2_Kh-my_RtPNl8my46lkiIgSC4MmGGFutR-v5EhJ3ToHPN_gwZvMGzBzvcohvUEkwRcCywCvfrWz6f9YGU3SL8V0818cvKUaT1p3ugq91k2wXjQq7wWcIfueR4BPWHNQ3AQ4j0VCxpYk6OoI3_RZ5eu-6KNzlf1A3zDHLdPOM"/>
+<div class="absolute -top-4 -right-4 bg-primary text-on-primary-fixed-variant px-4 py-2 rounded-lg font-mono text-xs font-bold shadow-lg">
+                            LIVE FEED
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Feature Section -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="mb-16">
+<span class="text-primary font-mono text-sm tracking-widest uppercase mb-4 block">Intelligence Core</span>
+<h2 class="text-4xl md:text-5xl font-light tracking-tight">Technical <span class="italic font-serif">precision</span> for content strategy.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto lg:h-[700px]">
+<!-- Outlier Score -->
+<div class="md:col-span-2 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between border-l-2 border-primary">
+<div>
+<p class="font-mono text-xs text-outline mb-2">METRIC_01</p>
+<h3 class="text-2xl font-medium mb-4">Outlier Score</h3>
+<p class="text-on-surface-variant max-w-sm">Identify videos that performed 5x better than the channel average.</p>
+</div>
+<div class="mt-8 flex items-end gap-2 h-40">
+<div class="w-full bg-surface-container-highest rounded-t h-[30%]"></div>
+<div class="w-full bg-surface-container-highest rounded-t h-[45%]"></div>
+<div class="w-full bg-surface-container-highest rounded-t h-[35%]"></div>
+<div class="w-full bg-primary-container rounded-t h-[95%] relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 font-mono text-primary text-sm">9.8x</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t h-[40%]"></div>
+<div class="w-full bg-surface-container-highest rounded-t h-[25%]"></div>
+<div class="w-full bg-surface-container-highest rounded-t h-[50%]"></div>
+</div>
+</div>
+<!-- Curiosity Gap -->
+<div class="bg-surface-container rounded-xl p-8 flex flex-col items-center justify-center text-center border border-outline-variant/10">
+<div class="relative w-48 h-48 flex items-center justify-center mb-6">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-highest" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502" stroke-dashoffset="120" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-mono text-4xl text-white">76%</span>
+<span class="text-xs text-outline uppercase tracking-widest mt-1">Gap Index</span>
+</div>
+</div>
+<h3 class="text-xl font-medium mb-2">Curiosity Gap</h3>
+<p class="text-sm text-on-surface-variant">Measure how much the title leaves unanswered to drive high CTR.</p>
+</div>
+<!-- Momentum View -->
+<div class="bg-surface-container rounded-xl p-8 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h3 class="text-xl font-medium">Momentum</h3>
+<p class="text-sm text-outline">Velocity per hour</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="trending_up">trending_up</span>
+</div>
+<div class="h-24 w-full relative">
+<!-- Sparkline SVG -->
+<svg class="w-full h-full" viewbox="0 0 200 60">
+<path d="M0 50 Q 25 45, 50 30 T 100 20 T 150 40 T 200 10" fill="none" stroke="#42E1B3" stroke-width="2"></path>
+<path d="M0 50 Q 25 45, 50 30 T 100 20 T 150 40 T 200 10 V 60 H 0 Z" fill="url(#grad1)"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#42E1B3;stop-opacity:0.2"></stop>
+<stop offset="100%" style="stop-color:#42E1B3;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<div class="mt-4 font-mono text-2xl">+4.2k/hr</div>
+</div>
+<!-- Win Formula -->
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10">
+<h3 class="text-xl font-medium mb-6">Win Formula</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-highest text-on-surface px-3 py-1.5 rounded-full text-xs font-mono uppercase">Controversial Hooks</span>
+<span class="bg-primary/20 text-primary px-3 py-1.5 rounded-full text-xs font-mono uppercase">12:00 Timecode Shift</span>
+<span class="bg-surface-container-highest text-on-surface px-3 py-1.5 rounded-full text-xs font-mono uppercase">A/B Testing</span>
+<span class="bg-surface-container-highest text-on-surface px-3 py-1.5 rounded-full text-xs font-mono uppercase">Extreme Pacing</span>
+<span class="bg-surface-container-highest text-on-surface px-3 py-1.5 rounded-full text-xs font-mono uppercase">First 30s Retention</span>
+</div>
+</div>
+<!-- Upload Cadence Heatmap -->
+<div class="bg-surface-container rounded-xl p-8 border border-outline-variant/10">
+<h3 class="text-xl font-medium mb-4">Upload Cadence</h3>
+<div class="grid grid-cols-7 gap-1">
+<!-- Simulated Heatmap Grid -->
+<div class="aspect-square bg-surface-container-highest rounded-[2px]"></div>
+<div class="aspect-square bg-primary/20 rounded-[2px]"></div>
+<div class="aspect-square bg-primary/40 rounded-[2px]"></div>
+<div class="aspect-square bg-primary/20 rounded-[2px]"></div>
+<div class="aspect-square bg-surface-container-highest rounded-[2px]"></div>
+<div class="aspect-square bg-primary/60 rounded-[2px]"></div>
+<div class="aspect-square bg-primary rounded-[2px]"></div>
+<!-- More dots -->
+<div class="aspect-square bg-surface-container-highest rounded-[2px]"></div>
+<div class="aspect-square bg-surface-container-highest rounded-[2px]"></div>
+<div class="aspect-square bg-primary/20 rounded-[2px]"></div>
+<div class="aspect-square bg-surface-container-highest rounded-[2px]"></div>
+<div class="aspect-square bg-primary/80 rounded-[2px]"></div>
+<div class="aspect-square bg-primary/20 rounded-[2px]"></div>
+<div class="aspect-square bg-surface-container-highest rounded-[2px]"></div>
+</div>
+<div class="mt-4 flex justify-between text-[10px] text-outline font-mono">
+<span>SUN</span>
+<span>SAT</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Timeline Section -->
+<section class="py-32 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+<!-- Step 1 -->
+<div class="relative">
+<div class="font-mono text-primary text-5xl mb-8 opacity-40">01</div>
+<h4 class="text-2xl font-semibold mb-4">Paste a URL</h4>
+<p class="text-on-surface-variant leading-relaxed">Enter any channel or specific video link. Our engine begins the deep-scan instantly.</p>
+<div class="hidden md:block absolute top-12 left-full w-full h-px bg-gradient-to-r from-primary/30 to-transparent"></div>
+</div>
+<!-- Step 2 -->
+<div class="relative">
+<div class="font-mono text-primary text-5xl mb-8 opacity-40">02</div>
+<h4 class="text-2xl font-semibold mb-4">Instant analysis</h4>
+<p class="text-on-surface-variant leading-relaxed">We cross-reference thumbnails, transcripts, and metadata against 1B+ data points.</p>
+<div class="hidden md:block absolute top-12 left-full w-full h-px bg-gradient-to-r from-primary/30 to-transparent"></div>
+</div>
+<!-- Step 3 -->
+<div class="relative">
+<div class="font-mono text-primary text-5xl mb-8">03</div>
+<h4 class="text-2xl font-semibold mb-4">Brief. Act. Win.</h4>
+<p class="text-on-surface-variant leading-relaxed">Get a structured editorial brief ready to be implemented by your production team.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-32 px-6 max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-5xl font-light italic font-serif mb-4">Choose your intel level.</h2>
+<p class="text-on-surface-variant max-w-lg mx-auto">No long-term contracts. Scientific accuracy only.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Tier 1 -->
+<div class="bg-surface-container-low p-10 rounded-xl border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<span class="text-xs font-mono uppercase tracking-widest text-outline">Analyst</span>
+<div class="mt-6 mb-8 flex items-baseline gap-1">
+<span class="text-5xl font-mono">$49</span>
+<span class="text-outline text-sm">/mo</span>
+</div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                3 Channels Monthly
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                Basic Win Formula
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                Curiosity Gap Index
+                            </li>
+</ul>
+</div>
+<button class="w-full py-4 rounded-lg border border-outline-variant text-on-surface font-semibold hover:bg-white/5 transition-all">Get Started</button>
+</div>
+<!-- Tier 2 - Featured -->
+<div class="bg-surface-container p-10 rounded-xl border-2 border-primary relative flex flex-col justify-between shadow-[0_20px_50px_rgba(180,197,255,0.1)]">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary-fixed-variant px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Most Popular</div>
+<div>
+<span class="text-xs font-mono uppercase tracking-widest text-primary">Strategist</span>
+<div class="mt-6 mb-8 flex items-baseline gap-1">
+<span class="text-5xl font-mono">$129</span>
+<span class="text-outline text-sm">/mo</span>
+</div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                15 Channels Monthly
+                            </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                Advanced Outlier Detection
+                            </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                Heatmap Analysis
+                            </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                Transcription Scan (AI)
+                            </li>
+</ul>
+</div>
+<button class="w-full py-4 rounded-lg primary-gradient text-on-primary-container font-bold hover:shadow-lg transition-all">Go Pro</button>
+</div>
+<!-- Tier 3 -->
+<div class="bg-surface-container-low p-10 rounded-xl border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<span class="text-xs font-mono uppercase tracking-widest text-outline">Organization</span>
+<div class="mt-6 mb-8 flex items-baseline gap-1">
+<span class="text-5xl font-mono">$499</span>
+<span class="text-outline text-sm">/mo</span>
+</div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                Unlimited Channels
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                Team Collaboration
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+                                Custom API Access
+                            </li>
+</ul>
+</div>
+<button class="w-full py-4 rounded-lg border border-outline-variant text-on-surface font-semibold hover:bg-white/5 transition-all">Contact Sales</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#434654]/15 bg-[#080A0F]">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-6 py-12 max-w-7xl mx-auto">
+<div class="col-span-2 md:col-span-1">
+<div class="text-lg font-bold tracking-tighter text-slate-200 mb-6">VidMetrics</div>
+<p class="text-slate-500 text-sm max-w-[200px] leading-relaxed">
+                    Engineering intelligence for the world's most successful YouTube channels.
+                </p>
+</div>
+<div>
+<h5 class="text-slate-200 text-sm font-semibold mb-4">Product</h5>
+<ul class="space-y-2">
+<li><a class="text-slate-500 hover:text-[#B4C5FF] transition-colors text-sm" href="#">Pricing</a></li>
+<li><a class="text-slate-500 hover:text-[#B4C5FF] transition-colors text-sm" href="#">Enterprise</a></li>
+<li><a class="text-slate-500 hover:text-[#B4C5FF] transition-colors text-sm" href="#">Blog</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-slate-200 text-sm font-semibold mb-4">Legal</h5>
+<ul class="space-y-2">
+<li><a class="text-slate-500 hover:text-[#B4C5FF] transition-colors text-sm" href="#">Privacy</a></li>
+<li><a class="text-slate-500 hover:text-[#B4C5FF] transition-colors text-sm" href="#">Terms</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-slate-200 text-sm font-semibold mb-4">Social</h5>
+<ul class="space-y-2">
+<li><a class="text-slate-500 hover:text-[#B4C5FF] transition-colors text-sm" href="#">Twitter</a></li>
+<li><a class="text-slate-500 hover:text-[#B4C5FF] transition-colors text-sm" href="#">LinkedIn</a></li>
+<li><a class="text-slate-500 hover:text-[#B4C5FF] transition-colors text-sm" href="#">YouTube</a></li>
+</ul>
+</div>
+</div>
+<div class="px-6 py-8 border-t border-[#434654]/10 max-w-7xl mx-auto flex justify-between items-center">
+<span class="text-slate-500 text-xs">© 2024 VidMetrics Intelligence. All rights reserved.</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-600 text-lg" data-icon="language">language</span>
+<span class="text-slate-500 text-xs font-mono uppercase tracking-tighter">US_HQ_BOS</span>
+</div>
+</div>
+</footer>
+</body></html>

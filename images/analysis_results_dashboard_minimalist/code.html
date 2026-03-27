@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VidMetrics | Intelligence Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Instrument+Serif:ital@1&amp;family=Geist+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#111319",
+              "surface-container-low": "#191b21",
+              "on-tertiary-fixed": "#141b2a",
+              "surface-variant": "#33353a",
+              "surface-container-high": "#282a30",
+              "secondary-container": "#00c599",
+              "on-primary-fixed-variant": "#003daa",
+              "on-tertiary": "#293040",
+              "on-secondary-fixed": "#002117",
+              "error": "#ffb4ab",
+              "surface": "#111319",
+              "surface-bright": "#37393f",
+              "on-surface": "#e2e2e9",
+              "on-error-container": "#ffdad6",
+              "error-container": "#93000a",
+              "surface-container": "#1e1f25",
+              "secondary-fixed-dim": "#3edeb1",
+              "secondary-fixed": "#63fccc",
+              "secondary": "#42e1b3",
+              "tertiary-fixed-dim": "#bfc6da",
+              "outline-variant": "#434654",
+              "on-secondary": "#003829",
+              "on-primary": "#002979",
+              "surface-container-highest": "#33353a",
+              "primary": "#b4c5ff",
+              "on-primary-fixed": "#00174c",
+              "primary-fixed-dim": "#b4c5ff",
+              "inverse-primary": "#1754d4",
+              "inverse-on-surface": "#2e3036",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-fixed": "#dbe2f7",
+              "outline": "#8d90a0",
+              "primary-container": "#628aff",
+              "background": "#111319",
+              "on-tertiary-container": "#232a39",
+              "on-secondary-container": "#004b39",
+              "surface-container-lowest": "#0c0e13",
+              "on-surface-variant": "#c3c6d7",
+              "tertiary-container": "#8a91a3",
+              "on-primary-container": "#00236b",
+              "on-tertiary-fixed-variant": "#404757",
+              "on-secondary-fixed-variant": "#00513d",
+              "inverse-surface": "#e2e2e9",
+              "tertiary": "#bfc6da",
+              "on-background": "#e2e2e9",
+              "surface-tint": "#b4c5ff",
+              "on-error": "#690005"
+            },
+            fontFamily: {
+              "serif": ["Instrument Serif", "serif"],
+              "sans": ["Inter", "sans-serif"],
+              "mono": ["Geist Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #080A0F;
+        color: #e2e2e9;
+        font-family: 'Inter', sans-serif;
+      }
+      .glass-nav {
+        background: rgba(12, 14, 19, 0.85);
+        backdrop-filter: blur(20px);
+      }
+      .mono-data {
+        font-family: 'Geist Mono', monospace;
+      }
+      .editorial-title {
+        font-family: 'Instrument Serif', serif;
+        font-style: italic;
+      }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- Sidebar (240px Fixed) -->
+<aside class="w-[240px] fixed h-full bg-surface-container-lowest border-r border-outline-variant/10 flex flex-col z-50">
+<div class="p-6">
+<span class="text-xl font-bold tracking-tighter text-slate-100">VidMetrics</span>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span class="text-sm font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#B4C5FF] bg-white/5 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-sm font-medium">Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+<span class="text-sm font-medium">Saved</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+<span class="text-sm font-medium">Export</span>
+</a>
+</nav>
+<div class="p-4 mt-auto">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-[240px] min-h-screen bg-surface relative">
+<!-- Top Bar -->
+<header class="sticky top-0 z-40 glass-nav border-b border-outline-variant/5">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm text-slate-500">link</span>
+<span class="text-sm font-mono text-slate-300">youtube.com/@creative_engine</span>
+</div>
+<button class="bg-primary text-on-primary text-xs font-bold px-5 py-2.5 rounded-md hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Analyze another
+                </button>
+</div>
+</header>
+<!-- Content Body -->
+<div class="max-w-7xl mx-auto px-8 py-10 space-y-10">
+<!-- Header Card & Channel Summary -->
+<section class="flex flex-col md:flex-row gap-8 items-start md:items-end">
+<div class="flex gap-6 items-center">
+<div class="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/20 bg-surface-container-high p-1">
+<img class="w-full h-full rounded-full grayscale contrast-125" data-alt="high contrast minimalist monochromatic avatar of a digital agency logo with geometric shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbnKyD58dDCCWlNu5YnZ3Agls7b8S48onESZGNK844GG8SYYjOGN8CC_jdzeQWucHSpOmRzGla4QATzd-3AmJXdYY3pz_qKdSANerMy6Soe8e3LEhV_myfjS8mxsea11RGhTOfAVby2wEMVKGNtOJhyoIeXjRQntK_-Q6-NS0feH6KlpPCvJMzegFNjTf3AYCiknHvWSSQaa0Ghh--02PJCqKB-JepN4FYbnuK0cOIw1rKyoj37unZ5r0ENYmPZ_hbnpcxCYHxC7g"/>
+</div>
+<div>
+<h1 class="editorial-title text-4xl text-on-surface">Creative Engine</h1>
+<p class="font-mono text-sm text-primary mt-1">2.48M SUBSCRIBERS</p>
+</div>
+</div>
+<div class="flex gap-4 flex-wrap md:ml-auto">
+<div class="bg-surface-container-low px-5 py-3 rounded-lg border border-outline-variant/10 min-w-[140px]">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Avg Views</p>
+<p class="font-mono text-xl text-on-surface">412.5K</p>
+</div>
+<div class="bg-surface-container-low px-5 py-3 rounded-lg border border-outline-variant/10 min-w-[140px]">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Upload Freq</p>
+<p class="font-mono text-xl text-on-surface">2.4/wk</p>
+</div>
+<div class="bg-surface-container-low px-5 py-3 rounded-lg border border-outline-variant/10 min-w-[140px]">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Eng Rate</p>
+<p class="font-mono text-xl text-secondary">8.21%</p>
+</div>
+</div>
+</section>
+<!-- Intelligence Brief Panel -->
+<section class="bg-surface-container-low p-8 relative overflow-hidden rounded-xl border-l-4 border-primary">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-lg">verified</span>
+<h2 class="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Signature Intelligence Brief</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary-fixed text-xl">trending_up</span>
+<p class="text-sm leading-relaxed text-slate-300">Outlier detection confirms high retention for 20min+ technical deep-dives; audiences favor high-density information over fast pacing.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-xl">psychology</span>
+<p class="text-sm leading-relaxed text-slate-300">Sentiment analysis shows "Academic Authority" is the primary driver of channel trust, scoring 9.2 in expertise metrics.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-error text-xl">warning</span>
+<p class="text-sm leading-relaxed text-slate-300">Thumbnail CTR is declining on experimental high-vibrancy covers; returning to muted, editorial style is recommended.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary-fixed text-xl">bolt</span>
+<p class="text-sm leading-relaxed text-slate-300">Short-form content acts as an efficient funnel, but 82% of converted subscribers drop off after the first long-form video.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-xl">hub</span>
+<p class="text-sm leading-relaxed text-slate-300">Collaboration potential high with Engineering-focused channels; audience overlap is currently peaking at 14.5%.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-500 text-xl">schedule</span>
+<p class="text-sm leading-relaxed text-slate-300">Optimal publishing window: Tuesdays at 14:00 GMT. Performance drops 22% when posting on weekends.</p>
+</div>
+</div>
+</section>
+<!-- Metric Row: Bento Cards -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Outlier Score -->
+<div class="bg-surface-container p-6 flex flex-col justify-between h-48 group">
+<span class="text-xs font-bold uppercase text-slate-500 tracking-widest">Outlier Score</span>
+<div class="flex items-baseline gap-2">
+<span class="font-mono text-6xl text-primary">8.4</span>
+<span class="font-mono text-xl text-slate-600">/10</span>
+</div>
+<div class="h-1 bg-white/5 w-full rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[84%]"></div>
+</div>
+</div>
+<!-- Top Video -->
+<div class="md:col-span-2 bg-surface-container p-6 flex flex-col justify-between h-48 relative overflow-hidden group">
+<div class="relative z-10 flex justify-between items-start">
+<span class="text-xs font-bold uppercase text-slate-500 tracking-widest">Top Video This Month</span>
+<span class="bg-secondary-container/10 text-secondary text-[10px] font-bold px-2 py-1 rounded">+242% vs Avg</span>
+</div>
+<div class="relative z-10">
+<h3 class="editorial-title text-2xl leading-tight text-on-surface line-clamp-2">How We Engineered the Perfect Productivity Loop</h3>
+<p class="font-mono text-sm text-slate-400 mt-2">1.2M VIEWS • 98.4% POSITIVE</p>
+</div>
+<div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+<img alt="circuit board" class="w-full h-full object-cover grayscale" data-alt="highly detailed macro photography of a motherboard circuit with glowing traces in cool blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4-0S8KpRuz-_lylUxv9hrtkS25C2X82QXU-nfZdtiGRQEB9uBK9GaT6GaH_4aY2A_5BSUblgIZ23gmJt37vJQTs7yAYYwweH4l36df8bfw8Wq6q7kwuCXmA3CZceoRWq3609aOjp1g8p7Nj4jtFR8Rhl8nQiRzafZQvXZsS5nKIO3J9LF7R1DZ2LrvKQYVzVuIOA9GBEljyDkHS5DsosmSBvUy3rRgLHDDggKdj-iJPw00tkHqQaKZh152PbcaCdX5r2RmwPl2Xg"/>
+</div>
+</div>
+<!-- Format Balance -->
+<div class="bg-surface-container p-6 flex flex-col justify-between h-48">
+<span class="text-xs font-bold uppercase text-slate-500 tracking-widest">Win Formula Match</span>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl">check_circle</span>
+<div class="font-mono">
+<p class="text-2xl text-on-surface">94%</p>
+<p class="text-[10px] text-slate-500">COHESION</p>
+</div>
+</div>
+<p class="text-xs text-slate-400">Content aligns with high-performing historical patterns.</p>
+</div>
+</section>
+<!-- Video Grid Intelligence -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h2 class="editorial-title text-3xl">Performance Intelligence</h2>
+<div class="flex gap-4">
+<button class="text-xs font-bold text-primary pb-1 border-b border-primary">RECENT</button>
+<button class="text-xs font-bold text-slate-500 pb-1">TOP PERFORMING</button>
+<button class="text-xs font-bold text-slate-500 pb-1">VALLEY DATA</button>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-6">
+<!-- Video 1 -->
+<div class="bg-surface-container-low group cursor-pointer border border-transparent hover:border-primary/20 transition-all">
+<div class="aspect-video relative overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="clean minimal web design analytics dashboard on a laptop screen in a dark modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtREDYNHd0r2lW9AjYwEFuezM54dch70olJRb6Q0bUHmKHW0Svdgc_1OGtmVJPyXMClS60jjVz01QU4TdowiHpnx308pNU5MJ9uHx0bX_VKyRBfj190Q7krqvxB9cCHaexWjuTGcjk8k6t77Pubue8J3um9TzmowyUEb2DaLqrlHYd28Qjd1Aw-6tLIxJ9-vonzezzUTvUZGRbXpx52DSgblzmYlh5bKgeUZ0vk8AI_2vXm8HZaCtlDeeaJs34FNgS7Lnc_s3DDKw"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-primary text-on-primary text-[9px] font-bold px-2 py-0.5 rounded tracking-tighter">OUTLIER</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-black/80 px-1.5 py-0.5 rounded text-[10px] font-mono">14:22</div>
+</div>
+<div class="p-5 space-y-3">
+<h4 class="text-sm font-semibold text-on-surface line-clamp-1">Why Modern Software feels sluggish</h4>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-slate-500">421K views</span>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span class="font-mono text-[10px]">12.4%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Video 2 -->
+<div class="bg-surface-container-low group cursor-pointer border border-transparent hover:border-primary/20 transition-all">
+<div class="aspect-video relative overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="professional data scientist analyzing complex charts on multiple monitors in a dark studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFxo6hABMsaQA8eOpS60fRiWO0sxPYbBRyWR_mleXkySzrRGKwVx9OhD2dv3zTZdmB1QuSx1wwkw8vkU7qFJMqiw026pvhloDDlWA8AY8GojTX37UmaQ2LMxKcFSltCK3njCf9on4gQ4S4TCqvAoE9wU5oSDizZJ52FoNYU5WwGV_e4YkwKOyTX_bpoWCGqmAT1E9FFP-FetcEc7tlKCeFPEiyMKq1qXpkPjkU6cLH2bXH8y8zahRLB8PdxwPs6SuF9AUVj04pdks"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-[9px] font-bold px-2 py-0.5 rounded tracking-tighter">TRENDING</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-black/80 px-1.5 py-0.5 rounded text-[10px] font-mono">08:45</div>
+</div>
+<div class="p-5 space-y-3">
+<h4 class="text-sm font-semibold text-on-surface line-clamp-1">The Rise of Procedural Design</h4>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-slate-500">1.1M views</span>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span class="font-mono text-[10px]">48.2%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Video 3 -->
+<div class="bg-surface-container-low group cursor-pointer border border-transparent hover:border-primary/20 transition-all opacity-75 grayscale hover:opacity-100 transition-opacity">
+<div class="aspect-video relative overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="abstract binary code rain over dark background representing deep technical data flow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfWYXkS4xBudncM63wBJEEqkB9cWQEXUJ9y3yNBjyZSbseWvbfEvWRbD8143O1kbOV5KezTTcRRL7hCeSYbZ6cCitQXlNC8n37nKnG2buyTaoIdqhH4yJS3cVRVcTrzCykc7xav0J_UiGQcNLAURGKWJSZHi1oHGVm-wIsczV9VjVghxqYFS-Wy5Aa9vKJC4-88c_IlSaPfsH2bZfzdhQaEkPNVCDOd52AWFQUw6qbvhnR0ArfaEX4gyQ3jw8eDjFB981yzFpCRJU"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-error-container text-on-error-container text-[9px] font-bold px-2 py-0.5 rounded tracking-tighter">FORMAT GRAVEYARD</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-black/80 px-1.5 py-0.5 rounded text-[10px] font-mono">22:10</div>
+</div>
+<div class="p-5 space-y-3">
+<h4 class="text-sm font-semibold text-on-surface line-clamp-1">Vlog: A week in the Life of a Dev</h4>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-slate-500">45K views</span>
+<div class="flex items-center gap-1 text-error">
+<span class="material-symbols-outlined text-sm">arrow_downward</span>
+<span class="font-mono text-[10px]">74.1%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Analysis Panels -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-20">
+<!-- Upload Cadence Heatmap -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/5">
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6">Upload Cadence Heatmap</h3>
+<div class="grid grid-cols-7 gap-2">
+<!-- Simulated Heatmap Grid -->
+<div class="space-y-2">
+<div class="h-4 bg-primary/20 rounded-sm"></div>
+<div class="h-4 bg-primary/60 rounded-sm"></div>
+<div class="h-4 bg-primary/40 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-surface-container-high rounded-sm"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/30 rounded-sm"></div>
+<div class="h-4 bg-primary/80 rounded-sm"></div>
+<div class="h-4 bg-primary/40 rounded-sm"></div>
+<div class="h-4 bg-surface-container-high rounded-sm"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 bg-primary/90 rounded-sm"></div>
+<div class="h-4 bg-primary/40 rounded-sm"></div>
+<div class="h-4 bg-primary/20 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/50 rounded-sm"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 bg-primary/40 rounded-sm"></div>
+<div class="h-4 bg-primary/90 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/20 rounded-sm"></div>
+<div class="h-4 bg-primary/30 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+<div class="h-4 bg-primary/10 rounded-sm"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 bg-surface-container-high rounded-sm"></div>
+<div class="h-4 bg-surface-container-high rounded-sm"></div>
+<div class="h-4 bg-surface-container-high rounded-sm"></div>
+<div class="h-4 bg-surface-container-high rounded-sm"></div>
+<div class="h-4 bg-surface-container-high rounded-sm"></div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-mono text-slate-500 uppercase">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+<!-- Format Intelligence -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/5">
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6">Format Intelligence</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-mono">
+<span>Long-form (10min+)</span>
+<span class="text-primary">62%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[62%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-mono">
+<span>Shorts funnel</span>
+<span class="text-secondary">28%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[28%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-mono">
+<span>Live Sessions</span>
+<span class="text-slate-500">10%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-slate-500 w-[10%]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Shell -->
+<footer class="bg-[#080A0F] border-t border-[#434654]/15 mt-20">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div class="col-span-2">
+<span class="text-lg font-bold tracking-tighter text-slate-200">VidMetrics Intelligence</span>
+<p class="font-sans text-sm text-slate-500 mt-4 max-w-xs">High-velocity precision tools for the modern digital curator. Engineering the future of content analytics.</p>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-xs font-bold text-slate-300 uppercase tracking-widest mb-2">Network</span>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Product</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Pricing</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Enterprise</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-xs font-bold text-slate-300 uppercase tracking-widest mb-2">Connect</span>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">Twitter</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">LinkedIn</a>
+<a class="text-sm text-slate-500 hover:text-[#B4C5FF] transition-colors" href="#">YouTube</a>
+</div>
+</div>
+<div class="px-8 py-6 max-w-7xl mx-auto border-t border-outline-variant/5">
+<p class="font-sans text-sm text-slate-500">© 2024 VidMetrics Intelligence. All rights reserved.</p>
+</div>
+</footer>
+</main>
+</body></html>

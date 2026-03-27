@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#8a91a3",
+              "surface-container-highest": "#33353a",
+              "error": "#ffb4ab",
+              "on-secondary": "#003829",
+              "surface-bright": "#37393f",
+              "secondary-container": "#00c599",
+              "outline-variant": "#434654",
+              "on-primary-container": "#00236b",
+              "background": "#080A0F",
+              "primary-container": "#628aff",
+              "inverse-surface": "#e2e2e9",
+              "primary-fixed-dim": "#b4c5ff",
+              "surface-variant": "#33353a",
+              "on-primary-fixed-variant": "#003daa",
+              "on-primary": "#002979",
+              "on-background": "#e2e2e9",
+              "inverse-on-surface": "#2e3036",
+              "on-secondary-container": "#004b39",
+              "on-secondary-fixed-variant": "#00513d",
+              "secondary-fixed": "#63fccc",
+              "surface-container": "#1e1f25",
+              "on-secondary-fixed": "#002117",
+              "outline": "#8d90a0",
+              "on-tertiary-fixed": "#141b2a",
+              "inverse-primary": "#1754d4",
+              "on-tertiary": "#293040",
+              "tertiary": "#bfc6da",
+              "secondary": "#42e1b3",
+              "on-error": "#690005",
+              "tertiary-fixed-dim": "#bfc6da",
+              "surface-container-lowest": "#0c0e13",
+              "on-primary-fixed": "#00174c",
+              "on-surface-variant": "#c3c6d7",
+              "surface-tint": "#b4c5ff",
+              "surface-container-high": "#282a30",
+              "primary": "#b4c5ff",
+              "surface-dim": "#111319",
+              "secondary-fixed-dim": "#3edeb1",
+              "surface-container-low": "#191b21",
+              "on-tertiary-fixed-variant": "#404757",
+              "on-tertiary-container": "#232a39",
+              "tertiary-fixed": "#dbe2f7",
+              "surface": "#111319",
+              "error-container": "#93000a",
+              "on-error-container": "#ffdad6",
+              "primary-fixed": "#dbe1ff",
+              "on-surface": "#e2e2e9"
+            },
+            fontFamily: {
+              "headline": ["Newsreader", "serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"],
+              "mono": ["Geist Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #080A0F;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body text-on-background min-h-screen flex flex-col items-center justify-between py-12 px-6 overflow-hidden">
+<!-- Top Navigation Anchor (Suppressed Shell - Wordmark Only) -->
+<header class="w-full flex justify-center items-center">
+<div class="text-xl font-medium tracking-tighter text-slate-100 font-body uppercase tracking-[0.2em]">
+            VidMetrics
+        </div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-3xl flex flex-col items-center text-center">
+<!-- Step Indicator -->
+<div class="mb-8">
+<span class="font-mono text-[10px] tracking-[0.3em] uppercase text-primary/60 px-3 py-1 border border-primary/20 rounded-full">
+                Step 1 of 1
+            </span>
+</div>
+<!-- Editorial Headline -->
+<h1 class="font-headline italic text-5xl md:text-7xl mb-12 text-on-surface tracking-tight">
+            Paste a channel.
+        </h1>
+<!-- Intelligence Input Panel -->
+<div class="w-full group relative">
+<!-- Glow Effect -->
+<div class="absolute -inset-1 bg-primary/10 blur-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500"></div>
+<div class="relative flex items-center bg-surface-container-low p-2 rounded-xl border border-outline-variant/10 focus-within:border-outline-variant/30 transition-all shadow-2xl">
+<input class="bg-transparent border-none focus:ring-0 w-full px-6 py-4 text-xl font-body text-on-surface placeholder:text-outline/40" placeholder="youtube.com/@username" type="text"/>
+<button class="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-container text-on-primary font-semibold px-8 py-4 rounded-lg hover:brightness-110 active:scale-95 transition-all shadow-lg whitespace-nowrap">
+                    Analyze
+                    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Semantic Suggestions (Pills) -->
+<div class="mt-12 flex flex-wrap justify-center gap-3">
+<span class="text-[10px] font-mono text-outline/60 uppercase tracking-widest w-full mb-2">Quick Start Suggestions</span>
+<button class="bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-sm px-5 py-2.5 rounded-full border border-outline-variant/5 transition-colors flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="Channel" class="w-full h-full object-cover" data-alt="minimalist logo for science channel with clean geometric lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3wWS1ZIs8Fu0UqbhDNoa42xslde33tXvFMgZb9QONjnOS2hWB1yTNutDm2ZKISbsjCVBaf5_glkj8_L9fHhN3FM0FgLzuKgzKf2IDnwgD_nsVvtuTdKF_hfszEzmhItBY_dHL5Jv-QGTcfmZELvQXCACUsLZhGmW7TMMPmIlJe30fYVE4bSn7o3xLJzITXIOeFIeJCf2jjeAXYT_XzlNAkCTXOEw5AkDcqhRs_0oYSSx_xHDdU7d2D2MYmn32nr9gIrAUe3CdSDI"/>
+</div>
+                Veritasium
+            </button>
+<button class="bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-sm px-5 py-2.5 rounded-full border border-outline-variant/5 transition-colors flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="Channel" class="w-full h-full object-cover" data-alt="professional technology review channel icon with red and black color scheme" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9P7txt5TJ3i74rSHyG4KWI2qT6SAUx9R0UeeVlc_lmhjtPqR5JyhBB5GBdgyjAfnwbAz5oA1zAKFPPQNxXAUFJc5826aY7LlRhaDO51vgll9_P9E1M3aLOqW9aKgZSP57xv68Yrsz3_c3yKtrclWvZPHRL5I_-yITHcoPGwL8MdHyo5axUQ-F8vrhE8jCQ9ymK8UwEqwZJTslnLWVSpbZvAeD7iL0zQ7e6ozHm8trlhhzgJxJwkGdmRsvSRwR5kupeJyZi-P6iGg"/>
+</div>
+                MKBHD
+            </button>
+<button class="bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-sm px-5 py-2.5 rounded-full border border-outline-variant/5 transition-colors flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="Channel" class="w-full h-full object-cover" data-alt="podcast profile picture of a person in a suit on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh42OCD8TTIvDEJU9kbtC9iJcCMbMh7EFkyXh_AVtObJXyVsOi2ejcSaZTkabtVurBSDPy1NCG0DxWtN_x5EJQ_UNn6_E17fToAFrSChAJfobEUGNk2xNx8TGH_GMiaDsSEhWK8DS-4R8kWmMU8js5voC6-RhtI2k19PfyB3vgpzzz_Qlh-16_WeDq-N4rWbxCctymLS3pz1CIKz2xqMfCWghEImljSXA3Jea99fRtrhW9wW3zwQoH3QUg6Xv79gR5V8K54DAOTA4"/>
+</div>
+                Lex Fridman
+            </button>
+<button class="bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-sm px-5 py-2.5 rounded-full border border-outline-variant/5 transition-colors flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="Channel" class="w-full h-full object-cover" data-alt="clean minimalist profile picture of a productivity influencer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFJwhNuRI5w-xbpK--oA0vR9pRAMiILWrerAwJwxeiyrrgx1cdCxQoBlS2jLOETLr5rgJAZm_5qx5cc8Vmha476sR9GecuNKa2pSgR286mPAgx6WK0SNamTy2qOOCiRFEV5IvkFDVV_o_s41WkwIfVDCuaB2Sx-k5uE1Uvxx0l3PbkQ0snLRtPFXgJQfrK2Hb9l8-s7B5i8ioeNaiKx-cfIWPr4B6eL7oEPuutfWwOFXQO0Gl_6z388dqwu4LO8uwNFYWcw1uL5qQ"/>
+</div>
+                Ali Abdaal
+            </button>
+</div>
+</main>
+<!-- Footer Identity -->
+<footer class="w-full max-w-3xl flex justify-between items-center text-[10px] font-mono uppercase tracking-[0.2em] text-outline/40">
+<div class="flex gap-8">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+</div>
+<div>
+            © 2024 Global Intelligence
+        </div>
+</footer>
+<!-- Ambient Light Accent -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none z-[-1]"></div>
+</body></html>

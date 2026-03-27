@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VidMetrics | Intelligence Report Export</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#c2c6d4",
+                        "primary-fixed": "#dbe1ff",
+                        "surface": "#111319",
+                        "on-tertiary-fixed-variant": "#424752",
+                        "tertiary": "#c2c6d4",
+                        "inverse-surface": "#e2e2e9",
+                        "surface-container-highest": "#33353a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#252a34",
+                        "background": "#111319",
+                        "on-background": "#e2e2e9",
+                        "on-secondary": "#2a3040",
+                        "on-tertiary": "#2b303b",
+                        "on-secondary-container": "#afb5c8",
+                        "surface-container": "#1e1f25",
+                        "outline": "#8d90a0",
+                        "outline-variant": "#434654",
+                        "surface-tint": "#b4c5ff",
+                        "on-tertiary-fixed": "#171c26",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#dee2f0",
+                        "surface-variant": "#33353a",
+                        "secondary-fixed": "#dde2f7",
+                        "on-primary-fixed-variant": "#003daa",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c0c6da",
+                        "tertiary-container": "#8c919e",
+                        "inverse-on-surface": "#2e3036",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-primary-fixed": "#00174c",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#414657",
+                        "secondary": "#c0c6da",
+                        "primary": "#b4c5ff",
+                        "on-secondary-fixed-variant": "#414657",
+                        "on-primary": "#002979",
+                        "surface-container-low": "#191b21",
+                        "surface-container-high": "#282a30",
+                        "on-primary-container": "#00236b",
+                        "surface-container-lowest": "#0c0e13",
+                        "surface-bright": "#37393f",
+                        "inverse-primary": "#1754d4",
+                        "primary-container": "#628aff",
+                        "on-surface": "#e2e2e9",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#151b2a",
+                        "surface-dim": "#111319"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Geist Mono", "monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .report-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #080A0F; }
+        ::-webkit-scrollbar-thumb { background: #1E2433; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-[#080A0F] text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar Cluster -->
+<header class="sticky top-0 w-full z-50 bg-[#080A0F]/85 backdrop-blur-md flex justify-between items-center h-16 px-8 border-b border-[#1E2433] shadow-xl shadow-black/40">
+<div class="flex items-center gap-8">
+<span class="text-xl font-serif italic text-white">VidMetrics</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-400 font-normal hover:text-[#4F7EFF] transition-colors text-sm" href="#">Product</a>
+<a class="text-slate-400 font-normal hover:text-[#4F7EFF] transition-colors text-sm" href="#">Pricing</a>
+<a class="text-white font-medium text-sm" href="#">Intelligence</a>
+<a class="text-slate-400 font-normal hover:text-[#4F7EFF] transition-colors text-sm" href="#">Blog</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 text-sm hover:text-white transition-opacity px-4 py-2">Sign in</button>
+<button class="bg-primary text-on-primary px-5 py-2 text-sm font-medium rounded-sm hover:opacity-90 transition-opacity">Start free trial</button>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-64px)] overflow-hidden">
+<!-- SideNavBar Cluster -->
+<aside class="fixed left-0 top-16 h-full w-[240px] flex flex-col border-r border-[#1E2433] bg-[#080A0F] hidden lg:flex">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJAp2Beb5B-ybhwc3QvwRmL7-9thARKyCExqhNHpx_C9C5fnA2jusfZDAfqlIzLqtGlatsdmgiOnG9y-lAFri0Znl_tEFU4ku5XlGnMkYoPHnTjMEj5vLV5lxwMeHRRg8isGOTnS9tXmCno4W4TVdm1z0LDNOsxdzW9dBLxQdnzvbCxEr1dApPFrEwD4FGgKTXwqyt_g087crasvf8Tac_VUy_TQwR3mXo9_M2bDCjPy-XP5LxZSxnGgqnMxMSTNrR30V7fdofLhA"/>
+<div>
+<p class="text-sm font-medium text-white">Aditya V.</p>
+<p class="text-[10px] uppercase tracking-widest text-[#4F7EFF] font-mono">PRO ANALYST</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:bg-[#191B21] hover:text-white transition-colors rounded-sm active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+<span class="text-sm font-medium">Intelligence</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:bg-[#191B21] hover:text-white transition-colors rounded-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">leaderboard</span>
+<span class="text-sm font-medium">Benchmarks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:bg-[#191B21] hover:text-white transition-colors rounded-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">movie_edit</span>
+<span class="text-sm font-medium">Content Strategy</span>
+</a>
+<div class="flex items-center gap-3 px-4 py-2 text-[#4F7EFF] bg-[#191B21] rounded-sm">
+<span class="material-symbols-outlined text-[20px]">groups_3</span>
+<span class="text-sm font-medium">Audience Flow</span>
+</div>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:bg-[#191B21] hover:text-white transition-colors rounded-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="text-sm font-medium">System Status</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-[#1E2433] space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="text-sm">Support</span>
+</a>
+<div class="mt-4 p-4 bg-[#191B21] rounded-sm">
+<p class="text-[11px] text-slate-500 mb-2 uppercase tracking-tighter">Current Plan</p>
+<p class="text-xs text-white font-medium mb-3">Enterprise Pro</p>
+<button class="w-full py-2 text-[11px] bg-[#4F7EFF] text-white rounded-sm font-bold uppercase tracking-widest">Upgrade to Pro</button>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="lg:ml-[240px] flex-1 flex flex-col md:flex-row h-[calc(100vh-64px)] overflow-hidden">
+<!-- 65% Left: Live Report Preview -->
+<section class="w-full md:w-[65%] h-full bg-[#111319] overflow-y-auto p-12 flex justify-center">
+<div class="w-full max-w-[800px] bg-white text-black min-h-[1100px] report-shadow p-16 font-body relative">
+<!-- Report Header -->
+<div class="border-b-2 border-black pb-8 mb-12 flex justify-between items-end">
+<div>
+<p class="font-mono text-[10px] tracking-[0.2em] text-gray-500 mb-2">QUARTERLY PERFORMANCE AUDIT // 2024.Q3</p>
+<h1 class="font-headline text-5xl italic font-medium leading-tight">Intelligence Brief: Global Content Dynamics</h1>
+</div>
+<div class="text-right">
+<p class="font-mono text-xs font-medium">REF: VM-992-X</p>
+<p class="font-mono text-xs">OCT 24, 2024</p>
+</div>
+</div>
+<!-- Condensed Overview -->
+<section class="mb-12">
+<h2 class="font-headline text-2xl border-b border-gray-200 pb-2 mb-6">Condensed Overview</h2>
+<div class="grid grid-cols-3 gap-8">
+<div>
+<p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1">Retention Avg</p>
+<p class="font-mono text-3xl font-medium tracking-tighter">68.4%</p>
+<p class="text-[10px] text-emerald-600 mt-1 font-bold">+4.2% vs Prev</p>
+</div>
+<div>
+<p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1">Click-Through</p>
+<p class="font-mono text-3xl font-medium tracking-tighter">12.1%</p>
+<p class="text-[10px] text-rose-600 mt-1 font-bold">-0.8% vs Prev</p>
+</div>
+<div>
+<p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1">V-Velocity</p>
+<p class="font-mono text-3xl font-medium tracking-tighter">1.4k/h</p>
+<p class="text-[10px] text-emerald-600 mt-1 font-bold">+18% vs Prev</p>
+</div>
+</div>
+</section>
+<!-- Intelligence Brief -->
+<section class="mb-12">
+<h2 class="font-headline text-2xl border-b border-gray-200 pb-2 mb-4">Intelligence Brief</h2>
+<p class="text-gray-800 leading-relaxed text-lg mb-4 font-headline italic">
+                            The current trajectory suggests a shift in viewer sentiment toward longer-form narrative structures. Technical performance metrics indicate that the "First 15 Second Hook" saturation has reached a point of diminishing returns.
+                        </p>
+<p class="text-gray-600 leading-relaxed text-sm">
+                            Our analysis of over 4,500 data points across your core vertical reveals a 22% increase in retention for content that utilizes non-linear storytelling in the second act. Competitor benchmarks show a lag in adopting these high-complexity editing styles, providing a 4-6 week window for dominant market capture.
+                        </p>
+</section>
+<!-- Top 5 Outliers -->
+<section class="mb-12">
+<h2 class="font-headline text-2xl border-b border-gray-200 pb-2 mb-6">Top 5 Outlier Videos</h2>
+<div class="space-y-4">
+<div class="grid grid-cols-[1fr_100px_100px] items-center py-3 border-b border-gray-100">
+<span class="text-sm font-medium">The Silent Evolution of Micro-SAAS</span>
+<span class="font-mono text-xs text-right">842K</span>
+<span class="font-mono text-xs text-right text-emerald-600">+142%</span>
+</div>
+<div class="grid grid-cols-[1fr_100px_100px] items-center py-3 border-b border-gray-100">
+<span class="text-sm font-medium">Why Vertical Video is Fading</span>
+<span class="font-mono text-xs text-right">611K</span>
+<span class="font-mono text-xs text-right text-emerald-600">+88%</span>
+</div>
+<div class="grid grid-cols-[1fr_100px_100px] items-center py-3 border-b border-gray-100">
+<span class="text-sm font-medium">Quarterly Revenue Breakdown</span>
+<span class="font-mono text-xs text-right">204K</span>
+<span class="font-mono text-xs text-right text-rose-600">-12%</span>
+</div>
+<div class="grid grid-cols-[1fr_100px_100px] items-center py-3 border-b border-gray-100">
+<span class="text-sm font-medium">The AI Content Gold Rush</span>
+<span class="font-mono text-xs text-right">1.2M</span>
+<span class="font-mono text-xs text-right text-emerald-600">+204%</span>
+</div>
+<div class="grid grid-cols-[1fr_100px_100px] items-center py-3">
+<span class="text-sm font-medium">Engineering Performance Review</span>
+<span class="font-mono text-xs text-right">45K</span>
+<span class="font-mono text-xs text-right text-gray-400">0.0%</span>
+</div>
+</div>
+</section>
+<!-- Win Formula -->
+<section>
+<h2 class="font-headline text-2xl border-b border-gray-200 pb-2 mb-6">Win Formula</h2>
+<div class="bg-gray-50 p-6 rounded-sm border-l-4 border-black">
+<ul class="space-y-3">
+<li class="flex gap-3 text-sm">
+<span class="font-bold">01</span>
+<span>Deploy "Atmospheric Soundscapes" in intros to increase average view duration by 12 seconds.</span>
+</li>
+<li class="flex gap-3 text-sm">
+<span class="font-bold">02</span>
+<span>Transition thumbnails to high-contrast monochrome with blue serif typography.</span>
+</li>
+<li class="flex gap-3 text-sm">
+<span class="font-bold">03</span>
+<span>Focus 40% of production on the "Quiet Luxury" aesthetic currently trending in executive circles.</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- Page Numbering Footer -->
+<div class="absolute bottom-12 left-16 right-16 flex justify-between text-[10px] font-mono text-gray-400 border-t border-gray-100 pt-4">
+<span>CONFIDENTIAL // VIDMETRICS ENTERPRISE</span>
+<span>PAGE 01 / 14</span>
+</div>
+</div>
+</section>
+<!-- 35% Right: Export Options -->
+<section class="w-full md:w-[35%] h-full bg-[#191B21] border-l border-[#1E2433] overflow-y-auto">
+<div class="p-8 space-y-10">
+<!-- Export Formats -->
+<div>
+<h3 class="text-xs font-mono uppercase tracking-widest text-slate-500 mb-6">Format Selection</h3>
+<div class="grid grid-cols-1 gap-3">
+<label class="group cursor-pointer relative flex items-center justify-between p-4 bg-[#1E1F25] border border-[#4F7EFF] rounded-sm">
+<input checked="" class="hidden" name="format" type="radio"/>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#4F7EFF]">picture_as_pdf</span>
+<span class="text-sm font-medium text-white">PDF Document</span>
+</div>
+<span class="bg-[#4F7EFF]/10 text-[#4F7EFF] text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Recommended</span>
+</label>
+<label class="group cursor-pointer relative flex items-center justify-between p-4 bg-[#1E1F25] border border-transparent hover:border-outline-variant transition-colors rounded-sm">
+<input class="hidden" name="format" type="radio"/>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-white">table_chart</span>
+<span class="text-sm font-medium text-slate-400 group-hover:text-white">CSV Spreadsheet</span>
+</div>
+</label>
+<label class="group cursor-pointer relative flex items-center justify-between p-4 bg-[#1E1F25] border border-transparent hover:border-outline-variant transition-colors rounded-sm">
+<input class="hidden" name="format" type="radio"/>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-white">data_object</span>
+<span class="text-sm font-medium text-slate-400 group-hover:text-white">JSON Raw Data</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Customization Toggles -->
+<div>
+<h3 class="text-xs font-mono uppercase tracking-widest text-slate-500 mb-6">Report Customization</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-sm text-on-surface">Intelligence Brief</span>
+<div class="w-10 h-5 bg-[#4F7EFF] rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-on-surface">Data Grid &amp; Outliers</span>
+<div class="w-10 h-5 bg-[#4F7EFF] rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-on-surface">Retention Heatmaps</span>
+<div class="w-10 h-5 bg-[#33353A] rounded-full relative cursor-pointer">
+<div class="absolute left-1 top-1 w-3 h-3 bg-slate-500 rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between opacity-50">
+<div class="flex items-center gap-2">
+<span class="text-sm text-on-surface">Competitor Comparison</span>
+<span class="material-symbols-outlined text-xs">lock</span>
+</div>
+<div class="w-10 h-5 bg-[#0C0E13] rounded-full relative cursor-not-allowed">
+<div class="absolute left-1 top-1 w-3 h-3 bg-[#33353A] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Branding Section -->
+<div class="pt-6 border-t border-[#1E2433]">
+<h3 class="text-xs font-mono uppercase tracking-widest text-slate-500 mb-6">Report Branding</h3>
+<div class="space-y-6">
+<div class="border-2 border-dashed border-[#434654] p-6 rounded-sm text-center hover:bg-[#1E1F25] transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-slate-400 mb-2">upload_file</span>
+<p class="text-[11px] text-slate-400">Upload Agency Logo (PNG/SVG)</p>
+</div>
+<div class="flex items-center justify-between p-4 bg-primary/5 rounded-sm">
+<div>
+<p class="text-xs font-bold text-[#4F7EFF] uppercase tracking-tighter">White-labeling</p>
+<p class="text-[10px] text-slate-400">Remove VidMetrics logo</p>
+</div>
+<div class="w-10 h-5 bg-[#4F7EFF] rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Controls -->
+<div class="pt-6 space-y-4">
+<button class="w-full bg-primary text-on-primary py-4 font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:opacity-90 transition-opacity rounded-sm">
+<span class="material-symbols-outlined text-lg">download</span>
+                            Generate Report
+                        </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-3 border border-[#434654] text-xs text-slate-400 hover:text-white hover:bg-[#1E1F25] transition-all rounded-sm">
+<span class="material-symbols-outlined text-sm">link</span>
+                                Share link
+                            </button>
+<button class="flex items-center justify-center gap-2 py-3 border border-[#434654] text-xs text-slate-400 hover:text-white hover:bg-[#1E1F25] transition-all rounded-sm">
+<span class="material-symbols-outlined text-sm">mail</span>
+                                Schedule
+                            </button>
+</div>
+<div class="mt-4">
+<label class="block text-[10px] font-mono text-slate-500 uppercase mb-2">Weekly Delivery Email</label>
+<input class="w-full bg-[#0C0E13] border-[#434654] text-sm py-3 px-4 focus:ring-1 focus:ring-primary focus:border-primary placeholder:text-slate-700 rounded-sm" placeholder="vp-strategy@media.co" type="email"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<footer class="w-full py-8 bg-[#080A0F] border-t border-[#1E2433] z-50 relative">
+<div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+<p class="text-xs text-slate-500 font-body">© 2024 VidMetrics. Made for media teams who compete.</p>
+<div class="flex gap-8">
+<a class="text-xs text-slate-500 hover:text-white transition-all" href="#">Privacy Policy</a>
+<a class="text-xs text-slate-500 hover:text-white transition-all" href="#">Terms of Service</a>
+<a class="text-xs text-slate-500 hover:text-white transition-all" href="#">Security</a>
+<a class="text-xs text-slate-500 hover:text-white transition-all" href="#">API Documentation</a>
+</div>
+</div>
+</footer>
+</body></html>

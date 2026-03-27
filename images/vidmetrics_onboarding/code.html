@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=Newsreader:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline": "#8d90a0",
+            "surface-variant": "#33353a",
+            "on-secondary-container": "#004b39",
+            "on-primary": "#002979",
+            "secondary-container": "#00c599",
+            "error-container": "#93000a",
+            "tertiary-container": "#8a91a3",
+            "inverse-on-surface": "#2e3036",
+            "surface-container-lowest": "#0c0e13",
+            "primary-fixed": "#dbe1ff",
+            "primary": "#b4c5ff",
+            "on-secondary-fixed-variant": "#00513d",
+            "on-secondary-fixed": "#002117",
+            "background": "#111319",
+            "on-tertiary": "#293040",
+            "on-background": "#e2e2e9",
+            "secondary-fixed-dim": "#3edeb1",
+            "primary-container": "#628aff",
+            "outline-variant": "#434654",
+            "surface-container-low": "#191b21",
+            "surface-bright": "#37393f",
+            "primary-fixed-dim": "#b4c5ff",
+            "surface": "#111319",
+            "tertiary": "#bfc6da",
+            "on-tertiary-fixed-variant": "#404757",
+            "on-secondary": "#003829",
+            "on-primary-fixed-variant": "#003daa",
+            "on-error-container": "#ffdad6",
+            "on-error": "#690005",
+            "tertiary-fixed-dim": "#bfc6da",
+            "surface-tint": "#b4c5ff",
+            "on-primary-fixed": "#00174c",
+            "surface-container-high": "#282a30",
+            "inverse-surface": "#e2e2e9",
+            "secondary": "#42e1b3",
+            "on-tertiary-container": "#232a39",
+            "on-primary-container": "#00236b",
+            "surface-dim": "#111319",
+            "surface-container-highest": "#33353a",
+            "error": "#ffb4ab",
+            "surface-container": "#1e1f25",
+            "inverse-primary": "#1754d4",
+            "tertiary-fixed": "#dbe2f7",
+            "on-tertiary-fixed": "#141b2a",
+            "on-surface-variant": "#c3c6d7",
+            "secondary-fixed": "#63fccc",
+            "on-surface": "#e2e2e9",
+            "brand-obsidian": "#080a0f"
+          },
+          fontFamily: {
+            "headline": ["Newsreader", "serif"],
+            "serif-display": ["Instrument Serif", "serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"],
+            "mono": ["Geist Mono", "monospace"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "2xl": "1rem",
+            "full": "0.75rem"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .dot-grid {
+      background-image: radial-gradient(#1e1f25 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-brand-obsidian text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Suppression of Shell: This is an Onboarding Task-Focused Journey -->
+<main class="relative min-h-screen w-full flex flex-col items-center justify-center px-6 dot-grid">
+<!-- Top-level Branding Anchor -->
+<div class="absolute top-12 left-1/2 -translate-x-1/2 flex items-center gap-2">
+<span class="font-serif-display italic text-2xl text-primary tracking-tight">VidMetrics</span>
+</div>
+<!-- Content Canvas -->
+<div class="w-full max-w-[640px] flex flex-col items-center text-center">
+<!-- Power Move Indicator -->
+<div class="mb-12">
+<span class="font-mono text-[11px] uppercase tracking-[0.2em] text-outline px-4 py-1.5 rounded-full border border-outline-variant/20 bg-surface-container-low/40">
+          Step 1 of 1
+        </span>
+</div>
+<!-- Editorial Headline -->
+<h1 class="font-serif-display italic text-[64px] leading-tight text-white mb-4">
+        Paste a channel.
+      </h1>
+<!-- Sophisticated Subheadline -->
+<p class="text-[18px] text-secondary font-medium mb-12">
+        That's it. Your intelligence brief is ready in seconds.
+      </p>
+<!-- Primary Action: Input Cluster -->
+<div class="w-full relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl blur opacity-25 group-focus-within:opacity-50 transition duration-1000"></div>
+<div class="relative flex items-center bg-surface-container h-[64px] rounded-2xl border border-outline-variant/15 p-2 shadow-2xl">
+<input class="flex-1 bg-transparent border-none focus:ring-0 px-6 font-mono text-sm text-on-surface placeholder:text-outline/50 h-full" placeholder="youtube.com/@channel or paste any YouTube URL" type="text"/>
+<button class="flex items-center gap-2 bg-gradient-to-br from-primary to-primary-container hover:brightness-110 active:scale-95 transition-all duration-200 h-[48px] px-6 rounded-xl text-on-primary font-semibold text-sm">
+            Analyze 
+            <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'wght' 600;">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Quick Contextual Selection (Sample Pills) -->
+<div class="mt-8 flex flex-wrap justify-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-low border border-outline-variant/20 rounded-lg hover:border-primary/40 hover:bg-surface-container transition-all text-secondary text-[14px] font-medium">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+          @MrBeast
+        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-low border border-outline-variant/20 rounded-lg hover:border-primary/40 hover:bg-surface-container transition-all text-secondary text-[14px] font-medium">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+          @MKBHD
+        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-low border border-outline-variant/20 rounded-lg hover:border-primary/40 hover:bg-surface-container transition-all text-secondary text-[14px] font-medium">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+          @LexFridman
+        </button>
+</div>
+</div>
+<!-- Footer Guarantee -->
+<div class="absolute bottom-12 w-full text-center">
+<p class="text-[13px] text-outline font-medium tracking-wide">
+        Your first analysis is free. No credit card required.
+      </p>
+</div>
+</main>
+<!-- Decorative Gradient Glow (Top Corner) -->
+<div class="fixed -top-24 -right-24 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<!-- Decorative Gradient Glow (Bottom Corner) -->
+<div class="fixed -bottom-24 -left-24 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none"></div>
+</body></html>

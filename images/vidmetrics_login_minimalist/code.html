@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | VidMetrics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&amp;family=Geist+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#93000a",
+                        "surface-container-low": "#191b21",
+                        "on-primary-container": "#00236b",
+                        "surface": "#111319",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#232a39",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-on-surface": "#2e3036",
+                        "on-tertiary": "#293040",
+                        "surface-tint": "#b4c5ff",
+                        "tertiary": "#bfc6da",
+                        "surface-container-high": "#282a30",
+                        "primary": "#b4c5ff",
+                        "on-primary": "#002979",
+                        "outline-variant": "#434654",
+                        "secondary-fixed-dim": "#3edeb1",
+                        "inverse-surface": "#e2e2e9",
+                        "on-secondary-fixed": "#002117",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-secondary": "#003829",
+                        "background": "#080a0f",
+                        "inverse-primary": "#1754d4",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#00513d",
+                        "surface-bright": "#37393f",
+                        "secondary": "#42e1b3",
+                        "primary-container": "#628aff",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#111319",
+                        "secondary-fixed": "#63fccc",
+                        "on-secondary-container": "#004b39",
+                        "surface-variant": "#33353a",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-primary-fixed": "#00174c",
+                        "secondary-container": "#00c599",
+                        "on-primary-fixed-variant": "#003daa",
+                        "surface-container": "#1e1f25",
+                        "on-tertiary-fixed-variant": "#404757",
+                        "on-background": "#e2e2e9",
+                        "outline": "#8d90a0",
+                        "tertiary-fixed-dim": "#bfc6da",
+                        "tertiary-container": "#8a91a3",
+                        "surface-container-lowest": "#0c0e13",
+                        "on-tertiary-fixed": "#141b2a",
+                        "tertiary-fixed": "#dbe2f7",
+                        "surface-container-highest": "#33353a",
+                        "on-surface": "#e2e2e9"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Geist Mono", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #080A0F;
+            color: #e2e2e9;
+            font-family: 'Inter', sans-serif;
+        }
+        .editorial-text {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(12, 14, 19, 0.7);
+        }
+        .brand-gradient {
+            background: radial-gradient(circle at top left, rgba(180, 197, 255, 0.08) 0%, transparent 60%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex overflow-hidden">
+<!-- Left: Brand Moment (60%) -->
+<aside class="hidden lg:flex lg:w-3/5 relative overflow-hidden flex-col justify-between p-16 brand-gradient">
+<!-- Logo Section -->
+<div class="z-10">
+<h1 class="text-2xl font-bold tracking-tighter text-on-surface">VidMetrics</h1>
+</div>
+<!-- Center Editorial -->
+<div class="z-10 max-w-xl">
+<h2 class="editorial-text text-6xl md:text-7xl leading-[1.1] text-primary-fixed mb-8">
+                Intelligence is your unfair advantage.
+            </h2>
+<div class="w-12 h-[2px] bg-primary mb-8"></div>
+<p class="font-mono text-xs uppercase tracking-[0.3em] text-outline">
+                Institutional Video Analytics Platform
+            </p>
+</div>
+<!-- Footer / Technical Detail -->
+<div class="z-10 flex justify-between items-end">
+<div class="flex flex-col gap-2">
+<span class="font-mono text-[10px] text-outline-variant">ENCRYPTION PROTOCOL: AES-256</span>
+<span class="font-mono text-[10px] text-outline-variant">SERVER STATUS: NOMINAL</span>
+</div>
+<div class="flex gap-8 text-xs text-outline font-medium">
+<a class="hover:text-primary transition-colors" href="#">Framework</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+</div>
+</div>
+<!-- Background Element: Abstract Data Mesh -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-primary-container/10 rounded-full blur-[100px]"></div>
+</div>
+<!-- Decorative Grid -->
+<div class="absolute inset-0" style="background-image: radial-gradient(#ffffff05 1px, transparent 1px); background-size: 40px 40px;"></div>
+</aside>
+<!-- Right: Login Form (40%) -->
+<main class="w-full lg:w-2/5 bg-[#0F1117] flex items-center justify-center p-8 md:p-16 border-l border-white/5">
+<div class="w-full max-w-sm flex flex-col">
+<!-- Mobile Logo -->
+<div class="lg:hidden mb-12">
+<h1 class="text-xl font-bold tracking-tighter text-on-surface">VidMetrics</h1>
+</div>
+<header class="mb-10">
+<h3 class="text-2xl font-semibold text-on-surface tracking-tight mb-2">Access Intelligence</h3>
+<p class="text-outline text-sm">Enter your credentials to continue to the dashboard.</p>
+</header>
+<!-- SSO Button -->
+<button class="flex items-center justify-center gap-3 w-full bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/20 py-3 rounded-md transition-all active:scale-[0.98] mb-8">
+<img alt="Google Logo" class="w-5 h-5" data-alt="Official Google G-Suite logo icon with classic primary colors on transparent background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTojhH_PZKFuLWFCte_uLbADkSkQ0CfgpzfxEB5pThs_9fSdK4uP724jWAu1yX7ZzlweHRy11lid1WzXp3d0JOviBdg8_7Q3IP3_BeGCdx03Kv0x7DG4TtIwRgvarxKvTvh5NuKCjUyEYUxFo2vGio-BM4rCaGdFSPS4BUcNDAEC1gRnd-JQEBaXAgvE99PzXvoK-MxSUlHb4mdkCtKN2FF0uQwKkiumkbiV0Nw0o2d52egmwy4R3km4CMBUWY1zvqeNyNNrP3GHI"/>
+<span class="text-sm font-medium text-on-surface">Sign in with Google</span>
+</button>
+<div class="relative mb-8">
+<div class="absolute inset-0 flex items-center">
+<span class="w-full border-t border-outline-variant/10"></span>
+</div>
+<div class="relative flex justify-center text-xs uppercase tracking-widest">
+<span class="bg-[#0F1117] px-4 text-outline-variant font-mono">OR</span>
+</div>
+</div>
+<form action="#" class="space-y-6" method="POST">
+<div>
+<label class="block text-[11px] font-mono uppercase tracking-widest text-outline mb-2" for="email">Email Address</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-md py-3 px-4 text-on-surface placeholder:text-outline/40 focus:ring-1 focus:ring-primary/30 focus:border-primary/50 outline-none transition-all" id="email" name="email" placeholder="name@enterprise.com" required="" type="email"/>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="block text-[11px] font-mono uppercase tracking-widest text-outline" for="password">Password</label>
+<a class="text-[11px] font-mono uppercase tracking-widest text-primary hover:text-primary-container transition-colors" href="#">Forgot?</a>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-md py-3 px-4 text-on-surface placeholder:text-outline/40 focus:ring-1 focus:ring-primary/30 focus:border-primary/50 outline-none transition-all" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<input class="w-4 h-4 rounded border-outline-variant/20 bg-surface-container-lowest text-primary focus:ring-primary/20" id="remember" type="checkbox"/>
+<label class="text-xs text-outline select-none" for="remember">Remember this device for 30 days</label>
+</div>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary-container font-semibold py-3.5 rounded-md shadow-lg shadow-primary/10 hover:brightness-110 active:scale-[0.99] transition-all" type="submit">
+                    Sign in
+                </button>
+</form>
+<footer class="mt-12 text-center">
+<p class="text-sm text-outline">
+                    Don't have an account? 
+                    <a class="text-primary font-medium hover:underline underline-offset-4" href="#">Contact Enterprise Sales</a>
+</p>
+</footer>
+</div>
+</main>
+<!-- Visual Artifacts -->
+<div class="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+</body></html>

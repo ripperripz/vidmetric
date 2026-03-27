@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VidMetrics | Enterprise Intelligence Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #080A0F;
+            background-image: radial-gradient(#1E2433 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .font-serif { font-family: 'Newsreader', serif; }
+        .font-mono { font-family: 'Geist Mono', monospace; }
+        .glass-border { border: 1px solid rgba(67, 70, 84, 0.15); }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b4c5ff",
+                        "on-primary": "#002979",
+                        "primary-container": "#628aff",
+                        "surface": "#111319",
+                        "surface-container-lowest": "#0c0e13",
+                        "surface-container-low": "#191b21",
+                        "surface-container": "#1e1f25",
+                        "surface-container-high": "#282a30",
+                        "surface-container-highest": "#33353a",
+                        "outline-variant": "#434654",
+                        "on-surface": "#e2e2e9",
+                        "on-surface-variant": "#c3c6d7",
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["Geist Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="text-on-surface antialiased selection:bg-primary-container selection:text-white">
+<!-- SideNavBar (JSON Derived) -->
+<aside class="fixed left-0 top-0 h-full w-[240px] flex flex-col bg-[#080A0F] border-r border-[#1E2433] z-50">
+<div class="p-8">
+<h1 class="text-2xl font-serif italic text-white tracking-tight">VidMetrics</h1>
+<p class="text-[10px] font-mono text-slate-500 uppercase tracking-widest mt-1">Enterprise Intelligence</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<!-- Active Tab: Intelligence -->
+<a class="flex items-center gap-3 px-4 py-2 text-[#4F7EFF] bg-[#191B21] rounded-sm transition-all duration-150 scale-[0.98]" href="#">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+<span class="text-sm font-medium">Intelligence</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:bg-[#191B21] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">leaderboard</span>
+<span class="text-sm font-medium">Benchmarks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:bg-[#191B21] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">movie_edit</span>
+<span class="text-sm font-medium">Content Strategy</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:bg-[#191B21] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">groups_3</span>
+<span class="text-sm font-medium">Audience Flow</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:bg-[#191B21] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="text-sm font-medium">System Status</span>
+</a>
+</nav>
+<div class="px-4 py-8 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+<div class="mt-6 px-4">
+<button class="w-full py-2 bg-primary text-on-primary text-xs font-bold rounded-sm hover:opacity-90 transition-opacity">
+                    Upgrade to Pro
+                </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] min-h-screen pb-20">
+<!-- Channel Header -->
+<header class="h-32 bg-surface-container-low border-b border-outline-variant/10 px-10 flex items-center justify-between sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
+<div class="flex items-center gap-6">
+<div class="relative">
+<img class="w-[72px] h-[72px] rounded-full object-cover ring-2 ring-[#4F7EFF] ring-offset-4 ring-offset-surface-container-low" data-alt="Modern high-tech workspace with neon lighting and multiple computer monitors showing data visualizations" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALLr4A2RqqFTSux8lj7E2xyurEPL-FQtNc_9kFnPPOUG1J5oHWdNb_7KuOtRRRb6t9Ac2QYAYs7NG6Ltv98dX_kSYnUuBiQ26QCEGb9gZN4gm8ifQIQf0ebgSHe7gBIK8e1uIaDiHUw0ZuzP_a6UJIgnwuyUBpaLvAt4zrTnjf_AZF_39A__eoqSBiMT5VfTn20S0xKiSi76upr29qIQkFx5Vfaw1I2gPbS4JSrSiTqKciiCVBdhczhaLl391KVoP5j2TutlwlqWM"/>
+<div class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-surface-container-low"></div>
+</div>
+<div>
+<h2 class="text-2xl font-serif italic text-white leading-tight">Hyperion Tech Media</h2>
+<p class="text-xs font-mono text-slate-500 mt-1 uppercase tracking-widest">ID: 8829-X-DELTA</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container px-5 py-3 rounded-sm glass-border">
+<p class="text-[10px] text-slate-500 font-medium tracking-wider mb-1">AVG VIEWS</p>
+<p class="font-mono text-xl text-white">482.4K</p>
+</div>
+<div class="bg-surface-container px-5 py-3 rounded-sm glass-border">
+<p class="text-[10px] text-slate-500 font-medium tracking-wider mb-1">UPLOAD FREQ.</p>
+<p class="font-mono text-xl text-white">3.2<span class="text-xs text-slate-500 ml-1">/wk</span></p>
+</div>
+<div class="bg-surface-container px-5 py-3 rounded-sm glass-border">
+<p class="text-[10px] text-slate-500 font-medium tracking-wider mb-1">ENG. RATE</p>
+<p class="font-mono text-xl text-emerald-400">12.4%</p>
+</div>
+</div>
+</header>
+<div class="max-w-[1400px] mx-auto p-10 space-y-12">
+<!-- Intelligence Brief -->
+<section class="relative group">
+<div class="absolute -left-10 top-0 bottom-0 w-[3px] bg-[#4F7EFF]"></div>
+<div class="flex justify-between items-baseline mb-6">
+<h3 class="text-3xl font-serif italic text-white">Intelligence Brief</h3>
+<span class="font-mono text-[10px] text-slate-500 uppercase tracking-[0.2em]">Generated in 4.2s</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-emerald-400 mt-1">check_circle</span>
+<p class="text-slate-300 leading-relaxed text-[15px]">Content retention peaks at <span class="font-mono text-white">03:42</span> mark when technical complexity increases.</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-amber-400 mt-1">trending_up</span>
+<p class="text-slate-300 leading-relaxed text-[15px]">The "Code Deep Dive" format is currently <span class="text-white font-medium">outperforming</span> the news digest by 2.4x.</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-[#4F7EFF] mt-1">bolt</span>
+<p class="text-slate-300 leading-relaxed text-[15px]">CTR increased <span class="font-mono text-white">+18%</span> since shifting thumbnail palette to Cold Deep Sea tones.</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-pink-500 mt-1">error</span>
+<p class="text-slate-300 leading-relaxed text-[15px]">Shorts performance is cannibalizing long-form traffic on weekends; suggest Friday 6PM GMT shift.</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-emerald-400 mt-1">auto_awesome</span>
+<p class="text-slate-300 leading-relaxed text-[15px]">Optimal video length identified as <span class="font-mono text-white">14:22</span> for maximum mid-roll revenue.</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-slate-500 mt-1">group</span>
+<p class="text-slate-300 leading-relaxed text-[15px]">Core demographic shifting toward 24-35 Enterprise segment; pivot editorial tone.</p>
+</div>
+</div>
+</section>
+<!-- Metric Row -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Top Video -->
+<div class="bg-surface-container-low p-6 glass-border flex flex-col justify-between">
+<div>
+<p class="text-[10px] text-slate-500 font-medium tracking-widest mb-4">TOP VIDEO (7D)</p>
+<div class="aspect-video bg-surface-container mb-4 overflow-hidden">
+<img class="w-full h-full object-cover opacity-80" data-alt="Extreme close-up of a high-end graphics card and computer cooling components with blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCphEj37mS8XXX_qpghz75aa5dp0-m9yjxdZjNYCRFlQSxfFr_UAnXVfyC6xfyWLZXoq7hmcTiNQ8gEBqBGwf_JSLuhVQzjV4n9pN2AvBCQMULBEiEMT5GXBBVu7Oc_NeEO6AKtDG3QHQ9SV1f4jxUAWPZMSCFZbZ_ryy2czgXULn3wK4dpVO7HMpfvQ_o7xcY5xbOAkqHDgHfkeyJYiOEAWsDnBPG1YgzHIXlUlfDQAInS93Po7MjD-Vla_zsy_9_E_puBc2uo0Pg"/>
+</div>
+</div>
+<p class="text-sm font-medium text-white truncate">The Future of Silicon Intelligence</p>
+</div>
+<!-- Outlier Score -->
+<div class="bg-surface-container-low p-6 glass-border">
+<p class="text-[10px] text-slate-500 font-medium tracking-widest mb-4 uppercase">Outlier Score</p>
+<div class="flex items-end gap-2 mt-8">
+<span class="font-mono text-5xl text-[#4F7EFF]">94</span>
+<span class="font-mono text-sm text-slate-500 mb-2">/100</span>
+</div>
+<p class="text-xs text-slate-400 mt-6 leading-relaxed">Performance exceeds 94% of historical distribution for this format.</p>
+</div>
+<!-- Shorts Perf. -->
+<div class="bg-surface-container-low p-6 glass-border">
+<p class="text-[10px] text-slate-500 font-medium tracking-widest mb-4 uppercase">Shorts Perf.</p>
+<div class="flex items-center gap-2 mt-8">
+<span class="material-symbols-outlined text-pink-500 text-3xl">trending_down</span>
+<span class="font-mono text-4xl text-pink-500">-22%</span>
+</div>
+<p class="text-xs text-slate-400 mt-6 leading-relaxed">Significant drop in discovery. Pattern suggests algorithm fatigue or oversaturation.</p>
+</div>
+<!-- Win Formula Match -->
+<div class="bg-surface-container-low p-6 glass-border relative overflow-hidden">
+<p class="text-[10px] text-slate-500 font-medium tracking-widest mb-4 uppercase">Win Formula Match</p>
+<div class="flex flex-col gap-2 mt-6">
+<div class="h-1 bg-emerald-500/20 w-full"><div class="h-full bg-emerald-500 w-[88%]"></div></div>
+<div class="h-1 bg-emerald-500/20 w-full"><div class="h-full bg-emerald-500 w-[92%]"></div></div>
+<div class="h-1 bg-emerald-500/20 w-full"><div class="h-full bg-emerald-500 w-[74%]"></div></div>
+</div>
+<p class="text-xs text-white font-medium mt-6">Strong Alignment (85%)</p>
+<div class="absolute -right-4 -bottom-4 opacity-5">
+<span class="material-symbols-outlined text-[120px]">verified</span>
+</div>
+</div>
+</section>
+<!-- Video Grid & Heatmap Container -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Video Grid (2/3 width) -->
+<div class="lg:col-span-2 space-y-8">
+<h4 class="text-2xl font-serif italic text-white">Critical Performance Units</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container p-4 glass-border group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="relative mb-4 aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Digital motherboard circuit pattern with glowing blue and gold light paths" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDERbGdoTKWNhE0sOdi-2aZVStEqfx7CyUFCVEXjiPOl0xlkxdjSdjRARXVVJODUjXMqKmu4omLDDCW3nnwCdKVDh1xb0zIhMytIIi3BQxA_bMBrrvfwiZ-7TOG1mIMAhXyCmnj69uhpMuc43up2DKsvO9EncyiBxG5Ut_FO9H7uL82cdJVvgXFKeQ2qiIaJuSS-xZ0afMBokX4DlIDiT9OKYJLb8hs_NwZTgUABCz7Njr06TxR4YZz8MZcCtDppUrnzHacmwrPeO4"/>
+<div class="absolute top-2 left-2 bg-amber-500 text-black text-[9px] font-bold px-2 py-0.5 tracking-tighter">OUTLIER</div>
+</div>
+<h5 class="text-sm font-medium mb-3 text-white">Why RISC-V is Changing Servers Forever</h5>
+<div class="flex justify-between items-center border-t border-outline-variant/10 pt-3">
+<span class="font-mono text-xs text-slate-400">842K VIEWS</span>
+<span class="font-mono text-xs text-emerald-400">+142%</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container p-4 glass-border group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="relative mb-4 aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract 3D rendering of blockchain data blocks interconnected in a dark space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoQjfn5Xa5effd0ptD1iKIY8QDv851GxtuKqwxt4RumqkmgnhObuIXOEY6Xt2AhG9LQwQKq2Hi1sducMuZpqiIDqPAfuYw4pori7cbjxRjNikV48BCD9qHUfqVMle73dlrnn5abEwL-d9Hy1vm-fQ1Q-k8vojXFyCjQXRGTzhzuZcg4B5A2BS1yeNjKTI1StuhV2iwRQQsMUfuiLY6Xtic3qGNOslWXbgo3eVlpfXucF6pDKxCgv7WedE_NAiwJuAoiAOVD8F3-RE"/>
+<div class="absolute top-2 left-2 bg-emerald-500 text-black text-[9px] font-bold px-2 py-0.5 tracking-tighter">TRENDING</div>
+</div>
+<h5 class="text-sm font-medium mb-3 text-white">Zero-Knowledge Proofs: Explained</h5>
+<div class="flex justify-between items-center border-t border-outline-variant/10 pt-3">
+<span class="font-mono text-xs text-slate-400">1.2M VIEWS</span>
+<span class="font-mono text-xs text-emerald-400">+28%</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container p-4 glass-border group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="relative mb-4 aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-50" data-alt="Rows of server racks in a data center with intense blue server cooling lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk9o6t4qHsXWGLeIXMf4YuNkYB8P2dJSzyXnjrnDmmDTvJsbAY2i19Shohcahkax-sKrdvixqlTZ3cZvBCdGX0h-xaXk10hkY-0s9HAer8AZzQaTeKK1KPivnvuB4SSPxpi-4lJy7piOSlNp1fFrLli9y358DoAaE9hFgNWfRQ2aSOlp62GvMbmBvZnbEvxsC9LGk2XkgxQUbyMaOB0TXtZbcPmXD-eKG05GbcsDEXAK92qf1ESL1lbjPjL49DgtTUbf8sG6B4uOE"/>
+<div class="absolute top-2 left-2 bg-purple-600 text-white text-[9px] font-bold px-2 py-0.5 tracking-tighter">FORMAT GRAVEYARD</div>
+</div>
+<h5 class="text-sm font-medium mb-3 text-slate-400">Monthly Setup Tour (August)</h5>
+<div class="flex justify-between items-center border-t border-outline-variant/10 pt-3">
+<span class="font-mono text-xs text-slate-500">42K VIEWS</span>
+<span class="font-mono text-xs text-pink-500">-68%</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container p-4 glass-border group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="relative mb-4 aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Green matrix code scrolling vertically on a black computer screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOh7Cptl2DzwU7gYoVn39YRvUDP26ZY9x_AZTspUbMsUvbkFZ_LT6OoXhHQ5TOF2yuOsQE6Ajwfo10le4sBLoWlOfSoeZR4nRUko9gpv9wly1YOJtwj4KN3H9bW85zIARpmqOKjGg7A9c2WqxDtwMnsVinMLOvp74Rb-Eopxm2a-tZawjzh0LHwc26nhf0DWiv8cJap9YWl8mvw4hH3T93KXLWIQR7oPLdT8DHVW7gGs4IA7Ez9M0MQFfQrnsqDsVAdahV_QuRQ14"/>
+<div class="absolute top-2 left-2 bg-emerald-500 text-black text-[9px] font-bold px-2 py-0.5 tracking-tighter">TRENDING</div>
+</div>
+<h5 class="text-sm font-medium mb-3 text-white">Linux on the Desktop: 2024 Report</h5>
+<div class="flex justify-between items-center border-t border-outline-variant/10 pt-3">
+<span class="font-mono text-xs text-slate-400">620K VIEWS</span>
+<span class="font-mono text-xs text-emerald-400">+12%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Heatmap & Format Intelligence (1/3 width) -->
+<div class="space-y-12">
+<section>
+<h4 class="text-xl font-serif italic text-white mb-6">Audience Velocity Heatmap</h4>
+<div class="grid grid-cols-7 gap-1">
+<!-- Heatmap Grid 7x4 -->
+<!-- Row 1 -->
+<div class="aspect-square bg-[#4F7EFF]/10"></div>
+<div class="aspect-square bg-[#4F7EFF]/20"></div>
+<div class="aspect-square bg-[#4F7EFF]/40"></div>
+<div class="aspect-square bg-[#4F7EFF]/10"></div>
+<div class="aspect-square bg-[#4F7EFF]/05"></div>
+<div class="aspect-square bg-[#4F7EFF]/60"></div>
+<div class="aspect-square bg-[#4F7EFF]/80"></div>
+<!-- Row 2 -->
+<div class="aspect-square bg-[#4F7EFF]/20"></div>
+<div class="aspect-square bg-[#4F7EFF]/90"></div>
+<div class="aspect-square bg-[#4F7EFF]/100"></div>
+<div class="aspect-square bg-[#4F7EFF]/30"></div>
+<div class="aspect-square bg-[#4F7EFF]/10"></div>
+<div class="aspect-square bg-[#4F7EFF]/40"></div>
+<div class="aspect-square bg-[#4F7EFF]/20"></div>
+<!-- Row 3 -->
+<div class="aspect-square bg-[#4F7EFF]/05"></div>
+<div class="aspect-square bg-[#4F7EFF]/30"></div>
+<div class="aspect-square bg-[#4F7EFF]/10"></div>
+<div class="aspect-square bg-[#4F7EFF]/10"></div>
+<div class="aspect-square bg-[#4F7EFF]/05"></div>
+<div class="aspect-square bg-[#4F7EFF]/10"></div>
+<div class="aspect-square bg-[#4F7EFF]/20"></div>
+<!-- Row 4 -->
+<div class="aspect-square bg-[#4F7EFF]/05"></div>
+<div class="aspect-square bg-[#4F7EFF]/05"></div>
+<div class="aspect-square bg-[#4F7EFF]/10"></div>
+<div class="aspect-square bg-[#4F7EFF]/05"></div>
+<div class="aspect-square bg-[#4F7EFF]/10"></div>
+<div class="aspect-square bg-[#4F7EFF]/05"></div>
+<div class="aspect-square bg-[#4F7EFF]/05"></div>
+</div>
+<div class="flex justify-between mt-3">
+<span class="text-[9px] font-mono text-slate-500">MON</span>
+<span class="text-[9px] font-mono text-slate-500">SUN</span>
+</div>
+</section>
+<section>
+<h4 class="text-xl font-serif italic text-white mb-6">Format Graveyard</h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-600 group-hover:text-pink-500 transition-colors">skull</span>
+<span class="text-sm text-slate-400">"What's in my bag"</span>
+</div>
+<span class="font-mono text-[10px] text-pink-500/50 uppercase">Deceased</span>
+</div>
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-600 group-hover:text-pink-500 transition-colors">skull</span>
+<span class="text-sm text-slate-400">Gaming Let's Plays</span>
+</div>
+<span class="font-mono text-[10px] text-pink-500/50 uppercase">Deceased</span>
+</div>
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-600 group-hover:text-pink-500 transition-colors">skull</span>
+<span class="text-sm text-slate-400">Reaction Commentary</span>
+</div>
+<span class="font-mono text-[10px] text-amber-500/50 uppercase">Terminal</span>
+</div>
+</div>
+</section>
+<section>
+<h4 class="text-xl font-serif italic text-white mb-6">Optimal Length Intelligence</h4>
+<div class="space-y-4">
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-mono text-slate-500">
+<span>TECHNICAL DIVE</span>
+<span>14:00 - 16:30</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-[#4F7EFF] w-[85%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-mono text-slate-500">
+<span>NEWS BRIEF</span>
+<span>03:00 - 05:00</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[40%]"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (JSON Derived) -->
+<footer class="ml-[240px] bg-[#080A0F] border-t border-[#1E2433] py-12 px-10">
+<div class="max-w-7xl mx-auto grid grid-cols-4 gap-8">
+<div class="col-span-2">
+<h2 class="text-lg font-serif italic text-white mb-4">VidMetrics</h2>
+<p class="font-serif italic text-slate-500 text-sm max-w-xs leading-relaxed">Made for media teams who compete. Intelligence is not a luxury, it is a defensive requirement.</p>
+<p class="text-[10px] font-mono text-slate-600 mt-6">© 2024 VidMetrics. ALL DATA ENCRYPTED.</p>
+</div>
+<div class="space-y-4">
+<p class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Protocol</p>
+<ul class="space-y-2">
+<li><a class="text-sm text-slate-500 hover:text-white transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-sm text-slate-500 hover:text-white transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<p class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Connect</p>
+<ul class="space-y-2">
+<li><a class="text-sm text-slate-500 hover:text-white transition-all" href="#">Security</a></li>
+<li><a class="text-sm text-slate-500 hover:text-white transition-all" href="#">API Documentation</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

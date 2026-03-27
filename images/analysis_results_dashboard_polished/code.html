@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VidMetrics | Editorial Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,wght@1,400;1,600;1,700&amp;family=Geist+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ffb4ab",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-surface-variant": "#c3c6d7",
+              "tertiary": "#bfc6da",
+              "on-primary-fixed-variant": "#003daa",
+              "on-secondary-container": "#004b39",
+              "on-surface": "#e2e2e9",
+              "surface-container-lowest": "#0c0e13",
+              "inverse-primary": "#1754d4",
+              "inverse-surface": "#e2e2e9",
+              "surface": "#111319",
+              "inverse-on-surface": "#2e3036",
+              "surface-container": "#1e1f25",
+              "surface-bright": "#37393f",
+              "secondary-fixed-dim": "#3edeb1",
+              "primary-container": "#628aff",
+              "on-tertiary-container": "#232a39",
+              "on-primary-container": "#00236b",
+              "on-secondary-fixed": "#002117",
+              "tertiary-container": "#8a91a3",
+              "background": "#111319",
+              "secondary-fixed": "#63fccc",
+              "on-secondary": "#003829",
+              "on-tertiary-fixed": "#141b2a",
+              "on-primary": "#002979",
+              "on-primary-fixed": "#00174c",
+              "on-tertiary-fixed-variant": "#404757",
+              "on-tertiary": "#293040",
+              "tertiary-fixed-dim": "#bfc6da",
+              "surface-container-highest": "#33353a",
+              "primary": "#b4c5ff",
+              "outline-variant": "#434654",
+              "on-background": "#e2e2e9",
+              "secondary": "#42e1b3",
+              "on-error-container": "#ffdad6",
+              "error-container": "#93000a",
+              "surface-tint": "#b4c5ff",
+              "surface-container-high": "#282a30",
+              "surface-container-low": "#191b21",
+              "on-error": "#690005",
+              "secondary-container": "#00c599",
+              "outline": "#8d90a0",
+              "surface-variant": "#33353a",
+              "primary-fixed": "#dbe1ff",
+              "on-secondary-fixed-variant": "#00513d",
+              "tertiary-fixed": "#dbe2f7",
+              "surface-dim": "#111319"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["Geist Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(12px); background: rgba(25, 27, 33, 0.7); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .intelligence-glow { box-shadow: -15px 0 30px -10px rgba(79, 126, 254, 0.15); }
+        .heatmap-cell { transition: all 0.3s ease; }
+        .heatmap-cell:hover { transform: scale(1.1); filter: brightness(1.2); }
+        .sparkline { height: 16px; width: 60px; background: linear-gradient(90deg, transparent, currentColor 50%, transparent 100%); opacity: 0.2; }
+    </style>
+</head>
+<body class="bg-[#111319] text-on-background font-body selection:bg-primary/30 selection:text-primary">
+<!-- SideNavBar -->
+<aside class="w-[240px] h-screen fixed left-0 top-0 bg-[#0F1117] flex flex-col py-8 z-50 border-r border-outline-variant/5">
+<div class="px-8 mb-10">
+<h1 class="text-2xl font-headline italic text-[#B4C5FF] tracking-tight">VidMetrics</h1>
+<p class="text-[10px] font-mono uppercase tracking-widest text-outline mt-1">Editorial Intelligence</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-[#8D90A0] pl-8 py-2 hover:text-[#B4C5FF] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm">home</span>
+<span class="text-sm font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 text-[#B4C5FF] border-l-2 border-[#B4C5FF] pl-8 py-2 font-bold transition-all" href="#">
+<span class="material-symbols-outlined text-sm">analytics</span>
+<span class="text-sm font-medium">Analysis</span>
+</a>
+<a class="flex items-center gap-3 text-[#8D90A0] pl-8 py-2 hover:text-[#B4C5FF] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm">bookmark</span>
+<span class="text-sm font-medium">Saved</span>
+</a>
+<a class="flex items-center gap-3 text-[#8D90A0] pl-8 py-2 hover:text-[#B4C5FF] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm">ios_share</span>
+<span class="text-sm font-medium">Export</span>
+</a>
+<a class="flex items-center gap-3 text-[#8D90A0] pl-8 py-2 hover:text-[#B4C5FF] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-6">
+<div class="bg-surface-container-low p-4 rounded-xl relative overflow-hidden group border border-outline-variant/10">
+<div class="absolute -right-4 -top-4 w-16 h-16 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
+<div class="relative z-10">
+<span class="text-[10px] font-mono uppercase text-primary mb-1 block tracking-wider">Plan Status</span>
+<p class="text-sm font-bold text-on-surface mb-3">Pro Editorial</p>
+<button class="w-full py-2 bg-primary text-on-primary text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">Manage Plan</button>
+</div>
+</div>
+<div class="mt-8 flex items-center gap-3 px-2">
+<img class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsDBikZN2wFTu0os5N85UN-TU9Ok_t9MOhYmanpiYBxNTNeNJ8jchCDvwJdV8TneHNNhPJSCgsqogm0AGX9ZFjqIQ7xCOcTbbOfSUldoKtk7wwjWFrEIc9wemNlPRofdKiiaJkvt5rh2rw2XI9jXAA248WWyqgK_f_0U_JLSyjKyYTCIPScxtWTCcNltCp6-PEf3e46ItUAlZfmPrj9ZiQNMb1zy9YEUBWsA6HSsm01E1G9dAJAgNvCrisPNOdJtquxXToyaRhePs"/>
+<div>
+<p class="text-xs font-bold text-on-surface">Alex Chen</p>
+<p class="text-[10px] text-outline">Lead Strategist</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-[240px] h-16 z-40 bg-[#0C0E13]/90 backdrop-blur-xl flex justify-between items-center px-8 w-auto border-b border-outline-variant/10">
+<div class="flex items-center gap-6">
+<h2 class="font-mono uppercase tracking-widest text-[10px] text-primary font-bold">Analysis Results</h2>
+<div class="flex items-center bg-surface-container-lowest px-4 py-1.5 rounded-lg border border-outline-variant/20">
+<span class="text-[9px] font-mono text-outline mr-2">SOURCE:</span>
+<input class="bg-transparent border-none p-0 text-[11px] font-mono text-on-surface w-64 focus:ring-0" readonly="" type="text" value="youtube.com/c/veritasium/featured"/>
+</div>
+<a class="text-[9px] font-mono uppercase tracking-tighter text-outline hover:text-primary transition-colors" href="#">Analyze another</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-1.5 border border-outline-variant/30 text-[10px] font-mono uppercase tracking-widest text-on-surface hover:bg-surface-container transition-all">Save</button>
+<button class="px-6 py-1.5 bg-gradient-to-br from-primary to-[#4F7EFF] text-on-primary text-[10px] font-mono uppercase tracking-widest font-bold shadow-lg shadow-primary/10 hover:opacity-90 active:translate-y-px transition-all">Export</button>
+<div class="h-6 w-px bg-outline-variant/20 mx-2"></div>
+<button class="text-outline hover:text-primary transition-colors flex items-center">
+<span class="material-symbols-outlined text-lg">notifications</span>
+</button>
+<button class="text-outline hover:text-primary transition-colors flex items-center">
+<span class="material-symbols-outlined text-lg">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] pt-24 px-8 pb-20 space-y-8 max-w-[1600px] mx-auto">
+<!-- CHANNEL HEADER -->
+<section class="bg-surface-container-low p-6 rounded-xl border-l-4 border-[#4F7EFF] shadow-lg flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="absolute -inset-1 bg-gradient-to-tr from-primary to-secondary rounded-full blur-sm opacity-20 animate-pulse"></div>
+<img class="w-16 h-16 rounded-full relative z-10 border-2 border-surface-container-high object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFHUaDMjky6C8R0ETX_kUTtUG14QUIm-xWjuaqmvXuqKC19mfAi5GmJYKDTlHkJBUo3w1U97Kk3uaasykhQeb0DkvgqGJvy0kFpfBhPDZ777mV86cZxuTzHo1L_VAlSXrp5gGGzyp2Wl53iosFiDfkjXqSt9Cb88DEp-nUOsKB6ZAt3KgzzKj-vtxZ9_-eBPOn_wMubGLhg7Vp_57fhIYyB2xNQRrylPQujs1zaXmikI8okxrMtC0D_9fw_0UVp__xT7Aws7RasGw"/>
+</div>
+<div>
+<h3 class="text-2xl font-headline italic tracking-tight text-on-surface">Veritasium Intelligence</h3>
+<p class="font-mono text-xs text-outline">984 Videos • 14.2M Subscribers</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container/50 p-4 min-w-[140px] rounded-lg">
+<p class="text-[9px] font-mono uppercase text-outline mb-1">Avg Views</p>
+<p class="text-xl font-mono font-bold text-on-surface">48.2M</p>
+</div>
+<div class="bg-surface-container/50 p-4 min-w-[140px] rounded-lg">
+<p class="text-[9px] font-mono uppercase text-outline mb-1">Upload Freq</p>
+<p class="text-xl font-mono font-bold text-on-surface">2.3x<span class="text-xs text-outline">/wk</span></p>
+</div>
+<div class="bg-surface-container/50 p-4 min-w-[140px] border-b-2 border-secondary rounded-lg">
+<p class="text-[9px] font-mono uppercase text-secondary mb-1">Eng. Rate</p>
+<p class="text-xl font-mono font-bold text-secondary">4.7%</p>
+</div>
+</div>
+</section>
+<!-- INTELLIGENCE BRIEF & METRIC CARDS -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Intelligence Brief -->
+<section class="col-span-7 bg-surface-container-low p-8 border-l-[4px] border-[#4F7EFF] relative overflow-hidden rounded-r-xl intelligence-glow">
+<div class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#4F7EFF]/10 to-transparent"></div>
+<h4 class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#4F7EFF] mb-8 font-bold">Strategic Intelligence Brief</h4>
+<div class="space-y-6 relative z-10">
+<div class="flex items-start gap-5">
+<span class="material-symbols-outlined text-secondary text-xl">insights</span>
+<p class="text-[13px] text-on-surface leading-relaxed mt-0.5">Topical authority in <span class="text-[#4F7EFF] font-bold">"Atomic Science"</span> is yielding a 400% higher CTR than broad engineering content.</p>
+</div>
+<div class="flex items-start gap-5">
+<span class="material-symbols-outlined text-error text-xl">signal_cellular_alt_2_bar</span>
+<p class="text-[13px] text-on-surface leading-relaxed mt-0.5">Audience drop-off significant after the <span class="font-mono text-error">12:00</span> mark on storytelling-only formats.</p>
+</div>
+<div class="flex items-start gap-5">
+<span class="material-symbols-outlined text-amber-400 text-xl">campaign</span>
+<p class="text-[13px] text-on-surface leading-relaxed mt-0.5">Saturation alert: <span class="italic font-medium">"The Problem with..."</span> title hooks are showing diminishing returns in the US market.</p>
+</div>
+<div class="flex items-start gap-5 p-4 bg-error/5 border border-error/10 rounded-lg">
+<span class="material-symbols-outlined text-error text-xl">skull</span>
+<div>
+<p class="text-xs font-bold text-error uppercase tracking-wider mb-1">Format Graveyard Detected</p>
+<p class="text-[12px] text-on-surface-variant">The "Whiteboard Sessions" format has failed to reach 10% of median views for 4 consecutive uploads.</p>
+</div>
+</div>
+<div class="flex items-start gap-5">
+<span class="material-symbols-outlined text-secondary text-xl">verified</span>
+<p class="text-[13px] text-on-surface leading-relaxed mt-0.5 font-medium">Win Formula Match: <span class="text-secondary">Educational deep-dives</span> with a "Misconception" frame are 92% likely to outperform.</p>
+</div>
+</div>
+</section>
+<!-- Metric Cards -->
+<div class="col-span-5 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl flex flex-col justify-between overflow-hidden relative group border border-outline-variant/10">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB04lTAL6_57X4LbPXzgbqaVqg5-g1DrEK2VVza_4kur7qgDVj-_67_t2zpTNivbBLscVpyEaqtdyGVw4L2s0bzQz-KJgYZ57KobCa0VKWR-_iA69QMxPjjIpIEDQx0vzi4ZxZTX27g6gqrjGXhPSLze9J6PNZlA5m3MjNrf3ioPZH2W211U2N3IljwoP1T_dr9Ojj9oCMIOcQDKS8RCfjg6C5fHdAgmUnTX3cfhshOvTImwHvtiBx4BW823jaHktveq1zDodDuRCY"/>
+<div class="relative z-10">
+<p class="text-[9px] font-mono uppercase text-outline mb-1">Top Video Performance</p>
+<p class="text-xs font-bold leading-tight line-clamp-2 text-on-surface/80">The Speed of Light is NOT Constant</p>
+</div>
+<div class="relative z-10 mt-4 flex items-end justify-between">
+<p class="text-3xl font-mono font-bold text-primary tracking-tighter">122M</p>
+<div class="sparkline text-primary"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex flex-col justify-between border border-outline-variant/10">
+<p class="text-[9px] font-mono uppercase text-outline mb-1">Outlier Score Index</p>
+<div class="flex items-baseline gap-1 mt-2">
+<p class="text-4xl font-mono font-bold text-on-surface tracking-tighter">8.4</p>
+<p class="text-xs font-mono text-outline">/10</p>
+</div>
+<div class="w-full h-1 bg-surface-container-highest/20 mt-4 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 84%"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex flex-col justify-between border border-error/20">
+<div class="flex justify-between items-start">
+<p class="text-[9px] font-mono uppercase text-outline">Shorts Retention</p>
+<span class="material-symbols-outlined text-error text-xs">warning</span>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle cx="24" cy="24" fill="transparent" r="20" stroke="#1E1F25" stroke-width="3"></circle>
+<circle cx="24" cy="24" fill="transparent" r="20" stroke="#ffb4ab" stroke-dasharray="125" stroke-dashoffset="95" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[8px] font-mono font-bold text-error">24%</span>
+</div>
+<div class="sparkline text-error"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex flex-col justify-between border border-outline-variant/10">
+<p class="text-[9px] font-mono uppercase text-outline mb-2">Win Match Matrix</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 bg-primary/5 text-primary text-[7px] font-mono uppercase border border-primary/20 rounded-sm">H: Paradox</span>
+<span class="px-2 py-0.5 bg-primary/5 text-primary text-[7px] font-mono uppercase border border-primary/20 rounded-sm">V: Simulation</span>
+<span class="px-2 py-0.5 bg-primary/5 text-primary text-[7px] font-mono uppercase border border-primary/20 rounded-sm">E: Philosophy</span>
+</div>
+</div>
+</div>
+</div>
+<!-- FILTER BAR -->
+<div class="bg-surface-container-low/50 p-3 rounded-lg flex items-center justify-between border border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="flex bg-surface-container-lowest p-1 rounded-md">
+<button class="px-4 py-1.5 text-[10px] font-mono uppercase font-bold bg-[#4F7EFF] text-on-primary rounded">90 Days</button>
+<button class="px-4 py-1.5 text-[10px] font-mono uppercase text-outline hover:text-on-surface transition-colors">1 Year</button>
+<button class="px-4 py-1.5 text-[10px] font-mono uppercase text-outline hover:text-on-surface transition-colors">All Time</button>
+</div>
+<div class="h-6 w-px bg-outline-variant/20"></div>
+<button class="px-3 py-1.5 bg-surface-container-lowest text-[10px] font-mono uppercase text-on-surface flex items-center gap-2 border border-outline-variant/10 rounded">
+                Sort: Outlier Score <span class="material-symbols-outlined text-xs">expand_more</span>
+</button>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-error/10 text-[9px] font-mono uppercase text-error flex items-center gap-2 rounded-full border border-error/20">
+                Format Graveyard <span class="material-symbols-outlined text-[10px] cursor-pointer">close</span>
+</span>
+<span class="px-3 py-1 bg-surface-container-lowest text-[9px] font-mono uppercase text-outline flex items-center gap-2 rounded-full border border-outline-variant/20 cursor-pointer hover:border-primary transition-all">
+                Show Outliers Only
+            </span>
+</div>
+</div>
+<!-- VIDEO GRID -->
+<section class="grid grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden group cursor-pointer border border-outline-variant/10 hover:border-[#4F7EFF]/30 hover:shadow-2xl hover:shadow-[#4F7EFF]/5 transition-all duration-500">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1FzYjY9iG8El12UgUVl4WJhA9H7qMXVF-vFSqGOf2IBCV87udUa_GLtOUUF6x_op0LJz4CJcBMrbq1e36bugZr0vNAJCZQHcSIn6z2vg-GEvv7pAkwX83fezG-KWlekx5vhGeVl1iIs4KeBB7cH5w8e-2IYdBkmbdPibkfwSL6o0p5linP43hARzRlUPFZDiiRluoUt71dMdhy-SSTytElux_JwWTVRypbzmXL-k_RBXUzCvPIkVef1z89_6LcJH23hbbHJ9jknc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-transparent opacity-60"></div>
+<div class="absolute inset-0 bg-[#4F7EFF]/5 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]"></div>
+<span class="absolute bottom-3 right-3 px-2 py-0.5 bg-black/80 backdrop-blur text-[10px] font-mono text-on-surface rounded-sm">14:22</span>
+<div class="absolute top-3 left-3 flex gap-1.5">
+<span class="px-2 py-0.5 bg-secondary/90 text-on-secondary text-[8px] font-mono font-bold uppercase tracking-wider rounded-sm">Outlier</span>
+<span class="px-2 py-0.5 bg-[#4F7EFF]/90 text-on-primary text-[8px] font-mono font-bold uppercase tracking-wider rounded-sm">Trending</span>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<h5 class="text-[14px] font-bold leading-tight line-clamp-2 text-on-surface group-hover:text-[#4F7EFF] transition-colors">The Hidden Math of Every Single Snowflake</h5>
+<div class="flex justify-between items-end">
+<div class="space-y-1.5">
+<p class="text-[9px] font-mono uppercase text-outline tracking-wider">Analysis Score</p>
+<div class="w-32 h-1 bg-surface-container-highest/20 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-[#4F7EFF] to-secondary" style="width: 92%"></div>
+</div>
+</div>
+<p class="text-2xl font-mono font-bold text-primary tracking-tighter">9.2</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden group cursor-pointer border border-error/10 opacity-70 hover:opacity-100 grayscale-[0.4] hover:grayscale-0 transition-all duration-500">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1GN81djyTjfpqO5FfuujihvK2osluecZ53BqFVbGyirGAA75LHJrgEs7e9R5lUDlEiZGmFTCezD0Az6GDAyZKnxB9ula_R2ftOJzOIoAf7CZr2midZCvmkwPvshgkT6qHVIQ2zOjGVb5VRbVC_C0eEN3CH2F2WR28JZnzoyO59ES7JFqtMZDk7t7xqiodzP60b4C2fu5pSKuev8BdDkq8RSaoEfNpepZaG95KqQdwLiBG2jydslBYWFuKUzzLLRGj0_4yuvNauKQ"/>
+<div class="absolute inset-0 bg-surface-container-lowest/50 backdrop-blur-[1px]"></div>
+<span class="absolute bottom-3 right-3 px-2 py-0.5 bg-black/80 backdrop-blur text-[10px] font-mono text-on-surface rounded-sm">08:15</span>
+<div class="absolute top-3 left-3">
+<span class="px-2 py-0.5 bg-error text-on-error text-[8px] font-mono font-bold uppercase tracking-wider rounded-sm">Format Graveyard</span>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<h5 class="text-[14px] font-bold leading-tight line-clamp-2 text-on-surface/60">Whiteboard Sessions: Why Gravity is Fake</h5>
+<div class="flex justify-between items-end">
+<div class="space-y-1.5">
+<p class="text-[9px] font-mono uppercase text-outline tracking-wider">Analysis Score</p>
+<div class="w-32 h-1 bg-surface-container-highest/20 rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 12%"></div>
+</div>
+</div>
+<p class="text-2xl font-mono font-bold text-error tracking-tighter">1.2</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden group cursor-pointer border border-outline-variant/10 hover:border-[#4F7EFF]/30 hover:shadow-2xl hover:shadow-[#4F7EFF]/5 transition-all duration-500">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEW414RpntD-9-W1MtDA62fqP73Tc4pQKVjZ4JeMKX209kcQEnVgOShUZ6ZEZMtBU88fv6yMgMZuaGzPLa0snEvAcKFEqffKgYQRl8FPxR8rF9gCsDVjnoSAPXYk8gSYOlPy2G057c3nebjLEROTMZUy250Pqc22gLe-FNhdZAcc4iMTbtPWceGcSLRY7Wr11WjXDEZLJinAh-J9uz7gEmlS7I23As2Wc2cJFpKhN2C4If5iXQNdTchpJwNVeVNfp34aPe1wgGZCg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-transparent opacity-60"></div>
+<div class="absolute inset-0 bg-[#4F7EFF]/5 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]"></div>
+<span class="absolute bottom-3 right-3 px-2 py-0.5 bg-black/80 backdrop-blur text-[10px] font-mono text-on-surface rounded-sm">19:40</span>
+<div class="absolute top-3 left-3">
+<span class="px-2 py-0.5 bg-secondary/90 text-on-secondary text-[8px] font-mono font-bold uppercase tracking-wider rounded-sm">Outlier</span>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<h5 class="text-[14px] font-bold leading-tight line-clamp-2 text-on-surface group-hover:text-[#4F7EFF] transition-colors">The Billion-Year Clock in the Sky</h5>
+<div class="flex justify-between items-end">
+<div class="space-y-1.5">
+<p class="text-[9px] font-mono uppercase text-outline tracking-wider">Analysis Score</p>
+<div class="w-32 h-1 bg-surface-container-highest/20 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-[#4F7EFF] to-secondary" style="width: 78%"></div>
+</div>
+</div>
+<p class="text-2xl font-mono font-bold text-primary tracking-tighter">7.8</p>
+</div>
+</div>
+</div>
+</section>
+<!-- BOTTOM ROW -->
+<div class="grid grid-cols-10 gap-8">
+<!-- Heatmap -->
+<section class="col-span-6 bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-center mb-8">
+<h4 class="text-[10px] font-mono uppercase tracking-widest text-outline font-bold">Retention Density Heatmap</h4>
+<div class="flex items-center gap-2">
+<span class="text-[8px] font-mono text-outline">LOW</span>
+<div class="flex gap-1">
+<div class="w-2.5 h-2.5 rounded-sm bg-[#4F7EFF]/10"></div>
+<div class="w-2.5 h-2.5 rounded-sm bg-[#4F7EFF]/30"></div>
+<div class="w-2.5 h-2.5 rounded-sm bg-[#4F7EFF]/60"></div>
+<div class="w-2.5 h-2.5 rounded-sm bg-[#4F7EFF]"></div>
+</div>
+<span class="text-[8px] font-mono text-outline">ELITE</span>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-3">
+<!-- Day Labels -->
+<div class="text-[9px] font-mono text-outline/60 text-center font-bold">MON</div>
+<div class="text-[9px] font-mono text-outline/60 text-center font-bold">TUE</div>
+<div class="text-[9px] font-mono text-outline/60 text-center font-bold">WED</div>
+<div class="text-[9px] font-mono text-outline/60 text-center font-bold">THU</div>
+<div class="text-[9px] font-mono text-outline/60 text-center font-bold">FRI</div>
+<div class="text-[9px] font-mono text-outline/60 text-center font-bold">SAT</div>
+<div class="text-[9px] font-mono text-outline/60 text-center font-bold">SUN</div>
+<!-- Week 1 -->
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/20 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/40 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF] rounded-md border-2 border-secondary shadow-[0_0_15px_rgba(66,225,179,0.3)]"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/60 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/10 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/30 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/20 rounded-md border border-[#4F7EFF]/10"></div>
+<!-- Week 2 -->
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/10 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/20 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/30 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/80 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/10 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/10 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/20 rounded-md border border-[#4F7EFF]/10"></div>
+<!-- Week 3 -->
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/30 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/10 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/40 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/20 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/30 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/90 rounded-md border border-[#4F7EFF]/20 shadow-[0_0_10px_rgba(79,126,254,0.2)]"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/40 rounded-md border border-[#4F7EFF]/10"></div>
+<!-- Week 4 -->
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/10 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/20 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/10 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/10 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/60 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/20 rounded-md border border-[#4F7EFF]/10"></div>
+<div class="heatmap-cell aspect-square bg-[#4F7EFF]/10 rounded-md border border-[#4F7EFF]/10"></div>
+</div>
+</section>
+<!-- Format Intelligence -->
+<section class="col-span-4 bg-surface-container-low p-6 rounded-xl border border-outline-variant/10 flex flex-col">
+<h4 class="text-[10px] font-mono uppercase tracking-widest text-outline mb-6 font-bold">Format Distribution</h4>
+<div class="space-y-8 flex-1">
+<div>
+<div class="flex justify-between text-[9px] font-mono mb-2.5 font-bold">
+<span class="text-secondary">SHORTS (35%)</span>
+<span class="text-[#4F7EFF]">LONG-FORM (65%)</span>
+</div>
+<div class="h-1.5 w-full flex rounded-full overflow-hidden bg-surface-container-highest/20">
+<div class="h-full bg-secondary" style="width: 35%"></div>
+<div class="h-full bg-[#4F7EFF]" style="width: 65%"></div>
+</div>
+</div>
+<div class="space-y-4">
+<p class="text-[9px] font-mono uppercase text-outline tracking-wider font-bold">Duration Performance</p>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-mono w-14 text-on-surface">12-18m</span>
+<div class="flex-1 h-2.5 bg-surface-container-highest/20 rounded-sm overflow-hidden">
+<div class="h-full bg-[#4F7EFF]" style="width: 90%"></div>
+</div>
+<span class="text-[9px] font-mono text-[#4F7EFF] font-bold">ELITE</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-mono w-14 text-on-surface">8-12m</span>
+<div class="flex-1 h-2.5 bg-surface-container-highest/20 rounded-sm overflow-hidden">
+<div class="h-full bg-[#4F7EFF]/40" style="width: 45%"></div>
+</div>
+<span class="text-[9px] font-mono text-outline">MID</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-mono w-14 text-on-surface">25m+</span>
+<div class="flex-1 h-2.5 bg-surface-container-highest/20 rounded-sm overflow-hidden">
+<div class="h-full bg-error/40" style="width: 15%"></div>
+</div>
+<span class="text-[9px] font-mono text-error">POOR</span>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/10">
+<p class="text-[9px] font-mono uppercase text-error mb-3 font-bold tracking-wider">Format Graveyard Registry</p>
+<div class="space-y-2">
+<div class="bg-surface-container-lowest/50 p-2.5 flex items-center justify-between border border-outline-variant/10 rounded-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-sm">skull</span>
+<p class="text-[11px] font-mono text-on-surface">Whiteboard Sessions</p>
+</div>
+<span class="text-[10px] font-mono text-error">-88%</span>
+</div>
+<div class="bg-surface-container-lowest/50 p-2.5 flex items-center justify-between border border-outline-variant/10 rounded-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-sm">skull</span>
+<p class="text-[11px] font-mono text-on-surface">Community Q&amp;A</p>
+</div>
+<span class="text-[10px] font-mono text-error">-72%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="flex items-center gap-3 px-6 py-4 bg-gradient-to-br from-[#4F7EFF] to-[#2563EB] text-on-primary font-bold rounded-full shadow-2xl shadow-[#4F7EFF]/30 hover:scale-105 active:scale-95 transition-all group">
+<span class="material-symbols-outlined group-hover:rotate-12 transition-transform">auto_awesome</span>
+<span class="text-sm tracking-tight">Generate Intelligence Brief</span>
+</button>
+</div>
+</body></html>
