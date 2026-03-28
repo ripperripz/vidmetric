@@ -100,7 +100,7 @@ export default function AnalysisLayout({
 
         {/* Topbar */}
         <header
-          className="sticky top-0 z-30 h-16 flex items-center justify-between pl-14 pr-4 md:px-10"
+          className="sticky top-0 z-30 h-14 sm:h-16 flex items-center justify-between pl-14 pr-3 sm:pr-4 md:px-10"
           style={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
         >
           <div className="flex items-center gap-3 min-w-0">

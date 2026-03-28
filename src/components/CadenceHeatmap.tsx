@@ -46,52 +46,54 @@ export function CadenceHeatmap({ grid }: CadenceHeatmapProps) {
       </div>
 
       <div className="relative">
-        <div className="flex gap-1 sm:gap-2">
-          {/* Time labels */}
-          <div className="flex flex-col gap-1 sm:gap-2 justify-start pt-6 sm:pt-7">
-            {TIMES.map((t, i) => (
-              <div key={t} className="h-8 sm:h-9 flex items-center">
-                <span className="hidden sm:block" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#4A4A62', width: '64px', textAlign: 'right', paddingRight: '8px' }}>{t}</span>
-                <span className="sm:hidden" style={{ fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#4A4A62', width: '36px', textAlign: 'right', paddingRight: '4px' }}>{TIMES_SHORT[i]}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Grid */}
-          <div className="flex flex-col gap-1 sm:gap-2 flex-1 min-w-0">
-            <div className="grid grid-cols-7 gap-1 sm:gap-2">
-              {DAYS.map((d) => (
-                <div key={d} className="flex justify-center">
-                  <span style={{ fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#4A4A62' }}>{d.charAt(0)}</span>
-                  <span className="hidden sm:inline" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#4A4A62' }}>{d.slice(1)}</span>
-                </div>
-              ))}
+        {/* CSS Grid layout: time labels column + 7 day columns */}
+        <div
+          className="gap-1 sm:gap-2"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'auto repeat(7, 1fr)',
+          }}
+        >
+          {/* Top-left empty cell */}
+          <div />
+          {/* Day headers */}
+          {DAYS.map((d) => (
+            <div key={d} className="flex justify-center items-end pb-1">
+              <span className="sm:hidden" style={{ fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#4A4A62' }}>{d.charAt(0)}</span>
+              <span className="hidden sm:block" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#4A4A62' }}>{d}</span>
             </div>
+          ))}
 
-            {TIMES.map((time) => (
-              <div key={time} className="grid grid-cols-7 gap-1 sm:gap-2">
-                {DAYS.map((day) => {
-                  const perf = lookup[day]?.[time] ?? 0
-                  return (
-                    <div
-                      key={`${day}-${time}`}
-                      className="aspect-square rounded-md sm:rounded-lg cursor-pointer transition-transform duration-150 hover:scale-110"
-                      style={{
-                        background: cellBg(perf),
-                        border: '1px solid rgba(255,255,255,0.06)',
-                        boxShadow: cellGlow(perf),
-                      }}
-                      onMouseEnter={() => setTooltip({ day, time, performance: perf })}
-                      onMouseLeave={() => setTooltip(null)}
-                      onClick={() => setTooltip(tooltip?.day === day && tooltip?.time === time ? null : { day, time, performance: perf })}
-                      role="gridcell"
-                      aria-label={`${day} ${time}: ${(perf * 10).toFixed(1)}x avg views`}
-                    />
-                  )
-                })}
+          {/* Rows: time label + 7 cells */}
+          {TIMES.map((time, ti) => (
+            <div key={time} className="contents">
+              {/* Time label */}
+              <div className="flex items-center justify-end pr-1 sm:pr-2">
+                <span className="hidden sm:block" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#4A4A62', whiteSpace: 'nowrap' }}>{time}</span>
+                <span className="sm:hidden" style={{ fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#4A4A62', whiteSpace: 'nowrap' }}>{TIMES_SHORT[ti]}</span>
               </div>
-            ))}
-          </div>
+              {/* 7 cells for this time slot */}
+              {DAYS.map((day) => {
+                const perf = lookup[day]?.[time] ?? 0
+                return (
+                  <div
+                    key={`${day}-${time}`}
+                    className="aspect-square rounded-md sm:rounded-lg cursor-pointer transition-transform duration-150 hover:scale-110"
+                    style={{
+                      background: cellBg(perf),
+                      border: '1px solid rgba(255,255,255,0.06)',
+                      boxShadow: cellGlow(perf),
+                    }}
+                    onMouseEnter={() => setTooltip({ day, time, performance: perf })}
+                    onMouseLeave={() => setTooltip(null)}
+                    onClick={() => setTooltip(tooltip?.day === day && tooltip?.time === time ? null : { day, time, performance: perf })}
+                    role="gridcell"
+                    aria-label={`${day} ${time}: ${(perf * 10).toFixed(1)}x avg views`}
+                  />
+                )
+              })}
+            </div>
+          ))}
         </div>
 
         {/* Tooltip */}

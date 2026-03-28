@@ -30,9 +30,9 @@ function Navbar() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-8">
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 sm:pt-8 px-4">
       <nav
-        className="flex items-center gap-12 px-10 py-4 rounded-full transition-all duration-300"
+        className="flex items-center gap-4 sm:gap-12 px-5 sm:px-10 py-3 sm:py-4 rounded-full transition-all duration-300"
         style={{
           background: scrolled ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.3)',
           backdropFilter: 'blur(20px)',
@@ -64,9 +64,10 @@ function Navbar() {
         <a
           href="/analyze"
           className="btn-primary"
-          style={{ padding: '8px 20px', fontSize: '13px' }}
+          style={{ padding: '8px 16px', fontSize: '13px', whiteSpace: 'nowrap' }}
         >
-          Get Started
+          <span className="hidden sm:inline">Get Started</span>
+          <span className="sm:hidden">Start</span>
           <span className="arrow-circle">↗</span>
         </a>
       </nav>
@@ -121,8 +122,8 @@ function Hero() {
 
       {/* Content */}
       <div
-        className="relative z-10 flex flex-col items-center text-center px-6"
-        style={{ maxWidth: '780px', paddingTop: '180px', paddingBottom: '100px' }}
+        className="relative z-10 flex flex-col items-center text-center px-5 sm:px-6"
+        style={{ maxWidth: '780px', paddingTop: 'clamp(100px, 20vw, 180px)', paddingBottom: 'clamp(40px, 10vw, 100px)' }}
       >
         {/* Headline */}
         <motion.h1
@@ -146,7 +147,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.18 }}
-          style={{ fontSize: '18px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, maxWidth: '560px', marginBottom: '48px' }}
+          style={{ fontSize: 'clamp(14px, 3.5vw, 18px)', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, maxWidth: '560px', marginBottom: 'clamp(24px, 6vw, 48px)' }}
         >
           Deconstruct any YouTube channel into an intelligence brief — outlier scores,
           win formulas, and competitive gaps — in under 5 seconds.
@@ -178,11 +179,11 @@ function Hero() {
               }}
             />
             <div
-              className="relative flex items-center gap-3"
+              className="relative flex items-center gap-2 sm:gap-3"
               style={{
                 background: 'rgba(0,0,0,0.85)',
                 borderRadius: '999px',
-                padding: '10px 10px 10px 28px',
+                padding: '8px 8px 8px 16px',
               }}
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" style={{ color: 'rgba(61,110,255,0.6)', flexShrink: 0 }}>
@@ -195,14 +196,14 @@ function Hero() {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="Paste any YouTube channel URL..."
-                style={{ fontSize: '15px', letterSpacing: '-0.01em' }}
+                style={{ fontSize: '16px', letterSpacing: '-0.01em' }}
               />
               <button
                 type="submit"
                 disabled={loading}
                 className="btn-primary"
                 style={{
-                  padding: '12px 26px',
+                  padding: '10px 18px',
                   fontSize: '14px',
                   borderRadius: '999px',
                   opacity: loading ? 0.6 : 1,
@@ -330,7 +331,7 @@ function Hero() {
         <div
           style={{
             flex: '0 0 auto',
-            width: '180px',
+            width: 'clamp(140px, 40vw, 180px)',
             background: 'rgba(255,255,255,0.03)',
             border: '1px solid rgba(255,255,255,0.08)',
             borderRadius: '12px',
@@ -393,15 +394,15 @@ function StatsRow() {
   return (
     <section style={{ background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
       <div
-        className="flex flex-wrap items-center justify-center gap-0"
+        className="grid grid-cols-2 sm:grid-cols-4 items-center"
         style={{ maxWidth: '1100px', margin: '0 auto' }}
       >
         {stats.map((s, i) => (
           <motion.div
             key={s.label}
-            className="flex-1 flex flex-col items-center justify-center py-10"
+            className="flex-1 flex flex-col items-center justify-center py-6 sm:py-10"
             style={{
-              minWidth: '180px',
+              minWidth: '0',
               borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
             }}
             initial={{ opacity: 0, y: 16 }}
@@ -409,8 +410,8 @@ function StatsRow() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }}
           >
-            <p className="font-mono" style={{ fontSize: '32px', fontWeight: 700, color: '#fff', lineHeight: 1 }}>{s.value}</p>
-            <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', marginTop: '6px', letterSpacing: '0.05em' }}>{s.label}</p>
+            <p className="font-mono" style={{ fontSize: 'clamp(20px, 5vw, 32px)', fontWeight: 700, color: '#fff', lineHeight: 1 }}>{s.value}</p>
+            <p style={{ fontSize: 'clamp(9px, 2.5vw, 12px)', color: 'rgba(255,255,255,0.35)', marginTop: '6px', letterSpacing: '0.05em', textAlign: 'center' }}>{s.label}</p>
           </motion.div>
         ))}
       </div>
@@ -489,7 +490,7 @@ function Features() {
   ]
 
   return (
-    <section id="features" style={{ background: '#000000', padding: '120px 24px' }}>
+    <section id="features" style={{ background: '#000000', padding: 'clamp(48px, 10vw, 120px) clamp(16px, 4vw, 24px)' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
         {/* Section header */}
@@ -619,9 +620,9 @@ function Spotlight({
   reversed?: boolean
 }) {
   return (
-    <section style={{ background: '#000000', padding: '80px 24px', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+    <section style={{ background: '#000000', padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
       <div
-        className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16`}
+        className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-8 lg:gap-16`}
         style={{ maxWidth: '1100px', margin: '0 auto' }}
       >
         {/* Text */}
@@ -691,10 +692,10 @@ function Testimonials() {
   ]
 
   return (
-    <section style={{ background: '#000000', padding: '120px 24px', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+    <section style={{ background: '#000000', padding: 'clamp(48px, 10vw, 120px) clamp(16px, 4vw, 24px)', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
-          className="flex flex-col items-center text-center mb-16"
+          className="flex flex-col items-center text-center mb-10 sm:mb-16"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -772,10 +773,10 @@ function Pricing() {
   ]
 
   return (
-    <section id="pricing" style={{ background: '#000000', padding: '120px 24px', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+    <section id="pricing" style={{ background: '#000000', padding: 'clamp(48px, 10vw, 120px) clamp(16px, 4vw, 24px)', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
-          className="flex flex-col items-center text-center mb-16"
+          className="flex flex-col items-center text-center mb-10 sm:mb-16"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -889,7 +890,7 @@ function LogoStrip() {
 // ── Final CTA ─────────────────────────────────────────────────────────────
 function FinalCTA() {
   return (
-    <section style={{ background: '#000000', padding: '140px 24px', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.04)', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ background: '#000000', padding: 'clamp(60px, 12vw, 140px) clamp(16px, 4vw, 24px)', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.04)', position: 'relative', overflow: 'hidden' }}>
       {/* Glow */}
       <div
         className="absolute pointer-events-none"
@@ -913,11 +914,11 @@ function FinalCTA() {
           Start your 14-day free trial. No card required. Unlimited analyses during trial.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <a href="/analyze" className="btn-primary" style={{ padding: '15px 32px', fontSize: '15px', textDecoration: 'none' }}>
+          <a href="/analyze" className="btn-primary" style={{ padding: '12px 24px', fontSize: '15px', textDecoration: 'none' }}>
             Start Free Trial
             <span className="arrow-circle">↗</span>
           </a>
-          <a href="/about" className="btn-secondary" style={{ padding: '14px 30px', fontSize: '15px', textDecoration: 'none' }}>
+          <a href="/about" className="btn-secondary" style={{ padding: '11px 22px', fontSize: '15px', textDecoration: 'none' }}>
             Learn More
           </a>
         </div>
@@ -929,7 +930,7 @@ function FinalCTA() {
 // ── Footer ────────────────────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer style={{ background: '#000000', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '64px 24px 48px' }}>
+    <footer style={{ background: '#000000', borderTop: '1px solid rgba(255,255,255,0.05)', padding: 'clamp(32px, 6vw, 64px) clamp(16px, 4vw, 24px) 48px' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vexel - VidMetrics Challenge Submission</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1a1a2e;
+    line-height: 1.7;
+    background: #fff;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @media print {
+    body { padding: 0; }
+    .page-break { page-break-before: always; }
+    .no-break { page-break-inside: avoid; }
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 48px;
+  }
+
+  /* ── Cover ─────────────────────────── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .cover-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #4F7EFF;
+    margin-bottom: 48px;
+  }
+
+  .cover h1 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #0a0a1a;
+    margin-bottom: 16px;
+  }
+
+  .cover h1 span {
+    color: #4F7EFF;
+  }
+
+  .cover-subtitle {
+    font-size: 18px;
+    color: #6b7280;
+    margin-bottom: 48px;
+    max-width: 500px;
+  }
+
+  .cover-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: #9ca3af;
+  }
+
+  .cover-meta strong {
+    color: #374151;
+    font-weight: 500;
+  }
+
+  /* ── Headings ──────────────────────── */
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0a0a1a;
+    margin-bottom: 8px;
+    margin-top: 48px;
+  }
+
+  h2:first-child { margin-top: 0; }
+
+  h2 .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4F7EFF;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  /* ── Body text ─────────────────────── */
+  p {
+    font-size: 14.5px;
+    color: #374151;
+    margin-bottom: 14px;
+  }
+
+  .lead {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 28px;
+    border-left: 3px solid #e5e7eb;
+    padding-left: 16px;
+  }
+
+  /* ── Lists ─────────────────────────── */
+  ul, ol {
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  li {
+    font-size: 14.5px;
+    color: #374151;
+    margin-bottom: 6px;
+  }
+
+  li strong {
+    color: #1a1a2e;
+  }
+
+  /* ── Stat grid ─────────────────────── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .stat-card {
+    background: #f9fafb;
+    border: 1px solid #f0f0f5;
+    border-radius: 10px;
+    padding: 18px 16px;
+  }
+
+  .stat-card .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9ca3af;
+    margin-bottom: 4px;
+  }
+
+  .stat-card .value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    color: #0a0a1a;
+  }
+
+  .stat-card .note {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 2px;
+  }
+
+  /* ── Feature table ─────────────────── */
+  .feature-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13.5px;
+  }
+
+  .feature-table th {
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9ca3af;
+    padding: 8px 12px;
+    border-bottom: 2px solid #e5e7eb;
+    font-weight: 500;
+  }
+
+  .feature-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+    vertical-align: top;
+  }
+
+  .feature-table td:first-child {
+    font-weight: 500;
+    color: #1a1a2e;
+    white-space: nowrap;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  .badge-blue { background: #eff6ff; color: #2563eb; }
+  .badge-green { background: #ecfdf5; color: #059669; }
+  .badge-amber { background: #fffbeb; color: #d97706; }
+  .badge-purple { background: #faf5ff; color: #7c3aed; }
+
+  /* ── Divider ───────────────────────── */
+  .divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 40px 0;
+  }
+
+  /* ── Code/mono ─────────────────────── */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #4F7EFF;
+  }
+
+  /* ── Callout ───────────────────────── */
+  .callout {
+    background: #f0f4ff;
+    border: 1px solid #dbe4ff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 24px 0;
+  }
+
+  .callout p {
+    color: #1e3a8a;
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
+  .callout strong {
+    color: #1e3a8a;
+  }
+
+  /* ── Timeline ──────────────────────── */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: 20px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: #e5e7eb;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4F7EFF;
+  }
+
+  .timeline-item .time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #4F7EFF;
+    margin-bottom: 2px;
+  }
+
+  .timeline-item .desc {
+    font-size: 14px;
+    color: #374151;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- COVER PAGE                                                            -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-logo">VEXEL</div>
+  <h1>Vibe Coder Challenge<br><span>Submission Document</span></h1>
+  <p class="cover-subtitle">
+    YouTube competitor intelligence tool. Built from a napkin sketch to a deployable product in one sprint.
+  </p>
+  <div class="cover-meta">
+    <span><strong>Candidate:</strong> Arsh Bhattarai</span>
+    <span><strong>Position:</strong> Vibe Coder Product Developer</span>
+    <span><strong>Date:</strong> March 2026</span>
+    <span><strong>Stack:</strong> Next.js 14 / TypeScript / Tailwind / YouTube Data API v3 / Vercel</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- BUILD BREAKDOWN                                                       -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="container">
+
+<h2><span class="num">01</span>Build Breakdown</h2>
+<p class="lead">
+  How I went from "make it clean, ship it Monday" to a working competitor intelligence platform.
+</p>
+
+<h3>Time Investment</h3>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="label">Total Build Time</div>
+    <div class="value">~20 hrs</div>
+    <div class="note">Across 3 sessions</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Components Built</div>
+    <div class="value">18</div>
+    <div class="note">All custom, no UI kits</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Analysis Algorithms</div>
+    <div class="value">12</div>
+    <div class="note">Pure JS, zero API calls</div>
+  </div>
+</div>
+
+<h3>How I Spent the Time</h3>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="time">Session 1 — Foundation + Core UI</div>
+    <div class="desc">
+      Tailwind config with full design token system. TypeScript interfaces for every data shape. Complete mock dataset (50 videos) so I could build UI without needing the API. All formatting utilities. Then knocked out the component layer: ChannelHeader, IntelligenceBrief, MetricCards, VideoCard, VideoGrid, SortFilterBar, CadenceHeatmap, FormatGraveyard, LoadingScreen.
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="time">Session 2 — Pages, API, Scoring Engine</div>
+    <div class="desc">
+      Built the full page flow: landing, login, analysis results, export, dashboard shells. Wired up YouTube Data API v3 with smart URL parsing (handles @handles, /channel/ links, video URLs, custom URLs). Then wrote the scoring engine: outlier detection, curiosity gap analysis, win formula extraction, format graveyard detection, cadence mapping, ghost audience flagging. All pure JavaScript, zero network calls.
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="time">Session 3 — Polish, Export, Visual Refinement</div>
+    <div class="desc">
+      Three.js particle background with cursor interaction. Custom cursor system. Recharts performance visualizations. Multi-format export (PDF/CSV/JSON) with white-label support. Fixed the outlier scoring to use log-scale with separate Shorts/Long-form baselines. Expanded curiosity gap to 24 patterns. Bug fixes, responsive tweaks, page titles, favicon.
+    </div>
+  </div>
+</div>
+
+<h3>Tools and Frameworks</h3>
+
+<table class="feature-table">
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>Used For</th>
+      <th>Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Claude Code (CLI)</td>
+      <td>Primary development partner. Component scaffolding, algorithm implementation, debugging, iterative refinement based on my feedback.</td>
+      <td><span class="badge badge-blue">HIGH</span></td>
+    </tr>
+    <tr>
+      <td>Next.js 14 App Router</td>
+      <td>Framework. Server components for data fetching, client components for interactivity, API routes for YouTube proxy.</td>
+      <td><span class="badge badge-blue">HIGH</span></td>
+    </tr>
+    <tr>
+      <td>Tailwind CSS</td>
+      <td>Styling. Custom token system with named colors, consistent spacing, responsive breakpoints. Zero raw hex values in components.</td>
+      <td><span class="badge badge-blue">HIGH</span></td>
+    </tr>
+    <tr>
+      <td>Three.js</td>
+      <td>3D particle network background on the landing page. Mouse-reactive nodes, connection lines, ambient glow.</td>
+      <td><span class="badge badge-green">MEDIUM</span></td>
+    </tr>
+    <tr>
+      <td>Recharts</td>
+      <td>Views over time area chart, outlier distribution bar chart. Dark theme with custom tooltips.</td>
+      <td><span class="badge badge-green">MEDIUM</span></td>
+    </tr>
+    <tr>
+      <td>YouTube Data API v3</td>
+      <td>Channel metadata and video statistics. Quota-efficient: uses playlistItems.list (1 unit) instead of search.list (100 units).</td>
+      <td><span class="badge badge-blue">HIGH</span></td>
+    </tr>
+    <tr>
+      <td>Vercel</td>
+      <td>Deployment. Zero-config Next.js hosting with edge caching.</td>
+      <td><span class="badge badge-green">MEDIUM</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>What I Automated vs. What I Decided</h3>
+
+<p>
+  The AI handled the heavy lifting on boilerplate: component scaffolding, TypeScript interfaces, regex pattern libraries, SVG icons, responsive grid layouts. That freed me up to focus on the decisions that actually matter.
+</p>
+
+<p>
+  <strong>I made the calls on:</strong> the scoring methodology (why log-scale instead of linear ratios), the information hierarchy on the analysis page (what a VP of Content Strategy actually needs to see first), the export format structures (what data belongs in a CSV vs. a PDF), and which features to cut vs. keep. The AI can write code fast, but it cannot decide what the product should feel like or what data actually matters to an enterprise buyer. That was all me.
+</p>
+
+<p>
+  <strong>The AI accelerated:</strong> CSS implementation of visual designs I described in words, the YouTube API integration boilerplate, unit conversion utilities, responsive breakpoint adjustments, and iterating through multiple visual approaches for the 3D background (we went through 4 versions before I landed on the particle network).
+</p>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- WHAT I BUILT                                                          -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+
+<h2><span class="num">02</span>What I Built</h2>
+<p class="lead">
+  Not just a data viewer. A competitor intelligence platform that gives content strategists actionable signals they cannot get anywhere else.
+</p>
+
+<h3>Core Features (Required)</h3>
+
+<table class="feature-table">
+  <thead>
+    <tr>
+      <th>Requirement</th>
+      <th>Implementation</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Channel Input</td>
+      <td>Accepts @handles, /channel/ URLs, /c/ custom URLs, video URLs (resolves to channel), youtu.be short links. Validates and provides clear error messages.</td>
+      <td><span class="badge badge-green">DONE</span></td>
+    </tr>
+    <tr>
+      <td>Video List</td>
+      <td>Fetches up to 50 recent videos with thumbnails, view counts, likes, comments, duration, publish date. Each card has outlier score bar and curiosity gap bar.</td>
+      <td><span class="badge badge-green">DONE</span></td>
+    </tr>
+    <tr>
+      <td>Sorting</td>
+      <td>6 sort options: Views, Likes, Comments, Upload Date, Curiosity Gap, Outlier Score. Persistent state.</td>
+      <td><span class="badge badge-green">DONE</span></td>
+    </tr>
+    <tr>
+      <td>Filtering</td>
+      <td>7 filters: All, Shorts, Long-Form, Most Comments, >10M Views, Format Graveyard, Ghost Audience. Time filter (All Time / Last 30 Days). Clear filters button on empty state.</td>
+      <td><span class="badge badge-green">DONE</span></td>
+    </tr>
+    <tr>
+      <td>Responsive Design</td>
+      <td>Mobile-first. Sidebar collapses to hamburger. Video grid goes single-column. Charts stack. 3D background reduces particle count on mobile.</td>
+      <td><span class="badge badge-green">DONE</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Bonus Features (Beyond the Brief)</h3>
+
+<table class="feature-table">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>What It Does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="badge badge-amber">Intelligence Brief</span></td>
+      <td>6 auto-generated bullet insights with sentiment indicators. Covers performance, shorts efficiency, win formula, abandoned formats, engagement, and momentum. This is the signature feature that makes it feel like an analyst wrote a report, not a data dump.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-amber">Outlier Score</span></td>
+      <td>Log-scaled 0-10 score per video. Uses separate baselines for Shorts and Long-form so viral Shorts don't inflate long-form scores. 5.0 = typical, 7+ = breakout, 10 = viral.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-amber">Win Formula</span></td>
+      <td>Analyzes top 10 long-form videos to extract: best posting day, optimal duration range (IQR), and dominant title pattern. Tells you what works and when.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-purple">Format Graveyard</span></td>
+      <td>Detects content formats the channel was winning with but stopped using. Flags them as competitor opportunities with performance multipliers and time since last use.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-amber">Cadence Heatmap</span></td>
+      <td>7x4 grid (day x time slot) showing when uploads happen vs. when they perform best. Normalized 0-1 performance score per cell.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-amber">Curiosity Gap Score</span></td>
+      <td>0-100 title effectiveness score based on 24 regex patterns. Checks for numbers, questions, superlatives, first-person hooks, scarcity words, structural hooks like ALL CAPS and series indicators.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-amber">Charts</span></td>
+      <td>Views Over Time (area chart, last 20 videos chronologically) and Outlier Distribution (horizontal bar chart, top 15 by outlier score with top 3 highlighted in amber).</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-green">Export</span></td>
+      <td>3 formats: PDF (browser print with styled report), CSV (6 sections, 20+ channel metrics, per-video engagement ratios), JSON (structured report with momentum, shorts analysis, comment goldmine, ghost audience). Section toggles and white-label/custom branding.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-green">Video Player</span></td>
+      <td>Click any video card to open an in-app YouTube embed modal. Autoplay, ESC to close, link to open on YouTube directly. Keeps users in the platform.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-blue">3D Background</span></td>
+      <td>Three.js particle network with 90 nodes, connection lines, ambient glow layers. Mouse pushes particles, camera tilts with parallax. Performance-optimized for mobile (halved particles, capped pixel ratio). Respects prefers-reduced-motion.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-blue">Custom Cursor</span></td>
+      <td>6px dot + 32px ring. Smooth 60fps tracking with 15% easing. Scales and changes color on interactive elements. MutationObserver handles dynamically added DOM nodes.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-green">Ghost Audience</span></td>
+      <td>Flags videos with high comment-to-view ratio where the creator never engaged. These represent unmet audience demand that competitors could capture.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <p>
+    <strong>Why these features matter for the buyer:</strong> The target user is a Head of Content Strategy at a media company paying $499/month. They do not want raw data. They want signals. The Intelligence Brief, Win Formula, and Format Graveyard are not just "bonus features" -- they are the core value proposition. They turn a data viewer into a decision-making tool.
+  </p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- ARCHITECTURE + TECHNICAL DECISIONS                                    -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="container">
+
+<h2><span class="num">03</span>Architecture and Technical Decisions</h2>
+<p class="lead">
+  The tradeoffs I made and why I made them.
+</p>
+
+<h3>Scoring Engine: Pure JS, Zero API Calls</h3>
+
+<p>
+  All 12 analysis features run in a single <code>analyze()</code> function that takes raw video data and returns a complete AnalysisResult. No network calls, no external services. This was deliberate. It means the scoring logic works offline, is testable in isolation, has zero additional latency, and costs nothing to run at scale. The YouTube API is used exactly twice: once for channel metadata, once for video statistics. Everything else is computed locally.
+</p>
+
+<h3>Log-Scale Outlier Scoring</h3>
+
+<p>
+  The first version used a simple ratio: <code>views / median</code>. This broke badly for channels with mixed content. A channel with 30 Shorts averaging 5K views and 20 long-form videos averaging 2M views would have a median around 5K, making every long-form video score 10/10. Useless.
+</p>
+
+<p>
+  The fix: separate baselines for Shorts and Long-form, plus a log-scale transformation (<code>5 + log2(ratio) * 1.5</code>) that compresses the range. Now a video at the median scores exactly 5.0, double the median is 6.5, and you need 8x the median to hit 9.5. The scale has meaning. I spent real time getting this right because a wrong outlier score undermines trust in the entire product.
+</p>
+
+<h3>YouTube API Quota Efficiency</h3>
+
+<p>
+  The YouTube Data API has a daily quota of 10,000 units. A naive implementation using <code>search.list</code> costs 100 units per call. I use <code>playlistItems.list</code> (the channel's uploads playlist) which costs just 1 unit, followed by a <code>videos.list</code> batch call for another 1 unit. Total cost per analysis: about 3 quota units instead of 100+. That means ~3,000 analyses per day on the free tier instead of ~100.
+</p>
+
+<h3>URL Parsing</h3>
+
+<p>
+  YouTube URLs come in at least 8 formats: <code>@handle</code>, <code>/channel/UCxxx</code>, <code>/c/customname</code>, <code>/user/username</code>, <code>youtu.be/videoId</code>, <code>?v=videoId</code>, <code>/shorts/videoId</code>, <code>/live/videoId</code>. I handle all of them. If someone pastes a video link, I resolve it to the channel first, then analyze the channel. This is the kind of detail that separates "it works in a demo" from "it works when a real user tries it."
+</p>
+
+<h3>Server Components for Data Fetching</h3>
+
+<p>
+  The analysis page is a server component that fetches data before sending HTML to the client. No loading spinners, no client-side API calls, no CORS headaches. The YouTube API key stays server-side, never exposed to the browser. Client components handle interactivity only (sorting, filtering, modals).
+</p>
+
+<h3>What I Chose NOT to Build</h3>
+
+<ul>
+  <li><strong>Authentication:</strong> Login page exists as a shell but does not enforce auth. For a Monday demo, the founder needs to paste a URL and see results. Auth adds friction without adding value to the demo.</li>
+  <li><strong>Database:</strong> No persistence layer. Saved analyses use localStorage. This is fine for an MVP. Adding a database before validating the product would be premature engineering.</li>
+  <li><strong>Real-time updates:</strong> Data is fetched once per analysis. Polling or WebSocket updates would add complexity without changing the demo experience.</li>
+</ul>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- PRODUCT THINKING                                                      -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="container">
+
+<h2><span class="num">04</span>Product Thinking</h2>
+<p class="lead">
+  What I would add, what feels missing, and where this goes next.
+</p>
+
+<h3>What I Would Add With More Time</h3>
+
+<p><strong>Multi-Channel Comparison.</strong> The biggest gap. Right now you analyze one channel at a time. The real power is putting two or three competitors side-by-side: who is winning on which days, whose formats are declining, where the content gaps are. I would add a split-view comparison mode where you paste 2-3 URLs and get a combined intelligence brief highlighting relative strengths and weaknesses.</p>
+
+<p><strong>Saved Analysis History with Trends.</strong> Right now, each analysis is a snapshot. If you analyzed the same channel last month, there is no way to compare. I would store historical results in a database and show trend lines: "Outlier score improved from 4.2 to 6.8 over 90 days" or "Posting cadence dropped from every 3 days to every 2 weeks." That is the kind of insight that justifies a $499/month subscription.</p>
+
+<p><strong>Topic Clustering.</strong> Group a channel's videos by topic using keyword extraction from titles and descriptions, not just format pattern matching. This would make the Format Graveyard smarter and enable a "Content Map" visualization showing which topics drive the most views.</p>
+
+<p><strong>Email Reports.</strong> The weekly scheduled report feature has a UI shell but no backend. With a simple cron job and email service (Resend or SendGrid), this would let agencies auto-deliver branded reports to their clients every Monday morning without logging in.</p>
+
+<p><strong>Comment Sentiment Analysis.</strong> Right now Ghost Audience just checks if comments exist. With even basic NLP, I could flag whether comments are positive ("amazing video"), negative ("clickbait"), or questions ("can you do a video about X?"). Questions in comments are a gold mine for content ideas.</p>
+
+<h3>What Feels Missing Right Now</h3>
+
+<ul>
+  <li><strong>Onboarding flow.</strong> A first-time user lands on the analysis page and sees a wall of data. There should be a brief guided tour that explains what each section means and why it matters.</li>
+  <li><strong>Error recovery.</strong> If the API quota runs out or a channel is private, the error message is functional but not helpful. I would add suggestions like "Try again in 24 hours" or "Try this channel instead."</li>
+  <li><strong>Share and collaborate.</strong> The share link feature generates a URL but it does not actually resolve to anything yet. This needs a backend to store and serve shared reports.</li>
+  <li><strong>Keyboard shortcuts.</strong> Power users (the VP of Content Strategy who uses this daily) would benefit from keyboard navigation: J/K to move between videos, E to export, S to save.</li>
+</ul>
+
+<h3>Version 2 Vision</h3>
+
+<p>
+  If this product gets traction after the Monday demo, version 2 should focus on three things:
+</p>
+
+<ol>
+  <li><strong>Persistence and accounts.</strong> Supabase or Postgres for storing analyses, user accounts, team workspaces. This unlocks saved history, trend tracking, and team collaboration.</li>
+  <li><strong>AI-generated recommendations.</strong> Feed the analysis data into an LLM to generate specific, actionable recommendations: "Based on MrBeast's format graveyard, there is an opportunity in challenge-format videos in the cooking niche. His last challenge video averaged 4.2x his channel average but he has not posted one in 8 months."</li>
+  <li><strong>Embeddable widgets.</strong> Let agencies embed live analysis widgets in their own dashboards or client presentations. Iframe-able charts, exportable data feeds, API access for custom integrations.</li>
+</ol>
+
+<div class="callout">
+  <p>
+    <strong>The core bet:</strong> Most YouTube analytics tools show you what happened. Vexel should tell you what to do about it. The Intelligence Brief and Format Graveyard are early steps in that direction. Version 2 doubles down on prescriptive intelligence over descriptive data.
+  </p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- HOW I USED AI                                                         -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="container">
+
+<h2><span class="num">05</span>How I Used AI to Move Fast</h2>
+<p class="lead">
+  AI was the accelerator. I was the driver.
+</p>
+
+<h3>My Workflow</h3>
+
+<p>
+  I used Claude Code (Anthropic's CLI tool) as my primary development partner. The workflow was conversational and iterative. I would describe what I wanted in plain English, review what it generated, give feedback, and iterate. Some components landed on the first try. Others took 3-4 rounds of "not quite, try this instead."
+</p>
+
+<p>
+  The key thing: I never blindly accepted output. Every algorithm, every design choice, every architectural decision went through my judgment. When the outlier score was broken (every video showing 10/10), I identified the root cause (Shorts skewing the baseline) and directed the fix (separate baselines + log-scale). The AI wrote the code. I diagnosed the problem.
+</p>
+
+<h3>Where AI Saved the Most Time</h3>
+
+<ul>
+  <li><strong>Boilerplate and scaffolding.</strong> TypeScript interfaces, component prop types, API route handlers, utility functions. All of this is tedious but well-defined. AI generates it in seconds instead of me typing it out over an hour.</li>
+  <li><strong>CSS implementation.</strong> I described the look I wanted ("frosted glass card with subtle border, 12px radius, hover lifts 4px"). The AI translated that into exact Tailwind classes and inline styles. Faster than looking up utility class names.</li>
+  <li><strong>Regex patterns.</strong> The 24 curiosity gap patterns would have taken an hour to research and write. AI generated a solid first draft in seconds, and I added a few more based on patterns I have seen in real YouTube titles.</li>
+  <li><strong>Three.js setup.</strong> The 3D particle background involved a lot of WebGL boilerplate (BufferGeometry, ShaderMaterial, Points, Lines). AI handled the setup, and I directed the aesthetics through multiple iterations.</li>
+</ul>
+
+<h3>Where I Overrode the AI</h3>
+
+<ul>
+  <li><strong>Information hierarchy.</strong> The AI initially put the video grid first on the analysis page. I moved Intelligence Brief to the top because that is what the buyer cares about. Data comes second to insight.</li>
+  <li><strong>Scoring methodology.</strong> The original outlier score was a raw ratio. I pushed for log-scale normalization because I understood the data distribution issue. The AI implemented my approach, but the decision was mine.</li>
+  <li><strong>Visual direction.</strong> We went through 4 different 3D backgrounds (crystalline gem, morphing sphere, orbital rings, particle network) before I settled on the one that felt right. The AI suggested options. I picked based on gut and product sense.</li>
+  <li><strong>Export structure.</strong> The AI's first CSV was just a flat video list. I restructured it into 6 sections with channel summary, intelligence brief, win formula, format graveyard, detailed video data, and cadence heatmap. Because a CSV that a data analyst downloads should tell a complete story, not just be a data dump.</li>
+</ul>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- TRADEOFFS                                                             -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="container">
+
+<h2><span class="num">06</span>Key Tradeoffs</h2>
+<p class="lead">
+  What I prioritized, what I deferred, and why.
+</p>
+
+<h3>Ship Speed vs. Perfect Code</h3>
+<p>
+  Some components have inline styles alongside Tailwind classes. In a longer project, I would enforce strict design token usage everywhere. For a Monday demo, visual consistency matters more than code purity. The product looks cohesive even if the implementation is not perfectly uniform under the hood.
+</p>
+
+<h3>Demo Polish vs. Production Robustness</h3>
+<p>
+  Error handling is functional but not bulletproof. Edge cases like private channels, deleted videos, or malformed URLs are handled, but the error messages could be more helpful. Rate limiting, input sanitization, and abuse prevention are not implemented. For a client demo, these do not matter. For launch, they are essential.
+</p>
+
+<h3>Feature Breadth vs. Depth</h3>
+<p>
+  I built 12 analysis features at moderate depth rather than 3 features at extreme depth. This was intentional. The Monday demo needs to impress across the board: "look at everything this does." A deep dive into one feature does not sell a SaaS product. Breadth sells the vision, and depth comes in version 2 once we know which features the client actually uses.
+</p>
+
+<h3>Mock Data vs. API-First</h3>
+<p>
+  I built all UI against mock data first, then wired the API last. This meant I could iterate on design and layout without worrying about API failures, quota limits, or network latency. Every component worked perfectly before a single real API call was made. This is the fastest way to build a product like this, and it meant the API integration was essentially plug-and-play.
+</p>
+
+<h3>PDF Export via Print vs. Library</h3>
+<p>
+  The PDF export uses the browser's native print functionality with custom print styles, not a library like jsPDF or Puppeteer. This was a conscious choice: print-to-PDF produces better-looking output than most JS PDF libraries, works offline, and does not add a 500KB dependency. The tradeoff is less control over page breaks and headers/footers. For the MVP, the result looks professional enough.
+</p>
+
+<div class="divider"></div>
+
+<h2><span class="num">07</span>Project Structure</h2>
+
+<p>Clean, predictable file organization following Next.js 14 conventions:</p>
+
+<table class="feature-table">
+  <thead>
+    <tr><th>Directory</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>app/</code></td><td>Next.js App Router pages and API routes</td></tr>
+    <tr><td><code>app/api/</code></td><td>Server-side API routes (channel lookup, video fetch)</td></tr>
+    <tr><td><code>app/analysis/</code></td><td>Results page with AnalysisClient component</td></tr>
+    <tr><td><code>app/export/</code></td><td>Export page with PDF/CSV/JSON generation</td></tr>
+    <tr><td><code>src/components/</code></td><td>18 reusable components, all named exports</td></tr>
+    <tr><td><code>src/lib/</code></td><td>Core logic: analysis engine, YouTube API, utilities, mock data</td></tr>
+    <tr><td><code>src/types/</code></td><td>TypeScript interfaces (Video, Channel, AnalysisResult, etc.)</td></tr>
+    <tr><td><code>public/</code></td><td>Static assets (favicon)</td></tr>
+  </tbody>
+</table>
+
+<p>
+  <strong>Key architecture rule:</strong> <code>src/lib/analysis.ts</code> contains all scoring logic and makes zero network calls. <code>src/lib/youtube.ts</code> handles all API communication. They never import each other. This separation means the scoring engine is testable, portable, and free.
+</p>
+
+<div class="divider"></div>
+
+<h2><span class="num">08</span>Final Notes</h2>
+
+<p>
+  The brief said "make it look clean, ship it Monday." I took that seriously. But I also read between the lines. The real ask was not "build a data viewer." It was "build something that makes a VP of Content Strategy at a media company say 'I need this.'"
+</p>
+
+<p>
+  That is why I focused on the Intelligence Brief, the Win Formula, and the Format Graveyard. Those features do not just show data. They surface insights that would take an analyst hours to produce manually. They are the difference between a tool and a product.
+</p>
+
+<p>
+  The strongest signal I can give is not the feature count or the code quality. It is the product thinking. I built what the client needs, not what the brief literally asked for. And I shipped it before Monday.
+</p>
+
+<div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+  <p style="font-size: 12px; color: #9ca3af; margin-bottom: 4px;">
+    Arsh Bhattarai / Vibe Coder Product Developer Challenge / March 2026
+  </p>
+  <p style="font-size: 12px; color: #9ca3af;">
+    Built with Next.js 14, TypeScript, Tailwind CSS, YouTube Data API v3, Three.js, Recharts, and Claude Code.
+  </p>
+</div>
+
+</div>
+
+</body>
+</html>

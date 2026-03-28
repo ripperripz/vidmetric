@@ -209,7 +209,7 @@ export function VideoCard({ video }: VideoCardProps) {
       >
         <div
           className="relative w-full"
-          style={{ maxWidth: '960px', padding: '0 24px' }}
+          style={{ maxWidth: '960px', padding: '0 12px' }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close button */}
@@ -238,9 +238,9 @@ export function VideoCard({ video }: VideoCardProps) {
           </div>
 
           {/* Video info below player */}
-          <div className="mt-4 flex items-start justify-between gap-4">
-            <div className="flex flex-col gap-1 min-w-0">
-              <h3 className="text-text-primary truncate" style={{ fontSize: '15px', fontWeight: 500 }}>
+          <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
+            <div className="flex flex-col gap-1 min-w-0 w-full sm:w-auto">
+              <h3 className="text-text-primary line-clamp-2 sm:truncate" style={{ fontSize: '14px', fontWeight: 500 }}>
                 {video.title}
               </h3>
               <div className="flex items-center gap-3 font-mono text-text-tertiary" style={{ fontSize: '12px' }}>
