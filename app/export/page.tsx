@@ -5,12 +5,20 @@ import ExportPageClient from './ExportPageClient'
 export default async function ExportPage({
   searchParams,
 }: {
-  searchParams: { url?: string }
+  searchParams: Promise<{ url?: string }>
 }) {
-  const url = searchParams.url
-  const { result, error } = url
-    ? await fetchAnalysis(url)
-    : { result: MOCK_ANALYSIS, error: 'Demo data — paste a YouTube channel URL on the home page.' }
+  const { url } = await searchParams
 
-  return <ExportPageClient result={result} sourceUrl={url ?? ''} errorBanner={error} />
+  if (!url) {
+    return (
+      <ExportPageClient
+        result={MOCK_ANALYSIS}
+        sourceUrl=""
+        errorBanner="Demo data — paste a YouTube channel URL on the home page."
+      />
+    )
+  }
+
+  const { result, error } = await fetchAnalysis(url)
+  return <ExportPageClient result={result} sourceUrl={decodeURIComponent(url)} errorBanner={error} />
 }

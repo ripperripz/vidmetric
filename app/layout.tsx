@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   title: 'Vexel — YouTube Intelligence for Enterprise',
   description:
     'Deconstruct any YouTube channel into an intelligence brief — outlier scores, win formulas, format graveyards — in under 5 seconds. Powered by Vexel.',
+  icons: { icon: '/favicon.svg' },
 }
 
 export default function RootLayout({

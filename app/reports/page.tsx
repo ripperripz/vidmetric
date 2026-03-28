@@ -89,11 +89,12 @@ export default function ReportsPage() {
           <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.3)', fontWeight: 600 }}>
             Reports
           </span>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={handleExportCsv}
               disabled={saved.length === 0}
+              className="hidden sm:block"
               style={{
                 fontSize: '12px',
                 padding: '7px 16px',

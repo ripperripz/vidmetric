@@ -94,11 +94,13 @@ export default function DashboardPage() {
 
           {/* Quick stats */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" style={{ marginBottom: '48px' }}>
-            {QUICK_STATS.map(({ label, value, delta }) => (
+            {QUICK_STATS.map(({ label, value, delta }, i) => (
               <div
                 key={label}
-                className="rounded-xl p-5 flex flex-col gap-2"
+                className="vm-accent-bar rounded-xl p-5 flex flex-col gap-2 transition-all duration-200"
                 style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)' }}
               >
                 <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'rgba(255,255,255,0.3)' }}>
                   {label}
@@ -106,7 +108,7 @@ export default function DashboardPage() {
                 <span className="font-mono" style={{ fontSize: '28px', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>
                   {value}
                 </span>
-                <span className="font-mono" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)' }}>
+                <span className="font-mono" style={{ fontSize: '11px', color: i === 0 ? 'rgba(45,212,167,0.7)' : 'rgba(255,255,255,0.25)' }}>
                   {delta}
                 </span>
               </div>

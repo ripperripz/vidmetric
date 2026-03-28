@@ -286,70 +286,101 @@ export async function getVideos(channelId: string, maxResults = 50): Promise<Raw
   const key = process.env.YOUTUBE_API_KEY
   if (!key) throw new Error('YOUTUBE_API_KEY is not configured')
 
-  // Step 1 — search.list: ~100 quota units
-  const searchRes = await fetch(
-    `${BASE}/search?part=id&channelId=${channelId}&type=video&order=date&maxResults=${maxResults}&key=${key}`,
-    { next: { revalidate: 3600 } }
-  )
-  if (!searchRes.ok) {
-    if (searchRes.status === 403) throw new Error('YouTube API quota exceeded. Please try again later.')
-    throw new Error(`YouTube search API error: ${searchRes.status}`)
+  // Use the uploads playlist (UC→UU) — guaranteed chronological, 1 quota unit
+  // search.list is unreliable: skips videos, wrong order, 100 quota units
+  const uploadsPlaylistId = 'UU' + channelId.slice(2)
+
+  // Step 1 — playlistItems.list: 1 quota unit (vs 100 for search.list)
+  // Fetch up to 100 videos via pagination for better analysis coverage
+  const allIds: string[] = []
+  let pageToken: string | undefined
+  const perPage = Math.min(maxResults, 50)
+  const targetCount = Math.min(maxResults, 100)
+
+  while (allIds.length < targetCount) {
+    const pageParam = pageToken ? `&pageToken=${pageToken}` : ''
+    const remaining = targetCount - allIds.length
+    const count = Math.min(perPage, remaining)
+
+    const playlistRes = await fetch(
+      `${BASE}/playlistItems?part=contentDetails&playlistId=${uploadsPlaylistId}&maxResults=${count}${pageParam}&key=${key}`,
+      { next: { revalidate: 3600 } }
+    )
+    if (!playlistRes.ok) {
+      if (playlistRes.status === 403) throw new Error('YouTube API quota exceeded. Please try again later.')
+      if (playlistRes.status === 404) throw new Error('Channel uploads not found. The channel may be empty or private.')
+      throw new Error(`YouTube API error: ${playlistRes.status}`)
+    }
+
+    const playlistData = await playlistRes.json()
+    if (!playlistData.items?.length) break
+
+    const ids = (playlistData.items as Array<{ contentDetails: { videoId: string } }>)
+      .map((item) => item.contentDetails.videoId)
+      .filter(Boolean)
+    allIds.push(...ids)
+
+    pageToken = playlistData.nextPageToken
+    if (!pageToken) break
   }
 
-  const searchData = await searchRes.json()
-  if (!searchData.items?.length) return []
+  if (!allIds.length) return []
 
-  const ids: string[] = (searchData.items as Array<{ id: { videoId: string } }>)
-    .map((item) => item.id.videoId)
-    .filter(Boolean)
+  // Step 2 — videos.list: 1 quota unit per batch of 50 IDs
+  // Batch into chunks of 50 (API limit per request)
+  const videos: RawVideo[] = []
 
-  if (!ids.length) return []
+  for (let i = 0; i < allIds.length; i += 50) {
+    const batch = allIds.slice(i, i + 50)
+    const videosRes = await fetch(
+      `${BASE}/videos?part=snippet,statistics,contentDetails&id=${batch.join(',')}&key=${key}`,
+      { next: { revalidate: 3600 } }
+    )
+    if (!videosRes.ok) {
+      if (videosRes.status === 403) throw new Error('YouTube API quota exceeded. Please try again later.')
+      throw new Error(`YouTube videos API error: ${videosRes.status}`)
+    }
 
-  // Step 2 — videos.list: ~1 quota unit
-  const videosRes = await fetch(
-    `${BASE}/videos?part=snippet,statistics,contentDetails&id=${ids.join(',')}&key=${key}`,
-    { next: { revalidate: 3600 } }
-  )
-  if (!videosRes.ok) {
-    if (videosRes.status === 403) throw new Error('YouTube API quota exceeded. Please try again later.')
-    throw new Error(`YouTube videos API error: ${videosRes.status}`)
-  }
+    const videosData = await videosRes.json()
 
-  const videosData = await videosRes.json()
-
-  return (videosData.items ?? []).map((item: {
-    id: string
-    snippet: {
-      title:        string
-      publishedAt:  string
-      description?: string
-      thumbnails?:  {
-        maxres?: { url: string }
-        high?:   { url: string }
-        default?:{ url: string }
+    const parsed = (videosData.items ?? []).map((item: {
+      id: string
+      snippet: {
+        title:        string
+        publishedAt:  string
+        description?: string
+        thumbnails?:  {
+          maxres?: { url: string }
+          high?:   { url: string }
+          default?:{ url: string }
+        }
       }
-    }
-    statistics: {
-      viewCount?:    string
-      likeCount?:    string
-      commentCount?: string
-    }
-    contentDetails: { duration: string }
-  }): RawVideo => {
-    const duration = parseDuration(item.contentDetails.duration)
-    const views    = parseInt(item.statistics.viewCount    ?? '0')
-    const likes    = parseInt(item.statistics.likeCount    ?? '0')
-    const comments = parseInt(item.statistics.commentCount ?? '0')
+      statistics: {
+        viewCount?:    string
+        likeCount?:    string
+        commentCount?: string
+      }
+      contentDetails: { duration: string }
+    }): RawVideo => {
+      const duration = parseDuration(item.contentDetails.duration)
+      const views    = parseInt(item.statistics.viewCount    ?? '0')
+      const likes    = parseInt(item.statistics.likeCount    ?? '0')
+      const comments = parseInt(item.statistics.commentCount ?? '0')
 
-    const text = item.snippet.title + ' ' + (item.snippet.description ?? '')
-    // 63-second threshold: some Shorts are slightly over 60s
-    const isShort = duration <= 63 || /\#shorts?\b/i.test(text)
+      const text = item.snippet.title + ' ' + (item.snippet.description ?? '')
+      // 63-second threshold: some Shorts are slightly over 60s
+      const isShort = duration <= 63 || /\#shorts?\b/i.test(text)
 
-    const thumbnail =
-      item.snippet.thumbnails?.maxres?.url ??
-      item.snippet.thumbnails?.high?.url   ??
-      item.snippet.thumbnails?.default?.url ?? ''
+      const thumbnail =
+        item.snippet.thumbnails?.maxres?.url ??
+        item.snippet.thumbnails?.high?.url   ??
+        item.snippet.thumbnails?.default?.url ?? ''
 
-    return { id: item.id, title: item.snippet.title, thumbnail, views, likes, comments, duration, publishedAt: item.snippet.publishedAt, isShort }
-  })
+      return { id: item.id, title: item.snippet.title, thumbnail, views, likes, comments, duration, publishedAt: item.snippet.publishedAt, isShort }
+    })
+
+    videos.push(...parsed)
+  }
+
+  return videos
 }

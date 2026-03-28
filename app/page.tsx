@@ -122,113 +122,107 @@ function Hero() {
       {/* Content */}
       <div
         className="relative z-10 flex flex-col items-center text-center px-6"
-        style={{ maxWidth: '780px', paddingTop: '120px', paddingBottom: '100px' }}
+        style={{ maxWidth: '780px', paddingTop: '180px', paddingBottom: '100px' }}
       >
-        {/* Badge */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0 }}
-        >
-          <span className="vm-badge">
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#3D6EFF', display: 'inline-block' }} />
-            YouTube Competitor Intelligence
-          </span>
-        </motion.div>
-
         {/* Headline */}
         <motion.h1
           className="mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.12 }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
           style={{
             fontSize: 'clamp(48px, 8vw, 84px)',
             fontWeight: 800,
             lineHeight: 1.0,
             letterSpacing: '-0.04em',
-            color: '#ffffff',
           }}
         >
-          Turn Conversations<br />
-          Into Conversions.
+          <span className="vm-gradient-text">Decode Any Channel.</span><br />
+          <span style={{ color: 'rgba(255,255,255,0.35)' }}>Own the Strategy.</span>
         </motion.h1>
 
         {/* Subheadline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.24 }}
-          style={{ fontSize: '18px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, maxWidth: '560px', marginBottom: '56px' }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.18 }}
+          style={{ fontSize: '18px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, maxWidth: '560px', marginBottom: '48px' }}
         >
           Deconstruct any YouTube channel into an intelligence brief — outlier scores,
           win formulas, and competitive gaps — in under 5 seconds.
         </motion.p>
 
-        {/* Hero Actions */}
-        <motion.div
-          className="flex items-center gap-5 mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.36 }}
-        >
-          <a
-            href="/analyze"
-            className="btn-primary"
-            style={{ padding: '14px 28px', fontSize: '15px', textDecoration: 'none' }}
-          >
-            Get Started
-            <span className="arrow-circle">↗</span>
-          </a>
-          <a
-            href="#features"
-            className="btn-secondary"
-            style={{ padding: '14px 28px', fontSize: '15px', textDecoration: 'none' }}
-          >
-            See it in action
-          </a>
-        </motion.div>
-
-        {/* URL Input */}
+        {/* URL Input — Primary CTA */}
         <motion.form
           onSubmit={handleAnalyze}
           className="w-full"
-          style={{ maxWidth: '580px', marginBottom: '20px' }}
+          style={{ maxWidth: '620px', marginBottom: '16px' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.48 }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.28 }}
         >
-          <div className="vm-input-wrap" style={{ padding: '8px 8px 8px 28px' }}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ color: 'rgba(255,255,255,0.3)', flexShrink: 0 }}>
-              <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.3" />
-              <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
-            </svg>
-            <input
-              className="vm-input"
-              type="text"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              placeholder="youtube.com/@channel or paste channel URL"
-              style={{ fontSize: '14px' }}
+          <div
+            style={{
+              position: 'relative',
+              borderRadius: '999px',
+              padding: '2px',
+              background: 'linear-gradient(135deg, rgba(61,110,255,0.4), rgba(45,212,167,0.2), rgba(61,110,255,0.15))',
+            }}
+          >
+            {/* Inner glow behind the input */}
+            <div
+              className="absolute -inset-3 rounded-full pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse 60% 80% at 50% 50%, rgba(61,110,255,0.15) 0%, transparent 70%)',
+                filter: 'blur(8px)',
+              }}
             />
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary"
-              style={{ padding: '10px 22px', fontSize: '13px', borderRadius: '999px', opacity: loading ? 0.6 : 1 }}
+            <div
+              className="relative flex items-center gap-3"
+              style={{
+                background: 'rgba(0,0,0,0.85)',
+                borderRadius: '999px',
+                padding: '10px 10px 10px 28px',
+              }}
             >
-              {loading ? 'Analyzing…' : 'Analyze ↗'}
-            </button>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" style={{ color: 'rgba(61,110,255,0.6)', flexShrink: 0 }}>
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor" strokeWidth="1.4" />
+                <path d="M12 12L16 16" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+              </svg>
+              <input
+                className="vm-input"
+                type="text"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                placeholder="Paste any YouTube channel URL..."
+                style={{ fontSize: '15px', letterSpacing: '-0.01em' }}
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-primary"
+                style={{
+                  padding: '12px 26px',
+                  fontSize: '14px',
+                  borderRadius: '999px',
+                  opacity: loading ? 0.6 : 1,
+                  fontWeight: 600,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {loading ? 'Analyzing…' : 'Analyze'}
+                {!loading && <span className="arrow-circle" style={{ marginLeft: '6px' }}>↗</span>}
+              </button>
+            </div>
           </div>
         </motion.form>
 
         {/* Quick channels */}
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-2"
+          className="flex flex-wrap items-center justify-center gap-2 mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: EASE, delay: 0.6 }}
+          transition={{ duration: 0.5, ease: EASE, delay: 0.4 }}
         >
           <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.25)' }}>Try:</span>
           {quickChannels.map((ch) => (
@@ -262,6 +256,41 @@ function Hero() {
               {ch}
             </button>
           ))}
+        </motion.div>
+
+        {/* Secondary links */}
+        <motion.div
+          className="flex items-center gap-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: EASE, delay: 0.5 }}
+        >
+          <a
+            href="#features"
+            style={{
+              fontSize: '13px',
+              color: 'rgba(255,255,255,0.35)',
+              textDecoration: 'none',
+              transition: 'color 150ms',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}
+          >
+            See features →
+          </a>
+          <a
+            href="#pricing"
+            style={{
+              fontSize: '13px',
+              color: 'rgba(255,255,255,0.35)',
+              textDecoration: 'none',
+              transition: 'color 150ms',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}
+          >
+            View pricing →
+          </a>
         </motion.div>
       </div>
 
@@ -1061,7 +1090,7 @@ function GraveyardVisual() {
 // ── Page ──────────────────────────────────────────────────────────────────
 export default function HomePage() {
   return (
-    <main style={{ background: 'transparent' }}>
+    <main className="landing-cursor-hidden" style={{ background: 'transparent' }}>
       <ThreeBackground />
       <Navbar />
       <Hero />

@@ -105,8 +105,33 @@ export function VideoGrid({ videos }: VideoGridProps) {
           </p>
         </>
       ) : (
-        <div className="flex flex-col items-center justify-center py-20 border border-border-subtle rounded-card bg-surface-1">
-          <p className="text-text-tertiary text-sm">No videos match this filter.</p>
+        <div className="flex flex-col items-center justify-center py-20 border border-border-subtle rounded-card bg-surface-1 gap-4">
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" style={{ color: 'rgba(255,255,255,0.2)' }}>
+              <path d="M3 4H17L12 10V16L8 18V10L3 4Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <div className="text-center">
+            <p style={{ fontSize: '15px', fontWeight: 600, color: '#fff', marginBottom: '4px' }}>No videos match this filter</p>
+            <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.35)' }}>Try &quot;All&quot; to see every video, or change the sort.</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => { setActiveFilter('All'); setActiveTime('All Time') }}
+            style={{
+              fontSize: '13px',
+              fontFamily: 'monospace',
+              color: 'rgba(255,255,255,0.5)',
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '8px',
+              padding: '8px 18px',
+              cursor: 'pointer',
+              transition: 'all 150ms',
+            }}
+          >
+            Clear filters
+          </button>
         </div>
       )}
     </section>

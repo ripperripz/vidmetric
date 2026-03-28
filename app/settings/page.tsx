@@ -20,7 +20,7 @@ const INPUT_STYLE = {
   borderRadius: '10px',
   padding: '0 14px',
   color: '#fff',
-  fontSize: '14px',
+  fontSize: '16px',
   outline: 'none',
 } as const
 
@@ -164,11 +164,11 @@ export default function SettingsPage() {
     <div className="flex min-h-screen" style={{ background: '#000000' }}>
       <AppSidebar active="Settings" />
 
-      <div className="flex-1 ml-[220px] flex flex-col min-h-screen">
+      <div className="flex-1 ml-0 md:ml-[220px] flex flex-col min-h-screen">
 
         {/* Topbar */}
         <header
-          className="sticky top-0 z-30 h-16 flex items-center justify-between px-10"
+          className="sticky top-0 z-30 h-16 flex items-center justify-between pl-14 pr-4 md:px-10"
           style={{ background: 'rgba(5,5,8,0.8)', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
         >
           <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.3)', fontWeight: 600 }}>
@@ -185,7 +185,7 @@ export default function SettingsPage() {
           </button>
         </header>
 
-        <div className="flex gap-12" style={{ padding: '48px 40px' }}>
+        <div className="flex gap-8 lg:gap-12 px-4 md:px-10 py-6 md:py-12">
 
           {/* Anchor nav */}
           <nav className="w-[160px] flex-shrink-0 sticky top-24 self-start hidden lg:block">
@@ -241,7 +241,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-5 mb-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                   {[
                     { label: 'Full Name', value: profile.name, onChange: (v: string) => setProfile((p) => ({ ...p, name: v })), placeholder: 'Alex Chen', type: 'text' },
                     { label: 'Email', value: profile.email, onChange: (v: string) => setProfile((p) => ({ ...p, email: v })), placeholder: 'alex@agency.com', type: 'email' },
@@ -488,7 +488,7 @@ export default function SettingsPage() {
                 {/* Usage stats */}
                 <div>
                   <p style={{ fontSize: '14px', fontWeight: 500, color: '#fff', marginBottom: '14px' }}>Usage This Month</p>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {[
                       { label: 'Channels Analyzed', value: '14' },
                       { label: 'Reports Exported',  value: '7' },
@@ -507,7 +507,7 @@ export default function SettingsPage() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-3 pt-2">
+                <div className="flex flex-wrap items-center gap-3 pt-2">
                   <button type="button" className="vm-btn" style={{ padding: '10px 20px', fontSize: '13px', borderRadius: '10px' }}>
                     Upgrade Plan
                   </button>

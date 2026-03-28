@@ -8,11 +8,12 @@ export interface MetricCardsProps {
   result: AnalysisResult
 }
 
-const CARD_STYLE = {
+const CARD_STYLE: React.CSSProperties = {
   background: 'rgba(255,255,255,0.03)',
   border: '1px solid rgba(255,255,255,0.08)',
   borderRadius: '16px',
   padding: '20px',
+  transition: 'border-color 200ms ease, transform 200ms cubic-bezier(0.16,1,0.3,1)',
 }
 
 const LABEL_STYLE = {

@@ -36,18 +36,18 @@ export default function AboutPage() {
     <div style={{ background: '#000000', minHeight: '100vh', color: '#fff' }}>
 
       {/* Nav */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-10 py-6"
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-5 sm:px-10 py-4 sm:py-6"
         style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
         <Link href="/" style={{ fontFamily: 'inherit', fontSize: '18px', fontWeight: 800, color: '#fff', letterSpacing: '0.05em', textDecoration: 'none' }}>
           VEXEL
         </Link>
-        <div className="flex items-center gap-8">
-          <Link href="/#features" style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
+        <div className="flex items-center gap-4 sm:gap-8">
+          <Link href="/#features" className="hidden sm:inline" style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
             onMouseEnter={(e) => e.currentTarget.style.color = '#fff'}
             onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
             Features
           </Link>
-          <Link href="/about" style={{ fontSize: '14px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>
+          <Link href="/about" className="hidden sm:inline" style={{ fontSize: '14px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>
             About
           </Link>
           <Link href="/analyze" style={{

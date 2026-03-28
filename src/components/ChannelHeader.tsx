@@ -25,7 +25,7 @@ export function ChannelHeader({ channel, postingCadence }: ChannelHeaderProps) {
 
   return (
     <div
-      className="w-full rounded-xl p-8 flex flex-col md:flex-row md:items-center gap-8"
+      className="w-full rounded-xl p-5 sm:p-8 flex flex-col md:flex-row md:items-center gap-6 sm:gap-8"
       style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}
     >
       {/* Avatar + identity */}
@@ -45,7 +45,7 @@ export function ChannelHeader({ channel, postingCadence }: ChannelHeaderProps) {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <h2 className="text-text-primary" style={{ fontSize: '26px', fontWeight: 700, letterSpacing: '-0.025em', lineHeight: 1 }}>
+          <h2 className="text-text-primary" style={{ fontSize: 'clamp(20px, 4vw, 26px)', fontWeight: 700, letterSpacing: '-0.025em', lineHeight: 1 }}>
             {channel.name}
           </h2>
           <div className="flex items-center gap-2 flex-wrap">
@@ -72,7 +72,7 @@ export function ChannelHeader({ channel, postingCadence }: ChannelHeaderProps) {
             <span className="text-text-tertiary" style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
               {stat.label}
             </span>
-            <span className="text-text-primary font-mono" style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '-0.02em' }}>
+            <span className="text-text-primary font-mono" style={{ fontSize: 'clamp(18px, 3.5vw, 22px)', fontWeight: 700, letterSpacing: '-0.02em' }}>
               {stat.value}
             </span>
           </div>

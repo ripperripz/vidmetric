@@ -9,7 +9,7 @@ export interface FormatGraveyardProps {
 export function FormatGraveyard({ items }: FormatGraveyardProps) {
   return (
     <div
-      className="rounded-card p-6 flex flex-col gap-4 h-full"
+      className="rounded-card p-4 sm:p-6 flex flex-col gap-4 h-full"
       style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
     >
       <div>

@@ -46,16 +46,22 @@ export default function AnalyzePage() {
         <div className="flex-1 flex items-center justify-center px-4 md:px-10 py-8 md:py-12">
           <div className="w-full" style={{ maxWidth: '640px' }}>
 
-            {/* Icon */}
-            <div
-              className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8"
-              style={{ background: 'rgba(61,110,255,0.1)', border: '1px solid rgba(61,110,255,0.2)' }}
-            >
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-                <circle cx="10" cy="10" r="7.5" stroke="#3D6EFF" strokeWidth="1.5" />
-                <path d="M15.5 15.5L19.5 19.5" stroke="#3D6EFF" strokeWidth="1.5" strokeLinecap="round" />
-                <path d="M10 7V13M7 10H13" stroke="#3D6EFF" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
+            {/* Icon with glow */}
+            <div className="relative mb-8">
+              <div
+                className="absolute -inset-4 rounded-full pointer-events-none"
+                style={{ background: 'radial-gradient(circle, rgba(61,110,255,0.12) 0%, transparent 70%)' }}
+              />
+              <div
+                className="relative w-14 h-14 rounded-2xl flex items-center justify-center"
+                style={{ background: 'rgba(61,110,255,0.1)', border: '1px solid rgba(61,110,255,0.2)' }}
+              >
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="7.5" stroke="#3D6EFF" strokeWidth="1.5" />
+                  <path d="M15.5 15.5L19.5 19.5" stroke="#3D6EFF" strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M10 7V13M7 10H13" stroke="#3D6EFF" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </div>
             </div>
 
             <h1 style={{ fontSize: 'clamp(24px, 5vw, 32px)', fontWeight: 700, color: '#fff', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: '12px' }}>

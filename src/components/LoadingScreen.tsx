@@ -98,12 +98,12 @@ export function LoadingScreen({ channelHandle = 'channel' }: LoadingScreenProps)
       />
 
       {/* Logo top */}
-      <a href="/" className="absolute top-10 no-underline">
+      <a href="/" className="absolute top-6 sm:top-10 no-underline">
         <span style={{ fontFamily: "'Inter', 'DM Sans', system-ui, sans-serif", fontSize: '20px', fontWeight: 700, letterSpacing: '3px', color: '#FFFFFF', textTransform: 'uppercase' }}>VEXEL</span>
       </a>
 
       {/* Elapsed top-right */}
-      <div className="absolute top-10 right-10 text-right">
+      <div className="absolute top-6 right-5 sm:top-10 sm:right-10 text-right">
         <p style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.2)', marginBottom: '2px' }}>Elapsed</p>
         <p className="font-mono" style={{ fontSize: '18px', fontWeight: 700, color: 'rgba(255,255,255,0.6)' }}>
           {elapsed}s
@@ -144,7 +144,7 @@ export function LoadingScreen({ channelHandle = 'channel' }: LoadingScreenProps)
         <div className="text-center">
           <p style={{ fontSize: '22px', fontWeight: 600, letterSpacing: '-0.02em', color: '#fff', marginBottom: '4px' }}>
             Analyzing{' '}
-            <span className="font-mono" style={{ color: '#3D6EFF' }}>{channelHandle}</span>
+            <span className="font-mono" style={{ background: 'linear-gradient(135deg, #3D6EFF, #2DD4A7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{channelHandle}</span>
           </p>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.3)', lineHeight: 1.65, maxWidth: '340px' }}>
             Intelligence brief in progress. Cross-referencing audience retention scores with historical performance benchmarks.
@@ -184,8 +184,8 @@ export function LoadingScreen({ channelHandle = 'channel' }: LoadingScreenProps)
 
       {/* Bottom stats strip */}
       <div
-        className="absolute bottom-0 left-0 right-0 flex items-center justify-center gap-10"
-        style={{ padding: '20px 24px', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        className="absolute bottom-0 left-0 right-0 flex items-center justify-center gap-5 sm:gap-10"
+        style={{ padding: '16px 16px', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
         {[
           { label: 'Category', value: 'Entertainment' },

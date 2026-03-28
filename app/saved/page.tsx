@@ -50,11 +50,11 @@ export default function SavedPage() {
       <AppSidebar active="Saved" />
 
 
-      <div className="flex-1 ml-[220px] flex flex-col min-h-screen">
+      <div className="flex-1 ml-0 md:ml-[220px] flex flex-col min-h-screen">
 
         {/* Topbar */}
         <header
-          className="sticky top-0 z-30 h-16 flex items-center justify-between px-10"
+          className="sticky top-0 z-30 h-16 flex items-center justify-between pl-14 pr-4 md:px-10"
           style={{ background: 'rgba(5,5,8,0.8)', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
         >
           <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.3)', fontWeight: 600 }}>
@@ -70,7 +70,7 @@ export default function SavedPage() {
           </a>
         </header>
 
-        <main style={{ padding: '48px 40px', flex: 1 }}>
+        <main className="px-4 md:px-10 py-6 md:py-12" style={{ flex: 1 }}>
 
           {/* Page header */}
           <div style={{ marginBottom: '40px' }}>

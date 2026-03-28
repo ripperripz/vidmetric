@@ -402,13 +402,95 @@ body {
   #vm-report-wrapper { padding: 0 !important; }
 }
 
-/* ── Cursor: hide default on desktop, show custom ─────────────────── */
+/* ── Cursor: hide default on landing page only (custom dot cursor) ── */
 @media (hover: hover) {
-  * { cursor: none !important; }
+  .landing-cursor-hidden { cursor: none; }
+  .landing-cursor-hidden a,
+  .landing-cursor-hidden button,
+  .landing-cursor-hidden input { cursor: none; }
 }
 
 /* ── Ambient orb pulse ────────────────────────────────────────────── */
 @keyframes ambientPulse {
   0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
   50% { opacity: 1; transform: translateX(-50%) scale(1.15); }
+}
+
+/* ── Marquee ─────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Floating animation ──────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+.animate-float-slow {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ── Shimmer animation ───────────────────────────────────────────── */
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ── Subtle card glow on hover ───────────────────────────────────── */
+.vm-card-glow {
+  position: relative;
+}
+.vm-card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(61,110,255,0.15), transparent 40%, transparent 60%, rgba(45,212,167,0.1));
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  z-index: -1;
+}
+.vm-card-glow:hover::before {
+  opacity: 1;
+}
+
+/* ── Gradient text utility ───────────────────────────────────────── */
+.vm-gradient-text {
+  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section divider with gradient ───────────────────────────────── */
+.vm-section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 20%, rgba(61,110,255,0.15) 50%, rgba(255,255,255,0.08) 80%, transparent);
+}
+
+/* ── Stat card accent bar ────────────────────────────────────────── */
+.vm-accent-bar {
+  position: relative;
+  overflow: hidden;
+}
+.vm-accent-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(61,110,255,0.4), transparent);
+}
+
+/* ── No scrollbar utility ────────────────────────────────────────── */
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ── Focus ring utility ──────────────────────────────────────────── */
+.vm-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(61,110,255,0.4);
 }
