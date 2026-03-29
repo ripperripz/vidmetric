@@ -36,6 +36,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -44,6 +46,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ── Scrollbar ───────────────────────────────────────────────────── */
@@ -231,7 +235,7 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
+  width: min(900px, 100vw);
   height: 600px;
   background: radial-gradient(ellipse 70% 60% at 50% 90%, rgba(61,110,255,0.35), rgba(61,110,255,0.08) 50%, transparent 80%);
   pointer-events: none;

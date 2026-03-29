@@ -512,7 +512,7 @@ export default function ExportPageClient({ result, sourceUrl, errorBanner }: Exp
   function nextSection() { return String(++sectionNum).padStart(2, '0') }
 
   return (
-    <div className="flex min-h-screen" style={{ background: '#050508' }}>
+    <div className="flex min-h-screen" style={{ background: '#050508', overflowX: 'clip' }}>
       <AppSidebar active="Export" />
 
       <div className="flex-1 ml-0 md:ml-[220px] flex flex-col min-h-screen">

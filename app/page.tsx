@@ -91,7 +91,7 @@ function Hero() {
   const quickChannels = ['@MrBeast', '@veritasium', '@MKBHD', '@LexFridman', '@MarkRober']
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden" style={{ background: 'transparent' }}>
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden overflow-x-clip" style={{ background: 'transparent' }}>
 
       {/* Arena grid floor */}
       <div
@@ -1091,7 +1091,7 @@ function GraveyardVisual() {
 // ── Page ──────────────────────────────────────────────────────────────────
 export default function HomePage() {
   return (
-    <main className="landing-cursor-hidden" style={{ background: 'transparent' }}>
+    <main className="landing-cursor-hidden" style={{ background: 'transparent', overflowX: 'clip' }}>
       <ThreeBackground />
       <Navbar />
       <Hero />

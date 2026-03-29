@@ -35,7 +35,7 @@ export function ViewsOverTimeChart({ videos }: PerformanceChartProps) {
 
   return (
     <div
-      className="w-full rounded-xl p-5 sm:p-6"
+      className="w-full rounded-xl p-5 sm:p-6 overflow-hidden"
       style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}
     >
       <div className="flex items-center justify-between mb-5">
@@ -111,7 +111,7 @@ export function OutlierDistributionChart({ videos }: PerformanceChartProps) {
       .sort((a, b) => b.outlierScore - a.outlierScore)
       .slice(0, 15)
       .map((v) => ({
-        name: v.title.length > 25 ? v.title.slice(0, 25) + '...' : v.title,
+        name: v.title.length > 18 ? v.title.slice(0, 18) + '...' : v.title,
         score: parseFloat(v.outlierScore.toFixed(1)),
         fullTitle: v.title,
       }))
@@ -119,7 +119,7 @@ export function OutlierDistributionChart({ videos }: PerformanceChartProps) {
 
   return (
     <div
-      className="w-full rounded-xl p-5 sm:p-6"
+      className="w-full rounded-xl p-5 sm:p-6 overflow-hidden"
       style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}
     >
       <div className="flex items-center justify-between mb-5">
@@ -147,9 +147,9 @@ export function OutlierDistributionChart({ videos }: PerformanceChartProps) {
           <YAxis
             type="category"
             dataKey="name"
-            width={140}
+            width={80}
             stroke="rgba(255,255,255,0.15)"
-            fontSize={10}
+            fontSize={9}
             tick={{ fill: 'rgba(255,255,255,0.4)' }}
             tickLine={false}
             axisLine={false}

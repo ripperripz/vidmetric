@@ -93,7 +93,7 @@ export default function AnalysisLayout({
   isInfo?: boolean
 }) {
   return (
-    <div className="flex min-h-screen" style={{ background: '#000000' }}>
+    <div className="flex min-h-screen" style={{ background: '#000000', overflowX: 'clip' }}>
       <AppSidebar active="New Analysis" />
 
       <div className="flex-1 ml-0 md:ml-[220px] flex flex-col min-h-screen">
