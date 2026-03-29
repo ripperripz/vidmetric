@@ -86,10 +86,12 @@ export function AppSidebar({ active }: { active: string }) {
     <>
       {/* ── Mobile hamburger ──────────────────────────────────────── */}
       <button
+        type="button"
         className="md:hidden fixed z-[55] flex items-center justify-center"
         style={{
-          top: 0, left: 0,
-          width: '56px', height: '64px',
+          top: 'env(safe-area-inset-top, 0px)', left: 0,
+          width: '56px', height: '56px',
+          minHeight: '44px', minWidth: '44px',
           background: 'transparent', border: 'none', cursor: 'pointer',
           color: 'rgba(255,255,255,0.6)',
         }}
@@ -130,8 +132,9 @@ export function AppSidebar({ active }: { active: string }) {
             </span>
           </a>
           <button
+            type="button"
             className="md:hidden flex items-center justify-center rounded-lg"
-            style={{ width: '32px', height: '32px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', cursor: 'pointer' }}
+            style={{ width: '44px', height: '44px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', cursor: 'pointer' }}
             onClick={() => setMobileOpen(false)}
             aria-label="Close navigation"
           >

@@ -79,7 +79,7 @@ export default function ReportsPage() {
     <div className="flex min-h-screen" style={{ background: '#000000' }}>
       <AppSidebar active="Reports" />
 
-      <div className="flex-1 ml-0 md:ml-[220px] flex flex-col min-h-screen">
+      <div className="flex-1 min-w-0 ml-0 md:ml-[220px] flex flex-col min-h-screen overflow-x-hidden">
 
         {/* Topbar */}
         <header

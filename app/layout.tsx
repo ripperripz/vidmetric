@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import { Inter, DM_Sans } from 'next/font/google'
 import CursorOrb from '@/src/components/CursorOrb'
@@ -30,6 +30,13 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+}
+
 export const metadata: Metadata = {
   title: 'Vexel — YouTube Intelligence for Enterprise',
   description:
@@ -55,7 +62,7 @@ export default function RootLayout({
         <CursorDot />
         <AmbientOrbs />
         <DotGrid />
-        <div style={{ position: 'relative', zIndex: 2 }}>
+        <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '100vw', overflowX: 'clip' }}>
           {children}
         </div>
       </body>

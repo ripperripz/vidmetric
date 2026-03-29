@@ -252,7 +252,7 @@ export default function ExportPageClient({ result, sourceUrl, errorBanner }: Exp
     style.textContent = `
       @media print {
         body > div > *:not(#vm-report-wrapper) { display: none !important; }
-        #vm-report-wrapper { display: block !important; position: fixed !important; inset: 0 !important; z-index: 99999 !important; overflow: auto !important; background: white !important; padding: 40px !important; }
+        #vm-report-wrapper { display: block !important; position: absolute !important; inset: 0 !important; z-index: 99999 !important; overflow: visible !important; background: white !important; padding: 40px !important; }
         .no-print { display: none !important; }
       }
     `
@@ -515,10 +515,10 @@ export default function ExportPageClient({ result, sourceUrl, errorBanner }: Exp
     <div className="flex min-h-screen" style={{ background: '#050508', overflowX: 'clip' }}>
       <AppSidebar active="Export" />
 
-      <div className="flex-1 ml-0 md:ml-[220px] flex flex-col min-h-screen">
+      <div className="flex-1 min-w-0 ml-0 md:ml-[220px] flex flex-col min-h-screen overflow-x-hidden">
         {/* Topbar */}
         <header
-          className="no-print sticky top-0 z-30 h-14 sm:h-16 flex items-center justify-between pl-14 pr-3 sm:pr-4 md:px-10"
+          className="no-print sticky top-0 z-30 h-14 sm:h-16 flex items-center justify-between pl-14 pr-4 md:px-10"
           style={{ background: 'rgba(5,5,8,0.8)', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
         >
           <div className="flex items-center gap-6">
@@ -563,7 +563,7 @@ export default function ExportPageClient({ result, sourceUrl, errorBanner }: Exp
         {/* Error / demo banner */}
         {errorBanner && (
           <div
-            className="no-print flex items-center gap-2 px-10 py-2.5"
+            className="no-print flex items-center gap-2 px-4 md:px-10 py-2.5"
             style={{ background: 'rgba(245,166,35,0.05)', borderBottom: '1px solid rgba(245,166,35,0.12)' }}
           >
             <span style={{ fontSize: '12px' }}>⚠</span>

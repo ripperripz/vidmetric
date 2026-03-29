@@ -38,6 +38,8 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -412,6 +414,17 @@ body {
   .landing-cursor-hidden a,
   .landing-cursor-hidden button,
   .landing-cursor-hidden input { cursor: none; }
+}
+
+/* ── Touch devices: hide custom cursor elements completely ────────── */
+@media (hover: none) and (pointer: coarse) {
+  .vm-cursor-glow,
+  [data-cursor-orb],
+  [data-cursor-dot],
+  [data-cursor-ring] {
+    display: none !important;
+    pointer-events: none !important;
+  }
 }
 
 /* ── Ambient orb pulse ────────────────────────────────────────────── */

@@ -40,6 +40,7 @@ export default function CursorOrb() {
   return (
     <div
       ref={orbRef}
+      data-cursor-orb=""
       className="hidden md:block"
       style={{
         position: 'fixed',

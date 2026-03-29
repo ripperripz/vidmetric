@@ -103,9 +103,11 @@ export default function CursorDot() {
 
   return (
     <>
-      {/* Outer ring — thin, subtle */}
+      {/* Outer ring — thin, subtle (hidden on touch devices) */}
       <div
         ref={ringRef}
+        data-cursor-ring=""
+        className="hidden md:block"
         style={{
           position:      'fixed',
           width:         '32px',
@@ -114,14 +116,16 @@ export default function CursorDot() {
           border:        '1.5px solid rgba(255,255,255,0.25)',
           transform:     'translate(-50%,-50%)',
           pointerEvents: 'none',
-          zIndex:        9999,
+          zIndex:        60,
           willChange:    'left, top',
           transition:    'transform 250ms cubic-bezier(0.16,1,0.3,1), opacity 200ms ease',
         }}
       />
-      {/* Center dot — solid, always visible */}
+      {/* Center dot — solid (hidden on touch devices) */}
       <div
         ref={dotRef}
+        data-cursor-dot=""
+        className="hidden md:block"
         style={{
           position:      'fixed',
           width:         '6px',
@@ -131,7 +135,7 @@ export default function CursorDot() {
           boxShadow:     '0 0 4px rgba(255,255,255,0.3)',
           transform:     'translate(-50%,-50%)',
           pointerEvents: 'none',
-          zIndex:        10000,
+          zIndex:        61,
           willChange:    'left, top',
           transition:    'transform 200ms cubic-bezier(0.16,1,0.3,1), background 200ms ease, box-shadow 200ms ease',
         }}

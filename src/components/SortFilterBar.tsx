@@ -63,7 +63,7 @@ function ChevronDown() {
 
 function filterChipStyle(filter: FilterOption, active: boolean): string {
   const base =
-    'text-[12px] font-mono px-3 py-1 rounded-pill border transition-all duration-150 cursor-pointer whitespace-nowrap flex-shrink-0'
+    'text-[12px] font-mono px-3 py-2 rounded-pill border transition-all duration-150 cursor-pointer whitespace-nowrap flex-shrink-0'
 
   if (!active) {
     return `${base} bg-surface-1 border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary`
@@ -99,10 +99,11 @@ export function SortFilterBar({
       <div className="flex items-center gap-1 flex-shrink-0 bg-surface-1 rounded-pill p-0.5">
         {(['All Time', 'Last 30 Days'] as TimeOption[]).map((t) => (
           <button
+            type="button"
             key={t}
             onClick={() => onTimeChange(t)}
             className={`
-              text-[12px] font-mono px-3 py-1 rounded-pill transition-all duration-150
+              text-[12px] font-mono px-3 py-2 rounded-pill transition-all duration-150
               ${
                 activeTime === t
                   ? 'bg-accent text-background font-medium'
@@ -142,6 +143,7 @@ export function SortFilterBar({
       <div className="flex items-center gap-2 overflow-x-auto no-scrollbar flex-1 pb-0.5 sm:pb-0">
         {FILTER_OPTIONS.map((f) => (
           <button
+            type="button"
             key={f}
             onClick={() => onFilterChange(f)}
             className={filterChipStyle(f, activeFilter === f)}

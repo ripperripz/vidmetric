@@ -96,11 +96,11 @@ export default function AnalysisLayout({
     <div className="flex min-h-screen" style={{ background: '#000000', overflowX: 'clip' }}>
       <AppSidebar active="New Analysis" />
 
-      <div className="flex-1 ml-0 md:ml-[220px] flex flex-col min-h-screen">
+      <div className="flex-1 min-w-0 ml-0 md:ml-[220px] flex flex-col min-h-screen overflow-x-hidden">
 
         {/* Topbar */}
         <header
-          className="sticky top-0 z-30 h-14 sm:h-16 flex items-center justify-between pl-14 pr-3 sm:pr-4 md:px-10"
+          className="sticky top-0 z-30 h-14 sm:h-16 flex items-center justify-between pl-14 pr-4 md:px-10"
           style={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
         >
           <div className="flex items-center gap-3 min-w-0">
@@ -154,7 +154,7 @@ export default function AnalysisLayout({
         {/* Content */}
         <main
           className="flex-1 w-full mx-auto flex flex-col pb-16 md:pb-24 px-4 md:px-10"
-          style={{ maxWidth: '1160px', gap: '40px', paddingTop: '24px' }}
+          style={{ maxWidth: 'min(1160px, 100%)', gap: '40px', paddingTop: '24px' }}
         >
           {/* Error / info / demo banner */}
           {errorBanner && (

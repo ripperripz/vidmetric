@@ -30,7 +30,7 @@ function OutlierArc({ score }: { score: number }) {
   const fill = ARC_LENGTH * (score / 10)
   const empty = ARC_LENGTH - fill
   return (
-    <svg viewBox="0 0 100 58" width="120" height="70" aria-label={`Outlier score ${score} out of 10`}>
+    <svg viewBox="0 0 100 58" className="w-full max-w-[120px]" aria-label={`Outlier score ${score} out of 10`}>
       <path d="M 8 52 A 44 44 0 1 1 92 52" fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="6" strokeLinecap="round" />
       <path d="M 8 52 A 44 44 0 1 1 92 52" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="6" strokeLinecap="round"
         strokeDasharray={`${fill} ${empty}`} />

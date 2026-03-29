@@ -24,7 +24,7 @@ function stripSentiment(bullet: string): string {
 export function IntelligenceBrief({ bullets, generatedIn }: IntelligenceBriefProps) {
   return (
     <div
-      className="w-full rounded-card overflow-hidden"
+      className="w-full max-w-full rounded-card overflow-hidden"
       style={{
         background: 'rgba(255,255,255,0.03)',
         border: '1px solid rgba(255,255,255,0.08)',

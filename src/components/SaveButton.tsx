@@ -56,10 +56,12 @@ export function SaveButton({ channelId, channelName, channelHandle, url }: SaveB
   return (
     <>
       <button
+        type="button"
         onClick={handleSave}
         className="flex items-center gap-1.5 transition-all duration-150"
         style={{
-          padding: '6px 14px',
+          padding: '8px 14px',
+          minHeight: '44px',
           border: `1px solid ${saved ? 'rgba(45,212,167,0.3)' : 'rgba(255,255,255,0.1)'}`,
           borderRadius: '8px',
           background: saved ? 'rgba(45,212,167,0.06)' : 'transparent',

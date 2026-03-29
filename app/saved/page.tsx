@@ -50,7 +50,7 @@ export default function SavedPage() {
       <AppSidebar active="Saved" />
 
 
-      <div className="flex-1 ml-0 md:ml-[220px] flex flex-col min-h-screen">
+      <div className="flex-1 min-w-0 ml-0 md:ml-[220px] flex flex-col min-h-screen overflow-x-hidden">
 
         {/* Topbar */}
         <header

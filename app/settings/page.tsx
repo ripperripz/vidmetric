@@ -164,7 +164,7 @@ export default function SettingsPage() {
     <div className="flex min-h-screen" style={{ background: '#000000' }}>
       <AppSidebar active="Settings" />
 
-      <div className="flex-1 ml-0 md:ml-[220px] flex flex-col min-h-screen">
+      <div className="flex-1 min-w-0 ml-0 md:ml-[220px] flex flex-col min-h-screen overflow-x-hidden">
 
         {/* Topbar */}
         <header

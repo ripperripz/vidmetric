@@ -216,8 +216,8 @@ export function VideoCard({ video }: VideoCardProps) {
           <button
             type="button"
             onClick={closePlayer}
-            className="absolute -top-12 right-6 flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors"
-            style={{ fontSize: '13px' }}
+            className="absolute -top-12 right-3 sm:right-6 flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors"
+            style={{ fontSize: '13px', minHeight: '44px', minWidth: '44px', justifyContent: 'center' }}
           >
             <span className="font-mono text-[11px]" style={{ color: 'rgba(255,255,255,0.35)' }}>ESC</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">

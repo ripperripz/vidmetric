@@ -6,7 +6,7 @@ export default function AnalysisError({ message, url }: { message: string; url: 
   return (
     <div className="flex min-h-screen" style={{ background: '#000000' }}>
       <AppSidebar active="New Analysis" />
-      <div className="flex-1 ml-0 md:ml-[220px] flex flex-col items-center justify-center gap-6 px-4 md:px-10">
+      <div className="flex-1 min-w-0 ml-0 md:ml-[220px] flex flex-col items-center justify-center gap-6 px-4 md:px-10 overflow-x-hidden">
         <div
           className="flex flex-col items-center gap-4 rounded-xl p-10 text-center"
           style={{ background: 'rgba(255,77,106,0.05)', border: '1px solid rgba(255,77,106,0.15)', maxWidth: '480px', width: '100%' }}

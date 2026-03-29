@@ -297,7 +297,7 @@ function Hero() {
 
       {/* Floating product preview cards */}
       <motion.div
-        className="relative z-10 w-full flex justify-center gap-4 px-8"
+        className="relative z-10 w-full flex justify-center gap-4 px-4 sm:px-8"
         style={{ maxWidth: '1100px', margin: '-20px auto 60px' }}
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
